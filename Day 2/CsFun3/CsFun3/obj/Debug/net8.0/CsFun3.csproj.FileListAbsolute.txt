@@ -1,0 +1,14 @@
+F:\NashTech\Assignment\CsFun3\CsFun3\bin\Debug\net8.0\CsFun3.exe
+F:\NashTech\Assignment\CsFun3\CsFun3\bin\Debug\net8.0\CsFun3.deps.json
+F:\NashTech\Assignment\CsFun3\CsFun3\bin\Debug\net8.0\CsFun3.runtimeconfig.json
+F:\NashTech\Assignment\CsFun3\CsFun3\bin\Debug\net8.0\CsFun3.dll
+F:\NashTech\Assignment\CsFun3\CsFun3\bin\Debug\net8.0\CsFun3.pdb
+F:\NashTech\Assignment\CsFun3\CsFun3\obj\Debug\net8.0\CsFun3.GeneratedMSBuildEditorConfig.editorconfig
+F:\NashTech\Assignment\CsFun3\CsFun3\obj\Debug\net8.0\CsFun3.AssemblyInfoInputs.cache
+F:\NashTech\Assignment\CsFun3\CsFun3\obj\Debug\net8.0\CsFun3.AssemblyInfo.cs
+F:\NashTech\Assignment\CsFun3\CsFun3\obj\Debug\net8.0\CsFun3.csproj.CoreCompileInputs.cache
+F:\NashTech\Assignment\CsFun3\CsFun3\obj\Debug\net8.0\CsFun3.dll
+F:\NashTech\Assignment\CsFun3\CsFun3\obj\Debug\net8.0\refint\CsFun3.dll
+F:\NashTech\Assignment\CsFun3\CsFun3\obj\Debug\net8.0\CsFun3.pdb
+F:\NashTech\Assignment\CsFun3\CsFun3\obj\Debug\net8.0\CsFun3.genruntimeconfig.cache
+F:\NashTech\Assignment\CsFun3\CsFun3\obj\Debug\net8.0\ref\CsFun3.dll
