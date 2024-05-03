@@ -1,0 +1,40 @@
+Request: https localhost:44324 /api/Log  {
+  "id": 11,
+  "message": "string"
+}
+Request: https localhost:44324 /api/Log  {
+  "id": 12,
+  "message": "string"
+}
+Request: https localhost:44324 /api/Log  {
+  "id": 12,
+  "message": "string"
+}
+Request: https localhost:44324 /api/Log  {
+  "id": 13,
+  "message": "string"
+}
+Schema: https Host: localhost:44324 Path: /api/Log Query String:  Body: {
+  "id": 0,
+  "message": "string"
+}
+Schema: https Host: localhost:44324 Path: /api/Log Query String:  Body: {
+  "id": 0,
+  "message": "string"
+}
+Schema: https Host: localhost:44324 Path: /api/Log Query String:  Body: {
+  "id": 1,
+  "message": "string"
+}
+{"Timestamp":"2024-05-03T21:14:01.3539906+07:00","LogMessage":"Schema: https Host: localhost:44324 Path: /api/Log Query String:  Body: {
+  "id": 16,
+  "message": "string"
+}"}
+{"Timestamp":"2024-05-03T21:14:03.4495423+07:00","LogMessage":"Schema: https Host: localhost:44324 Path: /api/Log Query String:  Body: {
+  "id": 16,
+  "message": "string"
+}"}
+{"Timestamp":"2024-05-03T21:14:04.2289183+07:00","LogMessage":"Schema: https Host: localhost:44324 Path: /api/Log Query String:  Body: {
+  "id": 16,
+  "message": "string"
+}"}
