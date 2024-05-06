@@ -1,0 +1,78 @@
+F:\NashTech\MVC\MVC\bin\Debug\net8.0\appsettings.Development.json
+F:\NashTech\MVC\MVC\bin\Debug\net8.0\appsettings.json
+F:\NashTech\MVC\MVC\bin\Debug\net8.0\MVC.staticwebassets.runtime.json
+F:\NashTech\MVC\MVC\bin\Debug\net8.0\MVC.exe
+F:\NashTech\MVC\MVC\bin\Debug\net8.0\MVC.deps.json
+F:\NashTech\MVC\MVC\bin\Debug\net8.0\MVC.runtimeconfig.json
+F:\NashTech\MVC\MVC\bin\Debug\net8.0\MVC.dll
+F:\NashTech\MVC\MVC\bin\Debug\net8.0\MVC.pdb
+F:\NashTech\MVC\MVC\bin\Debug\net8.0\ClosedXML.dll
+F:\NashTech\MVC\MVC\bin\Debug\net8.0\DocumentFormat.OpenXml.dll
+F:\NashTech\MVC\MVC\bin\Debug\net8.0\ExcelNumberFormat.dll
+F:\NashTech\MVC\MVC\bin\Debug\net8.0\Irony.dll
+F:\NashTech\MVC\MVC\bin\Debug\net8.0\SixLabors.Fonts.dll
+F:\NashTech\MVC\MVC\bin\Debug\net8.0\System.IO.Packaging.dll
+F:\NashTech\MVC\MVC\bin\Debug\net8.0\XLParser.dll
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\MVC.csproj.AssemblyReference.cache
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\MVC.GeneratedMSBuildEditorConfig.editorconfig
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\MVC.AssemblyInfoInputs.cache
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\MVC.AssemblyInfo.cs
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\MVC.csproj.CoreCompileInputs.cache
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\MVC.MvcApplicationPartsAssemblyInfo.cache
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\MVC.RazorAssemblyInfo.cache
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\MVC.RazorAssemblyInfo.cs
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\staticwebassets.build.json
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\staticwebassets.development.json
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\staticwebassets\msbuild.MVC.Microsoft.AspNetCore.StaticWebAssets.props
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\staticwebassets\msbuild.build.MVC.props
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.MVC.props
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.MVC.props
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\staticwebassets.pack.json
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\scopedcss\bundle\MVC.styles.css
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\scopedcss\projectbundle\MVC.bundle.scp.css
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\MVC.csproj.Up2Date
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\MVC.dll
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\refint\MVC.dll
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\MVC.pdb
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\MVC.genruntimeconfig.cache
+F:\NashTech\MVC\MVC\obj\Debug\net8.0\ref\MVC.dll
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\bin\Debug\net8.0\appsettings.Development.json
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\bin\Debug\net8.0\appsettings.json
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\bin\Debug\net8.0\MVC.staticwebassets.runtime.json
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\bin\Debug\net8.0\MVC.exe
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\bin\Debug\net8.0\MVC.deps.json
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\bin\Debug\net8.0\MVC.runtimeconfig.json
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\bin\Debug\net8.0\MVC.dll
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\bin\Debug\net8.0\MVC.pdb
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\bin\Debug\net8.0\ClosedXML.dll
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\bin\Debug\net8.0\DocumentFormat.OpenXml.dll
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\bin\Debug\net8.0\ExcelNumberFormat.dll
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\bin\Debug\net8.0\Irony.dll
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\bin\Debug\net8.0\SixLabors.Fonts.dll
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\bin\Debug\net8.0\System.IO.Packaging.dll
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\bin\Debug\net8.0\XLParser.dll
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\MVC.csproj.AssemblyReference.cache
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\MVC.GeneratedMSBuildEditorConfig.editorconfig
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\MVC.AssemblyInfoInputs.cache
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\MVC.AssemblyInfo.cs
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\MVC.csproj.CoreCompileInputs.cache
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\MVC.MvcApplicationPartsAssemblyInfo.cache
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\MVC.RazorAssemblyInfo.cache
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\MVC.RazorAssemblyInfo.cs
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\staticwebassets.build.json
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\staticwebassets.development.json
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\staticwebassets\msbuild.MVC.Microsoft.AspNetCore.StaticWebAssets.props
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\staticwebassets\msbuild.build.MVC.props
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.MVC.props
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.MVC.props
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\staticwebassets.pack.json
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\scopedcss\bundle\MVC.styles.css
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\scopedcss\projectbundle\MVC.bundle.scp.css
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\MVC.csproj.Up2Date
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\MVC.dll
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\refint\MVC.dll
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\MVC.pdb
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\MVC.genruntimeconfig.cache
+F:\NashTech\ASP .NET Core MVC\MVC\MVC\obj\Debug\net8.0\ref\MVC.dll
