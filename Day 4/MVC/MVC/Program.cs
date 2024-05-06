@@ -25,8 +25,15 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=People}/{action=Index}/{id?}");
 
-app.MapControllerRoute(
-    name: "NashTech",
-    pattern: "NashTech/{controller=People}/{action=Index}/{id?}");
+// app.MapControllerRoute(
+//     name: "NashTech",
+//     pattern: "NashTech/{controller=People}/{action=Index}/{id?}");
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name : "areas",
+        pattern : "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    );
+});
 
 app.Run();

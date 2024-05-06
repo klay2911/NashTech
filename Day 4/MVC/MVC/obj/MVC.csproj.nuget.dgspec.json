@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\NashTech\\ASP .NET Core MVC\\MVC\\MVC\\MVC.csproj": {}
+    "F:\\NashTech\\Assignment\\NashTech\\Day 4\\MVC\\MVC\\MVC.csproj": {}
   },
   "projects": {
-    "F:\\NashTech\\ASP .NET Core MVC\\MVC\\MVC\\MVC.csproj": {
+    "F:\\NashTech\\Assignment\\NashTech\\Day 4\\MVC\\MVC\\MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\NashTech\\ASP .NET Core MVC\\MVC\\MVC\\MVC.csproj",
+        "projectUniqueName": "F:\\NashTech\\Assignment\\NashTech\\Day 4\\MVC\\MVC\\MVC.csproj",
         "projectName": "MVC",
-        "projectPath": "F:\\NashTech\\ASP .NET Core MVC\\MVC\\MVC\\MVC.csproj",
+        "projectPath": "F:\\NashTech\\Assignment\\NashTech\\Day 4\\MVC\\MVC\\MVC.csproj",
         "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-        "outputPath": "F:\\NashTech\\ASP .NET Core MVC\\MVC\\MVC\\obj\\",
+        "outputPath": "F:\\NashTech\\Assignment\\NashTech\\Day 4\\MVC\\MVC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -46,6 +46,10 @@
             "ClosedXML": {
               "target": "Package",
               "version": "[0.102.2, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[8.0.2, )"
             }
           },
           "imports": [

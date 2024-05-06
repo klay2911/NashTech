@@ -8,6 +8,14 @@
 
     <ItemGroup>
       <PackageReference Include="ClosedXML" Version="0.102.2" />
+      <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Areas\NashTech\Controllers\" />
+      <Folder Include="Areas\NashTech\Data\" />
+      <Folder Include="Areas\NashTech\Models\" />
+      <Folder Include="Areas\NashTech\Views\" />
     </ItemGroup>
 
 </Project>
