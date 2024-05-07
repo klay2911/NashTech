@@ -1,0 +1,9 @@
+@model IEnumerable<MVC.Models.Models.Member>
+
+@{
+    ViewData["Title"] = "Male Persons";
+}
+
+<h1>Male Persons</h1>
+
+@await Html.PartialAsync("_PeopleTable", Model)
