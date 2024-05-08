@@ -9,3 +9,15 @@ F:\NashTech\ASP .NET Core MVC\MVC\MVC.Models\obj\Debug\net8.0\MVC.Models.dll
 F:\NashTech\ASP .NET Core MVC\MVC\MVC.Models\obj\Debug\net8.0\refint\MVC.Models.dll
 F:\NashTech\ASP .NET Core MVC\MVC\MVC.Models\obj\Debug\net8.0\MVC.Models.pdb
 F:\NashTech\ASP .NET Core MVC\MVC\MVC.Models\obj\Debug\net8.0\ref\MVC.Models.dll
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Models\bin\Debug\net8.0\MVC.Models.deps.json
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Models\bin\Debug\net8.0\MVC.Models.dll
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Models\bin\Debug\net8.0\MVC.Models.pdb
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Models\obj\Debug\net8.0\MVC.Models.GeneratedMSBuildEditorConfig.editorconfig
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Models\obj\Debug\net8.0\MVC.Models.AssemblyInfoInputs.cache
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Models\obj\Debug\net8.0\MVC.Models.AssemblyInfo.cs
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Models\obj\Debug\net8.0\MVC.Models.csproj.CoreCompileInputs.cache
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Models\obj\Debug\net8.0\MVC.Models.sourcelink.json
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Models\obj\Debug\net8.0\MVC.Models.dll
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Models\obj\Debug\net8.0\refint\MVC.Models.dll
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Models\obj\Debug\net8.0\MVC.Models.pdb
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Models\obj\Debug\net8.0\ref\MVC.Models.dll

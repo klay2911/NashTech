@@ -13,3 +13,19 @@ F:\NashTech\ASP .NET Core MVC\MVC\MVC.Repositories\obj\Debug\net8.0\MVC.Reposito
 F:\NashTech\ASP .NET Core MVC\MVC\MVC.Repositories\obj\Debug\net8.0\refint\MVC.Repositories.dll
 F:\NashTech\ASP .NET Core MVC\MVC\MVC.Repositories\obj\Debug\net8.0\MVC.Repositories.pdb
 F:\NashTech\ASP .NET Core MVC\MVC\MVC.Repositories\obj\Debug\net8.0\ref\MVC.Repositories.dll
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Repositories\bin\Debug\net8.0\MVC.Repositories.deps.json
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Repositories\bin\Debug\net8.0\MVC.Repositories.dll
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Repositories\bin\Debug\net8.0\MVC.Repositories.pdb
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Repositories\bin\Debug\net8.0\MVC.Models.dll
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Repositories\bin\Debug\net8.0\MVC.Models.pdb
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Repositories\obj\Debug\net8.0\MVC.Repositories.csproj.AssemblyReference.cache
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Repositories\obj\Debug\net8.0\MVC.Repositories.GeneratedMSBuildEditorConfig.editorconfig
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Repositories\obj\Debug\net8.0\MVC.Repositories.AssemblyInfoInputs.cache
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Repositories\obj\Debug\net8.0\MVC.Repositories.AssemblyInfo.cs
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Repositories\obj\Debug\net8.0\MVC.Repositories.csproj.CoreCompileInputs.cache
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Repositories\obj\Debug\net8.0\MVC.Repositories.sourcelink.json
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Repositories\obj\Debug\net8.0\MVC.Repo.67762E0B.Up2Date
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Repositories\obj\Debug\net8.0\MVC.Repositories.dll
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Repositories\obj\Debug\net8.0\refint\MVC.Repositories.dll
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Repositories\obj\Debug\net8.0\MVC.Repositories.pdb
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Repositories\obj\Debug\net8.0\ref\MVC.Repositories.dll

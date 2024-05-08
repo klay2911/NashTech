@@ -15,3 +15,21 @@ F:\NashTech\ASP .NET Core MVC\MVC\MVC.BusinessLogic\obj\Debug\net8.0\MVC.Busines
 F:\NashTech\ASP .NET Core MVC\MVC\MVC.BusinessLogic\obj\Debug\net8.0\refint\MVC.BusinessLogic.dll
 F:\NashTech\ASP .NET Core MVC\MVC\MVC.BusinessLogic\obj\Debug\net8.0\MVC.BusinessLogic.pdb
 F:\NashTech\ASP .NET Core MVC\MVC\MVC.BusinessLogic\obj\Debug\net8.0\ref\MVC.BusinessLogic.dll
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.BusinessLogic\bin\Debug\net8.0\MVC.BusinessLogic.deps.json
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.BusinessLogic\bin\Debug\net8.0\MVC.BusinessLogic.dll
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.BusinessLogic\bin\Debug\net8.0\MVC.BusinessLogic.pdb
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.BusinessLogic\bin\Debug\net8.0\MVC.Models.dll
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.BusinessLogic\bin\Debug\net8.0\MVC.Repositories.dll
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.BusinessLogic\bin\Debug\net8.0\MVC.Repositories.pdb
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.BusinessLogic\bin\Debug\net8.0\MVC.Models.pdb
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.BusinessLogic\obj\Debug\net8.0\MVC.BusinessLogic.csproj.AssemblyReference.cache
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.BusinessLogic\obj\Debug\net8.0\MVC.BusinessLogic.GeneratedMSBuildEditorConfig.editorconfig
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.BusinessLogic\obj\Debug\net8.0\MVC.BusinessLogic.AssemblyInfoInputs.cache
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.BusinessLogic\obj\Debug\net8.0\MVC.BusinessLogic.AssemblyInfo.cs
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.BusinessLogic\obj\Debug\net8.0\MVC.BusinessLogic.csproj.CoreCompileInputs.cache
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.BusinessLogic\obj\Debug\net8.0\MVC.BusinessLogic.sourcelink.json
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.BusinessLogic\obj\Debug\net8.0\MVC.Busi.607C65E3.Up2Date
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.BusinessLogic\obj\Debug\net8.0\MVC.BusinessLogic.dll
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.BusinessLogic\obj\Debug\net8.0\refint\MVC.BusinessLogic.dll
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.BusinessLogic\obj\Debug\net8.0\MVC.BusinessLogic.pdb
+F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.BusinessLogic\obj\Debug\net8.0\ref\MVC.BusinessLogic.dll
