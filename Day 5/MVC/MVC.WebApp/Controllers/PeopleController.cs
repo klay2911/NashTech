@@ -128,7 +128,9 @@ public class PeopleController : BaseController
     { 
         var member = await _peopleService.GetByIdAsync(id);
         
-        if (member != null) await _peopleService.RemoveAsync(id);
+        await _peopleService.RemoveAsync(id);
+        TempData["Message1"] = $"Person {member.FullName} was removed from the list successfully!";
+
         return RedirectToAction("Index");
     }
     
