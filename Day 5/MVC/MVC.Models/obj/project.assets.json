@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\NashTech\\ASP .NET Core MVC\\MVC\\MVC.Models\\MVC.Models.csproj",
+      "projectUniqueName": "F:\\NashTech\\Assignment\\NashTech\\Day 5\\MVC\\MVC.Models\\MVC.Models.csproj",
       "projectName": "MVC.Models",
-      "projectPath": "F:\\NashTech\\ASP .NET Core MVC\\MVC\\MVC.Models\\MVC.Models.csproj",
+      "projectPath": "F:\\NashTech\\Assignment\\NashTech\\Day 5\\MVC\\MVC.Models\\MVC.Models.csproj",
       "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-      "outputPath": "F:\\NashTech\\ASP .NET Core MVC\\MVC\\MVC.Models\\obj\\",
+      "outputPath": "F:\\NashTech\\Assignment\\NashTech\\Day 5\\MVC\\MVC.Models\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -17,87 +17,87 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MVC.WebApp
 build_property.RootNamespace = MVC.WebApp
-build_property.ProjectDir = F:\NashTech\ASP .NET Core MVC\MVC\MVC.WebApp\
+build_property.ProjectDir = F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.WebApp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = F:\NashTech\ASP .NET Core MVC\MVC\MVC.WebApp
+build_property.MSBuildProjectDirectory = F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.WebApp
 build_property._RazorSourceGeneratorDebug = 
 
-[F:/NashTech/ASP .NET Core MVC/MVC/MVC.WebApp/Views/Home/Index.cshtml]
+[F:/NashTech/Assignment/NashTech/Day 5/MVC/MVC.WebApp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech/ASP .NET Core MVC/MVC/MVC.WebApp/Views/Home/Privacy.cshtml]
+[F:/NashTech/Assignment/NashTech/Day 5/MVC/MVC.WebApp/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech/ASP .NET Core MVC/MVC/MVC.WebApp/Views/People/Create.cshtml]
+[F:/NashTech/Assignment/NashTech/Day 5/MVC/MVC.WebApp/Views/People/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVvcGxlXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech/ASP .NET Core MVC/MVC/MVC.WebApp/Views/People/Delete.cshtml]
+[F:/NashTech/Assignment/NashTech/Day 5/MVC/MVC.WebApp/Views/People/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVvcGxlXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech/ASP .NET Core MVC/MVC/MVC.WebApp/Views/People/Details.cshtml]
+[F:/NashTech/Assignment/NashTech/Day 5/MVC/MVC.WebApp/Views/People/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVvcGxlXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech/ASP .NET Core MVC/MVC/MVC.WebApp/Views/People/Edit.cshtml]
+[F:/NashTech/Assignment/NashTech/Day 5/MVC/MVC.WebApp/Views/People/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVvcGxlXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech/ASP .NET Core MVC/MVC/MVC.WebApp/Views/People/GetFullNames.cshtml]
+[F:/NashTech/Assignment/NashTech/Day 5/MVC/MVC.WebApp/Views/People/GetFullNames.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVvcGxlXEdldEZ1bGxOYW1lcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech/ASP .NET Core MVC/MVC/MVC.WebApp/Views/People/GetMalePersons.cshtml]
+[F:/NashTech/Assignment/NashTech/Day 5/MVC/MVC.WebApp/Views/People/GetMalePersons.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVvcGxlXEdldE1hbGVQZXJzb25zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech/ASP .NET Core MVC/MVC/MVC.WebApp/Views/People/GetMembersBornAfterYear.cshtml]
+[F:/NashTech/Assignment/NashTech/Day 5/MVC/MVC.WebApp/Views/People/GetMembersBornAfterYear.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVvcGxlXEdldE1lbWJlcnNCb3JuQWZ0ZXJZZWFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech/ASP .NET Core MVC/MVC/MVC.WebApp/Views/People/GetMembersBornBeforeYear.cshtml]
+[F:/NashTech/Assignment/NashTech/Day 5/MVC/MVC.WebApp/Views/People/GetMembersBornBeforeYear.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVvcGxlXEdldE1lbWJlcnNCb3JuQmVmb3JlWWVhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech/ASP .NET Core MVC/MVC/MVC.WebApp/Views/People/GetMembersBornInYear.cshtml]
+[F:/NashTech/Assignment/NashTech/Day 5/MVC/MVC.WebApp/Views/People/GetMembersBornInYear.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVvcGxlXEdldE1lbWJlcnNCb3JuSW5ZZWFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech/ASP .NET Core MVC/MVC/MVC.WebApp/Views/People/GetOldestPerson.cshtml]
+[F:/NashTech/Assignment/NashTech/Day 5/MVC/MVC.WebApp/Views/People/GetOldestPerson.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVvcGxlXEdldE9sZGVzdFBlcnNvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech/ASP .NET Core MVC/MVC/MVC.WebApp/Views/People/Index.cshtml]
+[F:/NashTech/Assignment/NashTech/Day 5/MVC/MVC.WebApp/Views/People/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVvcGxlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech/ASP .NET Core MVC/MVC/MVC.WebApp/Views/People/_PeopleTable.cshtml]
+[F:/NashTech/Assignment/NashTech/Day 5/MVC/MVC.WebApp/Views/People/_PeopleTable.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVvcGxlXF9QZW9wbGVUYWJsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech/ASP .NET Core MVC/MVC/MVC.WebApp/Views/Shared/Error.cshtml]
+[F:/NashTech/Assignment/NashTech/Day 5/MVC/MVC.WebApp/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech/ASP .NET Core MVC/MVC/MVC.WebApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+[F:/NashTech/Assignment/NashTech/Day 5/MVC/MVC.WebApp/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech/ASP .NET Core MVC/MVC/MVC.WebApp/Views/_ViewImports.cshtml]
+[F:/NashTech/Assignment/NashTech/Day 5/MVC/MVC.WebApp/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech/ASP .NET Core MVC/MVC/MVC.WebApp/Views/_ViewStart.cshtml]
+[F:/NashTech/Assignment/NashTech/Day 5/MVC/MVC.WebApp/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech/ASP .NET Core MVC/MVC/MVC.WebApp/Views/Shared/_Layout.cshtml]
+[F:/NashTech/Assignment/NashTech/Day 5/MVC/MVC.WebApp/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-2c2mfel4jd

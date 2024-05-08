@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MVC.Repositories
-build_property.ProjectDir = F:\NashTech\ASP .NET Core MVC\MVC\MVC.Repositories\
+build_property.ProjectDir = F:\NashTech\Assignment\NashTech\Day 5\MVC\MVC.Repositories\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

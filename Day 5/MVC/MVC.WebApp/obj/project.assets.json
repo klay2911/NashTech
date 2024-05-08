@@ -10550,11 +10550,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\NashTech\\ASP .NET Core MVC\\MVC\\MVC.WebApp\\MVC.WebApp.csproj",
+      "projectUniqueName": "F:\\NashTech\\Assignment\\NashTech\\Day 5\\MVC\\MVC.WebApp\\MVC.WebApp.csproj",
       "projectName": "MVC.WebApp",
-      "projectPath": "F:\\NashTech\\ASP .NET Core MVC\\MVC\\MVC.WebApp\\MVC.WebApp.csproj",
+      "projectPath": "F:\\NashTech\\Assignment\\NashTech\\Day 5\\MVC\\MVC.WebApp\\MVC.WebApp.csproj",
       "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-      "outputPath": "F:\\NashTech\\ASP .NET Core MVC\\MVC\\MVC.WebApp\\obj\\",
+      "outputPath": "F:\\NashTech\\Assignment\\NashTech\\Day 5\\MVC\\MVC.WebApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -10569,8 +10569,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "F:\\NashTech\\ASP .NET Core MVC\\MVC\\MVC.BusinessLogic\\MVC.BusinessLogic.csproj": {
-              "projectPath": "F:\\NashTech\\ASP .NET Core MVC\\MVC\\MVC.BusinessLogic\\MVC.BusinessLogic.csproj"
+            "F:\\NashTech\\Assignment\\NashTech\\Day 5\\MVC\\MVC.BusinessLogic\\MVC.BusinessLogic.csproj": {
+              "projectPath": "F:\\NashTech\\Assignment\\NashTech\\Day 5\\MVC\\MVC.BusinessLogic\\MVC.BusinessLogic.csproj"
             }
           }
         }

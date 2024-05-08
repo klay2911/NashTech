@@ -4795,11 +4795,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\NashTech\\ASP .NET Core MVC\\MVC\\MVC.BusinessLogic\\MVC.BusinessLogic.csproj",
+      "projectUniqueName": "F:\\NashTech\\Assignment\\NashTech\\Day 5\\MVC\\MVC.BusinessLogic\\MVC.BusinessLogic.csproj",
       "projectName": "MVC.BusinessLogic",
-      "projectPath": "F:\\NashTech\\ASP .NET Core MVC\\MVC\\MVC.BusinessLogic\\MVC.BusinessLogic.csproj",
+      "projectPath": "F:\\NashTech\\Assignment\\NashTech\\Day 5\\MVC\\MVC.BusinessLogic\\MVC.BusinessLogic.csproj",
       "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-      "outputPath": "F:\\NashTech\\ASP .NET Core MVC\\MVC\\MVC.BusinessLogic\\obj\\",
+      "outputPath": "F:\\NashTech\\Assignment\\NashTech\\Day 5\\MVC\\MVC.BusinessLogic\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -4814,8 +4814,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "F:\\NashTech\\ASP .NET Core MVC\\MVC\\MVC.Repositories\\MVC.Repositories.csproj": {
-              "projectPath": "F:\\NashTech\\ASP .NET Core MVC\\MVC\\MVC.Repositories\\MVC.Repositories.csproj"
+            "F:\\NashTech\\Assignment\\NashTech\\Day 5\\MVC\\MVC.Repositories\\MVC.Repositories.csproj": {
+              "projectPath": "F:\\NashTech\\Assignment\\NashTech\\Day 5\\MVC\\MVC.Repositories\\MVC.Repositories.csproj"
             }
           }
         }
