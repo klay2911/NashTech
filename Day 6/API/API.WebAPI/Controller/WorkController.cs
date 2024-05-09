@@ -47,21 +47,21 @@ namespace API.WebAPI.Controller
             return NoContent();
         }
 
-        [HttpPost("AddBulk")]
+        [HttpPost("Bulk")]
         public async Task<IActionResult> AddBulkWork([FromBody] List<Work> works)
         {
             await _workService.AddBulkWorkAsync(works);
             return Ok();
         }
 
-        [HttpDelete("Delete")]
+        [HttpDelete]
         public async Task<IActionResult> DeleteWork([FromBody] Guid id)
         {
             await _workService.DeleteWorkAsync(id);
             return Ok();
         }
         
-        [HttpDelete("DeleteBulk")]
+        [HttpDelete("Bulk")]
         public async Task<IActionResult> DeleteBulkWork([FromBody] List<Guid> guids)
         {
             await _workService.DeleteBulkWorkAsync(guids);

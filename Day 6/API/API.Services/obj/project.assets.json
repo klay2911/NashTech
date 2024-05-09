@@ -50,11 +50,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\NashTech\\ASP .NET Core MVC\\API\\API.Services\\API.Services.csproj",
+      "projectUniqueName": "F:\\NashTech\\Assignment\\NashTech\\Day 6\\API\\API.Services\\API.Services.csproj",
       "projectName": "API.Services",
-      "projectPath": "F:\\NashTech\\ASP .NET Core MVC\\API\\API.Services\\API.Services.csproj",
+      "projectPath": "F:\\NashTech\\Assignment\\NashTech\\Day 6\\API\\API.Services\\API.Services.csproj",
       "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-      "outputPath": "F:\\NashTech\\ASP .NET Core MVC\\API\\API.Services\\obj\\",
+      "outputPath": "F:\\NashTech\\Assignment\\NashTech\\Day 6\\API\\API.Services\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -69,8 +69,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "F:\\NashTech\\ASP .NET Core MVC\\API\\API.Repositories\\API.Repositories.csproj": {
-              "projectPath": "F:\\NashTech\\ASP .NET Core MVC\\API\\API.Repositories\\API.Repositories.csproj"
+            "F:\\NashTech\\Assignment\\NashTech\\Day 6\\API\\API.Repositories\\API.Repositories.csproj": {
+              "projectPath": "F:\\NashTech\\Assignment\\NashTech\\Day 6\\API\\API.Repositories\\API.Repositories.csproj"
             }
           }
         }

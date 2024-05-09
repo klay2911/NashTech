@@ -1,0 +1,15 @@
+F:\NashTech\Assignment\API2\API.Repositories\bin\Debug\net8.0\API.Repositories.deps.json
+F:\NashTech\Assignment\API2\API.Repositories\bin\Debug\net8.0\API.Repositories.dll
+F:\NashTech\Assignment\API2\API.Repositories\bin\Debug\net8.0\API.Repositories.pdb
+F:\NashTech\Assignment\API2\API.Repositories\bin\Debug\net8.0\API.Models.dll
+F:\NashTech\Assignment\API2\API.Repositories\bin\Debug\net8.0\API.Models.pdb
+F:\NashTech\Assignment\API2\API.Repositories\obj\Debug\net8.0\API.Repositories.csproj.AssemblyReference.cache
+F:\NashTech\Assignment\API2\API.Repositories\obj\Debug\net8.0\API.Repositories.GeneratedMSBuildEditorConfig.editorconfig
+F:\NashTech\Assignment\API2\API.Repositories\obj\Debug\net8.0\API.Repositories.AssemblyInfoInputs.cache
+F:\NashTech\Assignment\API2\API.Repositories\obj\Debug\net8.0\API.Repositories.AssemblyInfo.cs
+F:\NashTech\Assignment\API2\API.Repositories\obj\Debug\net8.0\API.Repositories.csproj.CoreCompileInputs.cache
+F:\NashTech\Assignment\API2\API.Repositories\obj\Debug\net8.0\API.Repo.A3675DE8.Up2Date
+F:\NashTech\Assignment\API2\API.Repositories\obj\Debug\net8.0\API.Repositories.dll
+F:\NashTech\Assignment\API2\API.Repositories\obj\Debug\net8.0\refint\API.Repositories.dll
+F:\NashTech\Assignment\API2\API.Repositories\obj\Debug\net8.0\API.Repositories.pdb
+F:\NashTech\Assignment\API2\API.Repositories\obj\Debug\net8.0\ref\API.Repositories.dll

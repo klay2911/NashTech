@@ -1,0 +1,11 @@
+F:\NashTech\Assignment\API2\API.Models\bin\Debug\net8.0\API.Models.deps.json
+F:\NashTech\Assignment\API2\API.Models\bin\Debug\net8.0\API.Models.dll
+F:\NashTech\Assignment\API2\API.Models\bin\Debug\net8.0\API.Models.pdb
+F:\NashTech\Assignment\API2\API.Models\obj\Debug\net8.0\API.Models.GeneratedMSBuildEditorConfig.editorconfig
+F:\NashTech\Assignment\API2\API.Models\obj\Debug\net8.0\API.Models.AssemblyInfoInputs.cache
+F:\NashTech\Assignment\API2\API.Models\obj\Debug\net8.0\API.Models.AssemblyInfo.cs
+F:\NashTech\Assignment\API2\API.Models\obj\Debug\net8.0\API.Models.csproj.CoreCompileInputs.cache
+F:\NashTech\Assignment\API2\API.Models\obj\Debug\net8.0\API.Models.dll
+F:\NashTech\Assignment\API2\API.Models\obj\Debug\net8.0\refint\API.Models.dll
+F:\NashTech\Assignment\API2\API.Models\obj\Debug\net8.0\API.Models.pdb
+F:\NashTech\Assignment\API2\API.Models\obj\Debug\net8.0\ref\API.Models.dll

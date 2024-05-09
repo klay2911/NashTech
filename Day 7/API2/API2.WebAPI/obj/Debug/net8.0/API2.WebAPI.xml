@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>API2.WebAPI</name>
+    </assembly>
+    <members>
+        <member name="M:API2.WebAPI.Controllers.MemberController.GetAllMembersAsync">
+            <summary>
+            Retrieves all members 
+            </summary>
+            <returns> Returns a list of all members.  </returns>
+        </member>
+        <member name="M:API2.WebAPI.Controllers.MemberController.GetMember(System.Guid)">
+            <summary>
+            Get member base on id
+            </summary>
+            <param name="id">Id type is Guid</param>
+            <returns></returns>
+        </member>
+        <member name="M:API2.WebAPI.Controllers.MemberController.AddMember(API.Models.Models.Member)">
+            <summary>
+            Create new member
+            </summary>
+            <param name="member"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API2.WebAPI.Controllers.MemberController.UpdateMemberAsync(System.Guid,API2.WebAPI.ViewModel.UpdateMemberRequest)">
+            <summary>
+            Update member base on id
+            </summary>
+            <param name="id">Id type is Guid</param>
+            <param name="member"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API2.WebAPI.Controllers.MemberController.DeleteMember(System.Guid)">
+            <summary>
+            Delete member base on id
+            </summary>
+            <param name="id">Id type is Guid</param>
+            <returns></returns>
+        </member>
+        <member name="M:API2.WebAPI.Controllers.MemberController.GetByFilter(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Filter members by Name, Gender, BirthPlace
+            </summary>
+            <param name="filters">GenderType is an enum with 4 values {1: Unknown, 2: Male, 3: Female, 4: Other }</param>
+            <returns> </returns>
+        </member>
+        <member name="P:API2.WebAPI.ViewModel.UpdateMemberRequest.Dob">
+            <summary>
+            Enter date of birth in format dd/MM/yyyy
+            </summary>
+        </member>
+        <member name="P:API2.WebAPI.ViewModel.UpdateMemberRequest.Gender">
+            <summary>
+            GenderType is an enum with 4 values { 1: Unknown, 2: Male, 3: Female, 4: Other }
+            </summary>
+        </member>
+    </members>
+</doc>

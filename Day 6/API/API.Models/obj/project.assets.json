@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\NashTech\\ASP .NET Core MVC\\API\\API.Models\\API.Models.csproj",
+      "projectUniqueName": "F:\\NashTech\\Assignment\\NashTech\\Day 6\\API\\API.Models\\API.Models.csproj",
       "projectName": "API.Models",
-      "projectPath": "F:\\NashTech\\ASP .NET Core MVC\\API\\API.Models\\API.Models.csproj",
+      "projectPath": "F:\\NashTech\\Assignment\\NashTech\\Day 6\\API\\API.Models\\API.Models.csproj",
       "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-      "outputPath": "F:\\NashTech\\ASP .NET Core MVC\\API\\API.Models\\obj\\",
+      "outputPath": "F:\\NashTech\\Assignment\\NashTech\\Day 6\\API\\API.Models\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config"

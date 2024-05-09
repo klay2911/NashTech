@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QaLMT6A9RasWq6QA3SftwAoZGIQmUze2C+Oh2eIWkjNpJyyxLytN+hJ3jF5Xzn5AloGio835Y1aaNgbYnZMgSQ==",
+  "dgSpecHash": "vYfjH7bMEFAuIBIC1W7gq3p/W0ixh1hv/5g2LOlcfXold8AheI8Giw3Lg9u6JsS7EuWMs4z/t+zDjdKPx2Ngjg==",
   "success": true,
-  "projectFilePath": "F:\\NashTech\\ASP .NET Core MVC\\API\\API.Models\\API.Models.csproj",
+  "projectFilePath": "F:\\NashTech\\Assignment\\NashTech\\Day 6\\API\\API.Models\\API.Models.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

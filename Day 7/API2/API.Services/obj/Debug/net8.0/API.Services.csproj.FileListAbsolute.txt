@@ -1,0 +1,17 @@
+F:\NashTech\Assignment\API2\API.Services\bin\Debug\net8.0\API.Services.deps.json
+F:\NashTech\Assignment\API2\API.Services\bin\Debug\net8.0\API.Services.dll
+F:\NashTech\Assignment\API2\API.Services\bin\Debug\net8.0\API.Services.pdb
+F:\NashTech\Assignment\API2\API.Services\bin\Debug\net8.0\API.Models.dll
+F:\NashTech\Assignment\API2\API.Services\bin\Debug\net8.0\API.Repositories.dll
+F:\NashTech\Assignment\API2\API.Services\bin\Debug\net8.0\API.Repositories.pdb
+F:\NashTech\Assignment\API2\API.Services\bin\Debug\net8.0\API.Models.pdb
+F:\NashTech\Assignment\API2\API.Services\obj\Debug\net8.0\API.Services.csproj.AssemblyReference.cache
+F:\NashTech\Assignment\API2\API.Services\obj\Debug\net8.0\API.Services.GeneratedMSBuildEditorConfig.editorconfig
+F:\NashTech\Assignment\API2\API.Services\obj\Debug\net8.0\API.Services.AssemblyInfoInputs.cache
+F:\NashTech\Assignment\API2\API.Services\obj\Debug\net8.0\API.Services.AssemblyInfo.cs
+F:\NashTech\Assignment\API2\API.Services\obj\Debug\net8.0\API.Services.csproj.CoreCompileInputs.cache
+F:\NashTech\Assignment\API2\API.Services\obj\Debug\net8.0\API.Serv.A72B4071.Up2Date
+F:\NashTech\Assignment\API2\API.Services\obj\Debug\net8.0\API.Services.dll
+F:\NashTech\Assignment\API2\API.Services\obj\Debug\net8.0\refint\API.Services.dll
+F:\NashTech\Assignment\API2\API.Services\obj\Debug\net8.0\API.Services.pdb
+F:\NashTech\Assignment\API2\API.Services\obj\Debug\net8.0\ref\API.Services.dll
