@@ -1,17 +1,14 @@
+using System;
 using EFCore.Models.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace EFCore.Repositories;
+namespace EFCore.Services;
 
 public class CompanyContext : DbContext
 {
     public CompanyContext(DbContextOptions<CompanyContext> options) : base(options)
     {
     }
-    // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    // {
-    //     optionsBuilder.UseSqlServer("server= KLAYYYY\\THIENVU; Initial Catalog=CompanyDb;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=True;");
-    // }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -31,23 +28,19 @@ public class CompanyContext : DbContext
                 .HasKey(a => a.Id);
 
             entity.Property(x => x.Name)
-                .HasMaxLength(100)
+                .HasMaxLength(100) 
                 .IsRequired();
-            
+        
             entity.Property(x => x.JoinedDate)
                 .HasColumnType("date");
-            
+    
             entity.HasOne(e => e.Salary)
                 .WithOne(s => s.Employee)
                 .HasForeignKey<Salary>(s => s.EmployeeId);
-            
+    
             entity.HasOne(e => e.Department)
                 .WithMany(d => d.Employees)
                 .HasForeignKey(e => e.DepartmentId);
-            
-            // entity.HasOne(e=>e.ProjectEmployees)
-            //     .WithMany(p => p.Employees)
-            //     .HasForeignKey(e=> e.)
         });
         
         modelBuilder.Entity<Project>(entity =>
@@ -79,10 +72,12 @@ public class CompanyContext : DbContext
             entity.ToTable("ProjectEmployee")
                 .HasKey(a => new {a.ProjectId, a.EmployeeId});
 
+            entity.Property(x => x.Enable);
+
             entity.HasOne(pe => pe.Project)
                 .WithMany(p => p.ProjectEmployees)
                 .HasForeignKey(pe => pe.ProjectId);
-            
+    
             entity.HasOne(pe => pe.Employee)
                 .WithMany(e => e.ProjectEmployees)
                 .HasForeignKey(pe => pe.EmployeeId);
@@ -116,4 +111,5 @@ public class CompanyContext : DbContext
     public DbSet<Employee> Employees { get; set; }
     public DbSet<Project> Projects { get; set; }
     public DbSet<Salary> Salaries { get; set; }
+    public DbSet<ProjectEmployee> ProjectEmployees { get; set; }
 }

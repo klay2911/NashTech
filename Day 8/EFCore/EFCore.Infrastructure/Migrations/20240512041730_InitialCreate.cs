@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace EFCore.Repositories.Migrations
+namespace EFCore.Services.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -44,7 +44,7 @@ namespace EFCore.Repositories.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DepartmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     JoinedDate = table.Column<DateOnly>(type: "date", nullable: false),
-                    EmployeeName = table.Column<string>(type: "nType", maxLength: 100, nullable: false)
+                    EmployeeName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -106,10 +106,10 @@ namespace EFCore.Repositories.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("02ae17c9-4f01-4599-9e8d-4501ecb068cd"), "HR" },
-                    { new Guid("ae2c9c69-622d-4082-9628-ca8cb11ee56e"), "Finance" },
-                    { new Guid("cb30feef-8410-4927-973e-8a9f3cd0200b"), "Accountant" },
-                    { new Guid("df178a87-ae7a-4bee-aff4-14a178a73d7b"), "Software development" }
+                    { new Guid("22f0ea3d-bbef-4922-af68-a7547fae9077"), "Finance" },
+                    { new Guid("2dbeeb28-c8d2-4076-9e4f-f4cdee7ae311"), "Software development" },
+                    { new Guid("8848a0f8-8fba-4040-a64b-911c578dad7c"), "HR" },
+                    { new Guid("8ac147bd-225a-4ac9-9792-07cc6efbcc7a"), "Accountant" }
                 });
 
             migrationBuilder.CreateIndex(

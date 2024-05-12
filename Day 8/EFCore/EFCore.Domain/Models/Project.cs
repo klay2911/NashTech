@@ -1,5 +1,8 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace EFCore.Models.Models;
 
+[Table("Projects")]
 public class Project
 {
     public Guid Id { get; set; }

@@ -11,7 +11,7 @@ public class Employee
     
     [Required]
     [MaxLength(100)]
-    [Column("EmployeeName", TypeName = "nType")]
+    [Column("EmployeeName", TypeName = "nvarchar(100)")]
     public string Name;
     
     public Guid DepartmentId;
