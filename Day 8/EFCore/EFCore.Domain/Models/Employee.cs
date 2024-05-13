@@ -22,6 +22,5 @@ public class Employee
     
     public Department? Department { get; set; }
     
-    // public ICollection<Project>? Projects { get; } = new List<Project>();
     public ICollection<ProjectEmployee> ProjectEmployees { get; } = new List<ProjectEmployee>();
 }
