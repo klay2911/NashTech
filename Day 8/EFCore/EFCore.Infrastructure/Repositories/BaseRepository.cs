@@ -24,19 +24,55 @@ public class BaseRepository<TEntity> : IBaseRepository <TEntity> where TEntity :
 
     public virtual void AddAsync(TEntity entity)
     {
-        _context.Set<TEntity>().AddAsync(entity);
-        _context.SaveChanges();
+        using (var transaction = _context.Database.BeginTransaction())
+        {
+            try
+            {
+                _context.Set<TEntity>().Add(entity);
+                _context.SaveChanges();
+                transaction.Commit();
+            }
+            catch (Exception e)
+            {
+                transaction.Rollback();
+                throw new Exception(e.Message);
+            }
+        }
     }
 
     public virtual void UpdateAsync(TEntity objModel)
     {
-        _context.Entry(objModel).State = EntityState.Modified;
-        _context.SaveChanges();
+        using( var transaction = _context.Database.BeginTransaction())
+        {
+            try
+            {
+                _context.Entry(objModel).State = EntityState.Modified;
+                _context.SaveChanges();
+                transaction.Commit();
+            }
+            catch (Exception e)
+            {
+                transaction.Rollback();
+                throw new Exception(e.Message);
+            }
+        }
     }
 
     public virtual void DeleteAsync(TEntity objModel)
     {
-        _context.Set<TEntity>().Remove(objModel);
-        _context.SaveChanges();
+        using (var transaction = _context.Database.BeginTransaction())
+        {
+            try
+            {
+                _context.Set<TEntity>().Remove(objModel);
+                _context.SaveChanges();
+                transaction.Commit();
+            }
+            catch (Exception e)
+            {
+                transaction.Rollback();
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

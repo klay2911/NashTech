@@ -1,4 +1,3 @@
-using EFCore.Models.Models;
 using EFCore.Repositories.DTOs;
 using EFCore.Repositories.Interfaces;
 
@@ -34,8 +33,16 @@ public class OrganizationService : IOrganizationService
             Projects = r.projects
         });
     }
-    public async Task<IEnumerable<Employee>> GetEmployeesHighSalaryAndRecentJoinDateAsync()
+    public async Task<IEnumerable<OrganizationDto>> GetEmployeesHighSalaryAndRecentJoinDateAsync()
     {
-        return await _organizationRepository.GetEmployeesHighSalaryAndRecentJoinDateAsync();
+        var result =  await _organizationRepository.GetEmployeesHighSalaryAndRecentJoinDateAsync();
+        return result.Select(e => new OrganizationDto
+        {
+            Id = e.Id,
+            Name = e.Name,
+            DepartmentId = e.DepartmentId,
+            JoinedDate = e.JoinedDate
+
+        });
     }
 }

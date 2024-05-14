@@ -33,7 +33,7 @@ public class OrganizationRepository : IOrganizationRepository
     public async Task<IEnumerable<Employee>> GetEmployeesHighSalaryAndRecentJoinDateAsync()
     {
         var employees = await _context.Employees
-            .FromSqlRaw("SELECT E.Id, E.JoinedDate, S.Wage FROM Employee E, Salary S WHERE E.Id = S.EmployeeId AND E.JoinedDate >= '2024-01-01' GROUP BY E.Id, E.JoinedDate")
+            .FromSqlRaw("SELECT E.* FROM Employee E INNER JOIN Salary S ON E.Id = S.EmployeeId AND S.Wage >= 100 AND E.JoinedDate >= '2024-01-01'")
             .ToListAsync();
 
         return employees;
