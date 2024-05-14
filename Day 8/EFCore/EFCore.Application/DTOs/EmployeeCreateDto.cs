@@ -1,22 +1,17 @@
-using System.ComponentModel;
-using System.Text.Json.Serialization;
-using EFCore.Models.Common;
+using System.ComponentModel.DataAnnotations;
 using EFCore.Models.Models;
 
 namespace EFCore.Repositories.DTOs;
 
 public class EmployeeCreateDto
 {
-    /// <summary>
-    ///JoinedDate format MM/dd/yyyy
-    /// </summary>
+    [Required]
     public string? Name { get; set; }
-    
+    [Required]
     public Guid DepartmentId { get; set; }
-    
-    [JsonConverter(typeof(DateOnlyJsonConverter))]
-    [Description("format dd/MM/yyyy")]
-    public DateOnly JoinedDate { get; set; }
+    [Required]
+    [MaxLength(15)]
+    public string JoinedDate { get; set; }
     
     public EmployeeCreateDto()
     {
@@ -26,6 +21,6 @@ public class EmployeeCreateDto
     {
         Name = employee.Name;
         DepartmentId = employee.DepartmentId;
-        JoinedDate = employee.JoinedDate;
+        JoinedDate = employee.JoinedDate.ToString("dd/MM/yyyy");
     }
 }

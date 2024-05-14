@@ -26,29 +26,43 @@ public class EmployeeService : IEmployeeService
         return employeeDto;
     }
 
-    public async Task<EmployeeCreateDto> AddAsync(EmployeeCreateDto objModel)
+    public async Task<EmployeeDto> AddAsync(EmployeeCreateDto objModel)
     {
-        var employee = new Employee
+        if (DateOnly.TryParse(objModel.JoinedDate, out var joinedDate))
         {
-            Name = objModel.Name!,
-            DepartmentId = objModel.DepartmentId,
-            JoinedDate = objModel.JoinedDate
-        };
-        await Task.Run(() => _employeeRepository.AddAsync(employee));
-        return objModel;
+            var employee = new Employee
+            {
+                Name = objModel.Name!,
+                DepartmentId = objModel.DepartmentId,
+                JoinedDate = joinedDate
+            };
+            await Task.Run(() => _employeeRepository.AddAsync(employee));
+            return new EmployeeDto(employee);
+        }
+        else
+        {
+            throw new Exception("Invalid date format, Correct format: MM/dd/yyyy");
+        }
     }
 
-    public async Task<EmployeeCreateDto> UpdateAsync(Guid id, EmployeeCreateDto objModel)
+    public async Task<EmployeeDto> UpdateAsync(Guid id, EmployeeCreateDto objModel)
     {
-        var employee = new Employee
+        if (DateOnly.TryParse(objModel.JoinedDate, out var joinedDate))
         {
-            Id = id,
-            Name = objModel.Name!,
-            DepartmentId = objModel.DepartmentId,
-            JoinedDate = objModel.JoinedDate
-        };
-        await Task.Run(() => _employeeRepository.UpdateAsync(employee));
-        return objModel;
+            var employee = new Employee
+            {
+                Id = id,
+                Name = objModel.Name!,
+                DepartmentId = objModel.DepartmentId,
+                JoinedDate = joinedDate
+            };
+            await Task.Run(() => _employeeRepository.UpdateAsync(employee));
+            return new EmployeeDto(employee);
+        }
+        else
+        {
+            throw new Exception("Invalid date format, Correct format: MM/dd/yyyy");
+        }
     }
 
     public async Task<bool> DeleteAsync(Guid id)

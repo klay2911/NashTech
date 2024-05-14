@@ -12,6 +12,6 @@ public class DateOnlyJsonConverter : JsonConverter<DateOnly>
 
     public override void Write(Utf8JsonWriter writer, DateOnly value, JsonSerializerOptions options)
     {
-        writer.WriteStringValue(value.ToString("dd/MM/yyyy"));
+        writer.WriteStringValue(value.ToString("d"));
     }
 }

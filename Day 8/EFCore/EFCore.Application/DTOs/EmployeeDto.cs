@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 using System.Text.Json.Serialization;
 using EFCore.Models.Common;
 using EFCore.Models.Models;
@@ -14,9 +14,10 @@ public class EmployeeDto
     public Guid DepartmentId { get; set; }
     
     /// <summary>
-    /// format dd/MM/yyyy
+    /// format: MM/dd/yyyy
     /// </summary>
-    [JsonConverter(typeof(DateOnlyJsonConverter))]    
+    [Description("format: MM/dd/yyyy")]
+    [JsonConverter(typeof(DateOnlyJsonConverter))]
     public DateOnly JoinedDate { get; set; }
     
     public EmployeeDto(Employee employee)

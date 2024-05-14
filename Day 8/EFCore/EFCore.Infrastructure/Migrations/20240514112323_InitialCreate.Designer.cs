@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCore.Services.Migrations
 {
     [DbContext(typeof(CompanyContext))]
-    [Migration("20240512041730_InitialCreate")]
+    [Migration("20240514112323_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -43,22 +43,22 @@ namespace EFCore.Services.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("2dbeeb28-c8d2-4076-9e4f-f4cdee7ae311"),
+                            Id = new Guid("8b65c196-e84a-4a06-90f7-5525cc58f91f"),
                             Name = "Software development"
                         },
                         new
                         {
-                            Id = new Guid("22f0ea3d-bbef-4922-af68-a7547fae9077"),
+                            Id = new Guid("bf3ab168-64b9-44b2-80d1-1b1055363899"),
                             Name = "Finance"
                         },
                         new
                         {
-                            Id = new Guid("8ac147bd-225a-4ac9-9792-07cc6efbcc7a"),
+                            Id = new Guid("597d9a32-e7ba-4ad5-ad03-0e7dd0db626d"),
                             Name = "Accountant"
                         },
                         new
                         {
-                            Id = new Guid("8848a0f8-8fba-4040-a64b-911c578dad7c"),
+                            Id = new Guid("017cd214-ac14-45a5-9aff-b130d4d9f3d0"),
                             Name = "HR"
                         });
                 });
