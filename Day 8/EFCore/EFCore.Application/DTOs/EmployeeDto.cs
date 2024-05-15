@@ -5,6 +5,7 @@ using EFCore.Models.Models;
 
 namespace EFCore.Repositories.DTOs;
 
+//[JsonConverter(typeof(NoReferenceHandlingConverter<EmployeeDto>))]
 public class EmployeeDto
 {
     public Guid Id { get; set; }

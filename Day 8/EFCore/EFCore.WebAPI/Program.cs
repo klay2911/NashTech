@@ -1,5 +1,4 @@
 using System.Reflection;
-using System.Text.Json.Serialization;
 using EFCore.Models.Configs;
 using EFCore.Services;
 using EFCore.WebAPI.Configurations;
@@ -33,7 +32,7 @@ builder.Services.AddDbContext<CompanyContext>(options =>
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
-        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+        options.JsonSerializerOptions.ReferenceHandler = null;
     });
 ServiceConfiguration.ConfigureServiceLifetime(builder.Services);
 

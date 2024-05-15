@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using EFCore.Models.Common;
 using EFCore.Models.Models;
 
 namespace EFCore.Repositories.DTOs;
@@ -11,6 +12,7 @@ public class EmployeeCreateDto
     public Guid DepartmentId { get; set; }
     [Required]
     [MaxLength(15)]
+    [ValidDate]
     public string JoinedDate { get; set; }
     
     public EmployeeCreateDto()

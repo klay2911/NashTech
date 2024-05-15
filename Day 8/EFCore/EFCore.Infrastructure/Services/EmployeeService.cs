@@ -28,41 +28,29 @@ public class EmployeeService : IEmployeeService
 
     public async Task<EmployeeDto> AddAsync(EmployeeCreateDto objModel)
     {
-        if (DateOnly.TryParse(objModel.JoinedDate, out var joinedDate))
+        var joinedDate = DateOnly.Parse(objModel.JoinedDate);
+        var employee = new Employee
         {
-            var employee = new Employee
-            {
-                Name = objModel.Name!,
-                DepartmentId = objModel.DepartmentId,
-                JoinedDate = joinedDate
-            };
-            await Task.Run(() => _employeeRepository.AddAsync(employee));
-            return new EmployeeDto(employee);
-        }
-        else
-        {
-            throw new Exception("Invalid date format, Correct format: MM/dd/yyyy");
-        }
+            Name = objModel.Name!,
+            DepartmentId = objModel.DepartmentId,
+            JoinedDate = joinedDate
+        };
+        await Task.Run(() => _employeeRepository.AddAsync(employee));
+        return new EmployeeDto(employee);
     }
 
     public async Task<EmployeeDto> UpdateAsync(Guid id, EmployeeCreateDto objModel)
     {
-        if (DateOnly.TryParse(objModel.JoinedDate, out var joinedDate))
+        var joinedDate = DateOnly.Parse(objModel.JoinedDate);
+        var employee = new Employee
         {
-            var employee = new Employee
-            {
-                Id = id,
-                Name = objModel.Name!,
-                DepartmentId = objModel.DepartmentId,
-                JoinedDate = joinedDate
-            };
-            await Task.Run(() => _employeeRepository.UpdateAsync(employee));
-            return new EmployeeDto(employee);
-        }
-        else
-        {
-            throw new Exception("Invalid date format, Correct format: MM/dd/yyyy");
-        }
+            Id = id,
+            Name = objModel.Name!,
+            DepartmentId = objModel.DepartmentId,
+            JoinedDate = joinedDate
+        };
+        await Task.Run(() => _employeeRepository.UpdateAsync(employee));
+        return new EmployeeDto(employee);
     }
 
     public async Task<bool> DeleteAsync(Guid id)
