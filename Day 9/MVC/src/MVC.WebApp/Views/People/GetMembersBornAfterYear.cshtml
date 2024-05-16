@@ -1,0 +1,9 @@
+@model IEnumerable<MVC.Models.Models.Member>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Persons</h1>
+
+@await Html.PartialAsync("_PeopleTable", Model)

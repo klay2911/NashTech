@@ -1,0 +1,56 @@
+@using X.PagedList.Mvc.Core
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model X.PagedList.IPagedList<MVC.Models.Models.Member>
+@* @model IEnumerable<MVC.Models.Person> *@
+<p>
+    <a asp-action="Create">Add new person</a>
+    @using (Html.BeginForm("Export", "People", FormMethod.Post))
+    {
+        <input type="submit" value="Export"/>
+    }
+</p>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>This is list of people</h1>
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+@if (TempData["Message1"] != null)
+{
+    <div class="alert alert-danger">@TempData["Message1"]</div>
+}
+<table class="table">
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.First().FirstName)</th>
+        <th>@Html.DisplayNameFor(model => model.First().LastName)</th>
+        <th>@Html.DisplayNameFor(model => model.First().Gender)</th>
+        <th>@Html.DisplayNameFor(model => model.First().PhoneNumber)</th>
+        <th>@Html.DisplayNameFor(model => model.First().Age)</th>
+        <th>@Html.DisplayNameFor(model => model.First().IsGraduated)</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Gender)</td>
+                <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                <td>@Html.DisplayFor(modelItem => item.Age)</td>
+                <td>@Html.DisplayFor(modelItem => item.IsGraduated)</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new { @class = "btn btn-warning" }) 
+                    @Html.ActionLink("Details", "Details", new { id=item.Id }, new { @class = "btn btn-primary" }) 
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-danger" }) 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

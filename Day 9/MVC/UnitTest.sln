@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC.WebApp", "src\MVC.WebApp\MVC.WebApp.csproj", "{D4690FCE-5E38-4B5C-9749-A0984F079927}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC.BusinessLogic", "src\MVC.BusinessLogic\MVC.BusinessLogic.csproj", "{FFF3C82C-8E53-486D-8F4B-415475E27CC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC.Repositories", "src\MVC.Repositories\MVC.Repositories.csproj", "{E29DA0B3-C0E5-49C8-A1FE-A557E77D6DC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC.Models", "src\MVC.Models\MVC.Models.csproj", "{9DD2D2D4-C811-4CF6-B531-91D92CEB698B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC.WebAppTests", "tests\MVC.WebAppTests\MVC.WebAppTests.csproj", "{42E82A97-0BEF-4515-BC53-589073DF100F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC.BusinessLogicTests", "tests\MVC.BusinessLogicTests\MVC.BusinessLogicTests.csproj", "{BF71E22A-87E3-454E-A3FC-A7C1D325320D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D4690FCE-5E38-4B5C-9749-A0984F079927}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4690FCE-5E38-4B5C-9749-A0984F079927}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4690FCE-5E38-4B5C-9749-A0984F079927}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4690FCE-5E38-4B5C-9749-A0984F079927}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFF3C82C-8E53-486D-8F4B-415475E27CC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFF3C82C-8E53-486D-8F4B-415475E27CC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFF3C82C-8E53-486D-8F4B-415475E27CC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFF3C82C-8E53-486D-8F4B-415475E27CC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E29DA0B3-C0E5-49C8-A1FE-A557E77D6DC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E29DA0B3-C0E5-49C8-A1FE-A557E77D6DC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E29DA0B3-C0E5-49C8-A1FE-A557E77D6DC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E29DA0B3-C0E5-49C8-A1FE-A557E77D6DC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DD2D2D4-C811-4CF6-B531-91D92CEB698B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DD2D2D4-C811-4CF6-B531-91D92CEB698B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DD2D2D4-C811-4CF6-B531-91D92CEB698B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DD2D2D4-C811-4CF6-B531-91D92CEB698B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42E82A97-0BEF-4515-BC53-589073DF100F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42E82A97-0BEF-4515-BC53-589073DF100F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42E82A97-0BEF-4515-BC53-589073DF100F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42E82A97-0BEF-4515-BC53-589073DF100F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF71E22A-87E3-454E-A3FC-A7C1D325320D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF71E22A-87E3-454E-A3FC-A7C1D325320D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF71E22A-87E3-454E-A3FC-A7C1D325320D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF71E22A-87E3-454E-A3FC-A7C1D325320D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
