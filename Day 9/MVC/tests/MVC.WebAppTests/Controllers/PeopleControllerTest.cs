@@ -30,8 +30,9 @@ public class PeopleControllerTest
         _mockFileService = new Mock<IFileService>();
         _controller = new PeopleController(_mockService.Object, _mockFileService.Object);
     }
+    
     [Test]
-    public async Task Index_CallsGetAllAsyncOnService_ReturnsCorrectResult()
+    public async Task Index_CallsGetAllAsync_ReturnsCorrectResult()
     {
         // Arrange
         var expectedPeople = new List<Member> { new() { FirstName = "Test", LastName = "User" } };
@@ -42,12 +43,13 @@ public class PeopleControllerTest
 
         // Assert
         _mockService.Verify(service => service.GetAllAsync(), Times.Once);
-        Assert.IsInstanceOf<ViewResult>(result);
+        Assert.That(result, Is.InstanceOf<ViewResult>());
         var viewResult = result as ViewResult;
-        Assert.AreEqual(expectedPeople, viewResult?.Model);
+        Assert.That(viewResult?.Model, Is.EqualTo(expectedPeople));
     }
+    
     [Test]
-    public async Task Index_WithNullPageNumber_CallsGetAllAsyncOnService_ReturnsCorrectResult()
+    public async Task Index_WithNullPageNumber_CallsGetAllAsync_ReturnsCorrectResult()
     {
         // Arrange
         var expectedPeople = new List<Member> { new() { FirstName = "Test", LastName = "User" } };
@@ -60,11 +62,11 @@ public class PeopleControllerTest
         _mockService.Verify(service => service.GetAllAsync(), Times.Once);
         Assert.IsInstanceOf<ViewResult>(result);
         var viewResult = result as ViewResult;
-        Assert.AreEqual(expectedPeople, viewResult?.Model);
+        Assert.That(viewResult?.Model, Is.EqualTo(expectedPeople));
     }
 
     [Test]
-    public async Task Index_WithPageNumber1_CallsGetAllAsyncOnService_ReturnsCorrectResult()
+    public async Task Index_WithPageNumber1_CallsGetAllAsync_ReturnsCorrectResult()
     {
         // Arrange
         var expectedPeople = new List<Member> { new() { FirstName = "Test", LastName = "User" } };
@@ -77,7 +79,7 @@ public class PeopleControllerTest
         _mockService.Verify(service => service.GetAllAsync(), Times.Once);
         Assert.IsInstanceOf<ViewResult>(result);
         var viewResult = result as ViewResult;
-        Assert.AreEqual(expectedPeople, viewResult?.Model);
+        Assert.That(viewResult?.Model, Is.EqualTo(expectedPeople));
     }
 
     [Test]
@@ -102,9 +104,9 @@ public class PeopleControllerTest
         var viewResult = result as ViewResult;
         var model = viewResult?.Model as IPagedList<Member>;
         Assert.IsNotNull(model);
-        Assert.AreEqual(1, model.Count); 
-        Assert.AreEqual(expectedPeople[3].FirstName, model.First().FirstName); 
-        Assert.AreEqual(expectedPeople[3].LastName, model.First().LastName);
+        Assert.That(model.Count, Is.EqualTo(1));
+        Assert.That(model.PageCount, Is.EqualTo(2));
+        Assert.That(model[0].FirstName, Is.EqualTo("Test3"));
     }
 
     [Test]
@@ -122,7 +124,7 @@ public class PeopleControllerTest
         var viewResult = result as ViewResult;
         var model = viewResult?.Model as IPagedList<Member>;
         Assert.IsNotNull(model);
-        Assert.AreEqual(0, model.Count);
+        Assert.That(model.Count, Is.EqualTo(0));
     }
 
     [Test]
@@ -136,7 +138,7 @@ public class PeopleControllerTest
     }
 
     [Test]
-    public async Task GetMalePersons_CallsGetMaleMembersAsyncOnService_ReturnsCorrectResult()
+    public async Task GetMalePersons_CallsGetMaleMembersAsync_ReturnsCorrectResult()
     {
         // Arrange
         var expectedPeople = new List<Member> { new() { FirstName = "Test", LastName = "User", Gender = GenderType.Male } };
@@ -149,7 +151,7 @@ public class PeopleControllerTest
         _mockService.Verify(service => service.GetMaleMembersAsync(), Times.Once);
         Assert.IsInstanceOf<ViewResult>(result);
         var viewResult = result as ViewResult;
-        Assert.AreEqual(expectedPeople, viewResult.Model);
+        Assert.That(viewResult?.Model, Is.EqualTo(expectedPeople));
     }
 
     [Test]
@@ -166,7 +168,7 @@ public class PeopleControllerTest
         _mockService.Verify(service => service.GetOldestPersonAsync(), Times.Once);
         Assert.IsInstanceOf<ViewResult>(result);
         var viewResult = result as ViewResult;
-        Assert.AreEqual(expectedMember, viewResult?.Model);
+        Assert.That(viewResult?.Model, Is.EqualTo(expectedMember));
     }
 
     [Test]
@@ -183,7 +185,7 @@ public class PeopleControllerTest
         _mockService.Verify(service => service.GetFullNameMembersAsync(), Times.Once);
         Assert.IsInstanceOf<ViewResult>(result);
         var viewResult = result as ViewResult;
-        Assert.AreEqual(expectedMembers, viewResult?.Model);
+        Assert.That(viewResult?.Model, Is.EqualTo(expectedMembers));
     }
 
     [Test]
@@ -200,7 +202,7 @@ public class PeopleControllerTest
         _mockService.Verify(service => service.GetMembersBornInYearAsync(2000), Times.Once);
         Assert.IsInstanceOf<ViewResult>(result);
         var viewResult = result as ViewResult;
-        Assert.AreEqual(expectedMembers, viewResult?.Model);
+        Assert.That(viewResult?.Model, Is.EqualTo(expectedMembers));
     }
 
     [Test]
@@ -217,7 +219,7 @@ public class PeopleControllerTest
         _mockService.Verify(service => service.GetMembersBornAfterYearAsync(2000), Times.Once);
         Assert.IsInstanceOf<ViewResult>(result);
         var viewResult = result as ViewResult;
-        Assert.AreEqual(expectedMembers, viewResult?.Model);
+        Assert.That(viewResult?.Model, Is.EqualTo(expectedMembers));
     }
 
     [Test]
@@ -234,7 +236,7 @@ public class PeopleControllerTest
         _mockService.Verify(service => service.GetMembersBornBeforeYearAsync(2000), Times.Once);
         Assert.IsInstanceOf<ViewResult>(result);
         var viewResult = result as ViewResult;
-        Assert.AreEqual(expectedMembers, viewResult?.Model);
+        Assert.That(viewResult?.Model, Is.EqualTo(expectedMembers));
     }
 
     [Test]
@@ -260,7 +262,7 @@ public class PeopleControllerTest
         // Assert
         Assert.IsInstanceOf<ViewResult>(result);
         var viewResult = result as ViewResult;
-        Assert.AreEqual(newMember, viewResult?.Model);
+        Assert.That(viewResult?.Model, Is.EqualTo(newMember));
     }
 
     [Test]
@@ -283,7 +285,7 @@ public class PeopleControllerTest
         // Assert
         _mockService.Verify(service => service.AddAsync(newMember), Times.Once);
         Assert.IsInstanceOf<RedirectToActionResult>(result);
-        Assert.AreEqual($"member {newMember.FullName} was added from the list successfully!", _controller.TempData["Message"]);
+        Assert.That(_controller.TempData["Message"], Is.EqualTo($"member {newMember.FullName} was added from the list successfully!"));
     }
     
     [Test]
@@ -301,7 +303,7 @@ public class PeopleControllerTest
         _mockService.Verify(service => service.GetByIdAsync(id), Times.Once);
         Assert.IsInstanceOf<ViewResult>(result);
         var viewResult = result as ViewResult;
-        Assert.AreEqual(expectedMember, viewResult?.Model);
+        Assert.That(viewResult?.Model, Is.EqualTo(expectedMember));
     }
 
     [Test]
@@ -338,7 +340,7 @@ public class PeopleControllerTest
 
         // Act & Assert
         var ex = Assert.ThrowsAsync<Exception>(async () => await _controller.EditSuccess(id, updatedMember));
-        Assert.AreEqual("Member not found", ex.Message);
+        Assert.That(ex.Message, Is.EqualTo("Member not found"));
     }
     
     [Test]
@@ -356,69 +358,69 @@ public class PeopleControllerTest
         // Assert
         Assert.IsInstanceOf<RedirectToActionResult>(result);
         var redirectResult = result as RedirectToActionResult;
-        Assert.AreEqual("Index", redirectResult?.ActionName);
+        Assert.That(redirectResult?.ActionName, Is.EqualTo("Index"));
     }
     
     
     [Test]
     public async Task Details_ValidId_ReturnsViewResultWithMember()
     {
-    // Arrange
-    var id = Guid.NewGuid();
-    var expectedMember = new Member { FirstName = "Test", LastName = "User" };
-    _mockService.Setup(service => service.GetByIdAsync(id)).ReturnsAsync(expectedMember);
+        // Arrange
+        var id = Guid.NewGuid();
+        var expectedMember = new Member { FirstName = "Test", LastName = "User" };
+        _mockService.Setup(service => service.GetByIdAsync(id)).ReturnsAsync(expectedMember);
 
-    // Act
-    var result = await _controller.Details(id);
+        // Act
+        var result = await _controller.Details(id);
 
-    // Assert
-    _mockService.Verify(service => service.GetByIdAsync(id), Times.Once);
-    Assert.IsInstanceOf<ViewResult>(result);
-    var viewResult = result as ViewResult;
-    Assert.AreEqual(expectedMember, viewResult?.Model);
+        // Assert
+        _mockService.Verify(service => service.GetByIdAsync(id), Times.Once);
+        Assert.IsInstanceOf<ViewResult>(result);
+        var viewResult = result as ViewResult;
+        Assert.That(viewResult?.Model, Is.EqualTo(expectedMember));
     }
 
     [Test]
     public async Task Delete_ValidId_ReturnsViewResultWithMember()
     {
-    // Arrange
-    var id = Guid.NewGuid();
-    var expectedMember = new Member { FirstName = "Test", LastName = "User" };
-    _mockService.Setup(service => service.GetByIdAsync(id)).ReturnsAsync(expectedMember);
+        // Arrange
+        var id = Guid.NewGuid();
+        var expectedMember = new Member { FirstName = "Test", LastName = "User" };
+        _mockService.Setup(service => service.GetByIdAsync(id)).ReturnsAsync(expectedMember);
 
-    // Act
-    var result = await _controller.Delete(id);
+        // Act
+        var result = await _controller.Delete(id);
 
-    // Assert
-    _mockService.Verify(service => service.GetByIdAsync(id), Times.Once);
-    Assert.IsInstanceOf<ViewResult>(result);
-    var viewResult = result as ViewResult;
-    Assert.AreEqual(expectedMember, viewResult?.Model);
+        // Assert
+        _mockService.Verify(service => service.GetByIdAsync(id), Times.Once);
+        Assert.IsInstanceOf<ViewResult>(result);
+        var viewResult = result as ViewResult;
+        Assert.That(viewResult?.Model, Is.EqualTo(expectedMember));
     }
 
     [Test]
     public async Task DeleteConfirm_ValidId_RedirectsToIndexAndSetsTempData()
     {
-    // Arrange
-    var id = Guid.NewGuid();
-    var member = new Member { FirstName = "Test", LastName = "User" };
-    _mockService.Setup(service => service.GetByIdAsync(id)).ReturnsAsync(member);
-    _mockService.Setup(service => service.RemoveAsync(id)).Returns(Task.FromResult(true));
-    
-    var httpContext = new DefaultHttpContext();
-    _controller.ControllerContext = new ControllerContext()
-    {
-    HttpContext = httpContext,
-    };
-    _controller.TempData = new TempDataDictionary(httpContext, Mock.Of<ITempDataProvider>());
+        // Arrange
+        var id = Guid.NewGuid();
+        var member = new Member { FirstName = "Test", LastName = "User" };
+        _mockService.Setup(service => service.GetByIdAsync(id)).ReturnsAsync(member);
+        _mockService.Setup(service => service.RemoveAsync(id)).Returns(Task.FromResult(true));
+        
+        var httpContext = new DefaultHttpContext();
+        _controller.ControllerContext = new ControllerContext()
+        {
+        HttpContext = httpContext,
+        };
+        _controller.TempData = new TempDataDictionary(httpContext, Mock.Of<ITempDataProvider>());
 
-    // Act
-    var result = await _controller.DeleteConfirm(id);
+        // Act
+        var result = await _controller.DeleteConfirm(id);
 
-    // Assert
-    _mockService.Verify(service => service.RemoveAsync(id), Times.Once);
-    Assert.IsInstanceOf<RedirectToActionResult>(result);
-    Assert.AreEqual($"Person {member.FullName} was removed from the list successfully!", _controller.TempData["Message1"]);
+        // Assert
+        _mockService.Verify(service => service.RemoveAsync(id), Times.Once);
+        Assert.IsInstanceOf<RedirectToActionResult>(result);
+        Assert.That(_controller.TempData["Message1"], Is.EqualTo($"Person {member.FullName} was removed from the list successfully!"));
     }
     
     [Test]

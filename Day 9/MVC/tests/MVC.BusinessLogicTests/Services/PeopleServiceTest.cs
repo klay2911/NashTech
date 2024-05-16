@@ -38,7 +38,7 @@ public class PeopleServiceTest
 
         // Assert
         _mockRepository.Verify(repo => repo.GetAllAsync(), Times.Once);
-        Assert.AreEqual(expectedMembers, result);
+        Assert.That(result, Is.EqualTo(expectedMembers));
     }
     
     [Test]
@@ -63,7 +63,7 @@ public class PeopleServiceTest
 
         // Assert
         _mockRepository.Verify(repo => repo.GetByIdAsync(id), Times.Once);
-        Assert.AreEqual(expectedMember, result);
+        Assert.That(result, Is.EqualTo(expectedMember));
     }
     
     [Test]
@@ -88,7 +88,7 @@ public class PeopleServiceTest
 
         // Assert
         _mockRepository.Verify(repo => repo.GetMaleMembersAsync(), Times.Once);
-        Assert.AreEqual(expectedMembers, result);
+        Assert.That(result, Is.EqualTo(expectedMembers));
     }
     
     [Test]
@@ -112,7 +112,7 @@ public class PeopleServiceTest
 
         // Assert
         _mockRepository.Verify(repo => repo.GetOldestPersonAsync(), Times.Once);
-        Assert.AreEqual(expectedMember, result);
+        Assert.That(result, Is.EqualTo(expectedMember));
     }
     
     [Test]
@@ -136,7 +136,7 @@ public class PeopleServiceTest
 
         // Assert
         _mockRepository.Verify(repo => repo.GetFullNameMembersAsync(), Times.Once);
-        Assert.AreEqual(expectedMembers, result);
+        Assert.That(result, Is.EqualTo(expectedMembers));
     }
 
     [Test]
@@ -161,7 +161,7 @@ public class PeopleServiceTest
 
         // Assert
         _mockRepository.Verify(repo => repo.GetMembersBornInYearAsync(1990), Times.Once);
-        Assert.AreEqual(expectedMembers, result);
+        Assert.That(result, Is.EqualTo(expectedMembers));
     }
 
     [Test]
@@ -186,7 +186,7 @@ public class PeopleServiceTest
 
         // Assert
         _mockRepository.Verify(repo => repo.GetMembersBornAfterYearAsync(1990), Times.Once);
-        Assert.AreEqual(expectedMembers, result);
+        Assert.That(result, Is.EqualTo(expectedMembers));
     }
     
     [Test]
@@ -211,7 +211,7 @@ public class PeopleServiceTest
 
         // Assert
         _mockRepository.Verify(repo => repo.GetMembersBornBeforeYearAsync(1990), Times.Once);
-        Assert.AreEqual(expectedMembers, result);
+        Assert.That(result, Is.EqualTo(expectedMembers));
     }
     
     [Test]
@@ -236,7 +236,7 @@ public class PeopleServiceTest
 
         // Assert
         _mockRepository.Verify(repo => repo.GetPeopleAsDataTableAsync(), Times.Once);
-        Assert.AreEqual(dataTable, result);
+        Assert.That(result, Is.EqualTo(dataTable));
     }
     
     [Test]

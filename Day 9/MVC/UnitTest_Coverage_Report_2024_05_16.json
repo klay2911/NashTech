@@ -1,0 +1,1694 @@
+﻿{
+  "DotCoverVersion": "2023.1.2",
+  "Kind": "SolutionRoot",
+  "CoveredStatements": 602,
+  "TotalStatements": 605,
+  "CoveragePercent": 99,
+  "Children": [
+    {
+      "Kind": "Project",
+      "Name": "MVC.BusinessLogic",
+      "CoveredStatements": 101,
+      "TotalStatements": 101,
+      "CoveragePercent": 100,
+      "Children": [
+        {
+          "Kind": "Namespace",
+          "Name": "MVC.BusinessLogic.Services",
+          "CoveredStatements": 101,
+          "TotalStatements": 101,
+          "CoveragePercent": 100,
+          "Children": [
+            {
+              "Kind": "Type",
+              "Name": "FileService",
+              "CoveredStatements": 10,
+              "TotalStatements": 10,
+              "CoveragePercent": 100,
+              "Children": [
+                {
+                  "Kind": "Method",
+                  "Name": "CreateExcelFileAsync(DataTable):Task<byte[]>",
+                  "CoveredStatements": 10,
+                  "TotalStatements": 10,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 10,
+                      "TotalStatements": 10,
+                      "CoveragePercent": 100,
+                      "Children": [
+                        {
+                          "Kind": "OwnCoverage",
+                          "CoveredStatements": 3,
+                          "TotalStatements": 3,
+                          "CoveragePercent": 100
+                        },
+                        {
+                          "Kind": "AnonymousMethod",
+                          "Name": "():byte[]",
+                          "CoveredStatements": 7,
+                          "TotalStatements": 7,
+                          "CoveragePercent": 100
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Kind": "Type",
+              "Name": "PeopleService",
+              "CoveredStatements": 91,
+              "TotalStatements": 91,
+              "CoveragePercent": 100,
+              "Children": [
+                {
+                  "Kind": "Constructor",
+                  "Name": "PeopleService(IPeopleRepository)",
+                  "CoveredStatements": 4,
+                  "TotalStatements": 4,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "AddAsync(Member):Task",
+                  "CoveredStatements": 6,
+                  "TotalStatements": 6,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 6,
+                      "TotalStatements": 6,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "ExportToExcelAsync():Task<DataTable>",
+                  "CoveredStatements": 7,
+                  "TotalStatements": 7,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 7,
+                      "TotalStatements": 7,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetAllAsync():Task<IEnumerable<Member>>",
+                  "CoveredStatements": 7,
+                  "TotalStatements": 7,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 7,
+                      "TotalStatements": 7,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetByIdAsync(Guid):Task<Member>",
+                  "CoveredStatements": 7,
+                  "TotalStatements": 7,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 7,
+                      "TotalStatements": 7,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetFullNameMembersAsync():Task<IEnumerable<Member>>",
+                  "CoveredStatements": 7,
+                  "TotalStatements": 7,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 7,
+                      "TotalStatements": 7,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetMaleMembersAsync():Task<IEnumerable<Member>>",
+                  "CoveredStatements": 7,
+                  "TotalStatements": 7,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 7,
+                      "TotalStatements": 7,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetMembersBornAfterYearAsync(int):Task<IEnumerable<Member>>",
+                  "CoveredStatements": 7,
+                  "TotalStatements": 7,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 7,
+                      "TotalStatements": 7,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetMembersBornBeforeYearAsync(int):Task<IEnumerable<Member>>",
+                  "CoveredStatements": 7,
+                  "TotalStatements": 7,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 7,
+                      "TotalStatements": 7,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetMembersBornInYearAsync(int):Task<IEnumerable<Member>>",
+                  "CoveredStatements": 7,
+                  "TotalStatements": 7,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 7,
+                      "TotalStatements": 7,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetOldestPersonAsync():Task<Member>",
+                  "CoveredStatements": 7,
+                  "TotalStatements": 7,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 7,
+                      "TotalStatements": 7,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "RemoveAsync(Guid):Task<bool>",
+                  "CoveredStatements": 8,
+                  "TotalStatements": 8,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 8,
+                      "TotalStatements": 8,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "UpdateAsync(Guid,Member):Task",
+                  "CoveredStatements": 10,
+                  "TotalStatements": 10,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 10,
+                      "TotalStatements": 10,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Kind": "Project",
+      "Name": "MVC.BusinessLogicTests",
+      "CoveredStatements": 185,
+      "TotalStatements": 185,
+      "CoveragePercent": 100,
+      "Children": [
+        {
+          "Kind": "Namespace",
+          "Name": "MVC.BusinessLogicTests.Services",
+          "CoveredStatements": 185,
+          "TotalStatements": 185,
+          "CoveragePercent": 100,
+          "Children": [
+            {
+              "Kind": "Type",
+              "Name": "FileServiceTest",
+              "CoveredStatements": 15,
+              "TotalStatements": 15,
+              "CoveragePercent": 100,
+              "Children": [
+                {
+                  "Kind": "Method",
+                  "Name": "CreateExcelFileAsync_ValidDataTable_ReturnsByteArray():Task",
+                  "CoveredStatements": 9,
+                  "TotalStatements": 9,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 9,
+                      "TotalStatements": 9,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "FileService_Constructor_ShouldCreateInstance():void",
+                  "CoveredStatements": 3,
+                  "TotalStatements": 3,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Setup():void",
+                  "CoveredStatements": 3,
+                  "TotalStatements": 3,
+                  "CoveragePercent": 100
+                }
+              ]
+            },
+            {
+              "Kind": "Type",
+              "Name": "PeopleServiceTest",
+              "CoveredStatements": 170,
+              "TotalStatements": 170,
+              "CoveragePercent": 100,
+              "Children": [
+                {
+                  "Kind": "Constructor",
+                  "Name": "PeopleServiceTest()",
+                  "CoveredStatements": 2,
+                  "TotalStatements": 2,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "AddAsync_InvalidMember_ThrowsException():void",
+                  "CoveredStatements": 5,
+                  "TotalStatements": 5,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "OwnCoverage",
+                      "CoveredStatements": 4,
+                      "TotalStatements": 4,
+                      "CoveragePercent": 100
+                    },
+                    {
+                      "Kind": "AnonymousMethod",
+                      "Name": "():Task",
+                      "CoveredStatements": 1,
+                      "TotalStatements": 1,
+                      "CoveragePercent": 100,
+                      "Children": [
+                        {
+                          "Kind": "InternalCompiledMethod",
+                          "Name": "MoveNext():void",
+                          "CoveredStatements": 1,
+                          "TotalStatements": 1,
+                          "CoveragePercent": 100
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "AddAsync_ValidMember_AddsMember():Task",
+                  "CoveredStatements": 6,
+                  "TotalStatements": 6,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 6,
+                      "TotalStatements": 6,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "ExportToExcelAsync_CallsGetPeopleAsDataTableAsync_ReturnsCorrectResult():Task",
+                  "CoveredStatements": 7,
+                  "TotalStatements": 7,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 7,
+                      "TotalStatements": 7,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "ExportToExcelAsync_NoDataToExport_ThrowsException():void",
+                  "CoveredStatements": 5,
+                  "TotalStatements": 5,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "OwnCoverage",
+                      "CoveredStatements": 4,
+                      "TotalStatements": 4,
+                      "CoveragePercent": 100
+                    },
+                    {
+                      "Kind": "AnonymousMethod",
+                      "Name": "():Task",
+                      "CoveredStatements": 1,
+                      "TotalStatements": 1,
+                      "CoveragePercent": 100,
+                      "Children": [
+                        {
+                          "Kind": "InternalCompiledMethod",
+                          "Name": "MoveNext():void",
+                          "CoveredStatements": 1,
+                          "TotalStatements": 1,
+                          "CoveragePercent": 100
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetAllAsync_CallsGetAllAsyncOnRepository_ReturnsMemberList():Task",
+                  "CoveredStatements": 7,
+                  "TotalStatements": 7,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 7,
+                      "TotalStatements": 7,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetAllAsync_NoMembers_ThrowsException():void",
+                  "CoveredStatements": 5,
+                  "TotalStatements": 5,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "OwnCoverage",
+                      "CoveredStatements": 4,
+                      "TotalStatements": 4,
+                      "CoveragePercent": 100
+                    },
+                    {
+                      "Kind": "AnonymousMethod",
+                      "Name": "():Task",
+                      "CoveredStatements": 1,
+                      "TotalStatements": 1,
+                      "CoveragePercent": 100,
+                      "Children": [
+                        {
+                          "Kind": "InternalCompiledMethod",
+                          "Name": "MoveNext():void",
+                          "CoveredStatements": 1,
+                          "TotalStatements": 1,
+                          "CoveragePercent": 100
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetByIdAsync_NoMember_ThrowsException():void",
+                  "CoveredStatements": 6,
+                  "TotalStatements": 6,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "OwnCoverage",
+                      "CoveredStatements": 5,
+                      "TotalStatements": 5,
+                      "CoveragePercent": 100
+                    },
+                    {
+                      "Kind": "AnonymousMethod",
+                      "Name": "():Task",
+                      "CoveredStatements": 1,
+                      "TotalStatements": 1,
+                      "CoveragePercent": 100,
+                      "Children": [
+                        {
+                          "Kind": "InternalCompiledMethod",
+                          "Name": "MoveNext():void",
+                          "CoveredStatements": 1,
+                          "TotalStatements": 1,
+                          "CoveragePercent": 100
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetByIdAsync_ValidId_ReturnsCorrectResult():Task",
+                  "CoveredStatements": 8,
+                  "TotalStatements": 8,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 8,
+                      "TotalStatements": 8,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetFullNameMembersAsync_CallsGetFullNameMembersAsync_ReturnsCorrectResult():Task",
+                  "CoveredStatements": 7,
+                  "TotalStatements": 7,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 7,
+                      "TotalStatements": 7,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetFullNameMembersAsync_NoMembers_ThrowsException():void",
+                  "CoveredStatements": 5,
+                  "TotalStatements": 5,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "OwnCoverage",
+                      "CoveredStatements": 4,
+                      "TotalStatements": 4,
+                      "CoveragePercent": 100
+                    },
+                    {
+                      "Kind": "AnonymousMethod",
+                      "Name": "():Task",
+                      "CoveredStatements": 1,
+                      "TotalStatements": 1,
+                      "CoveragePercent": 100,
+                      "Children": [
+                        {
+                          "Kind": "InternalCompiledMethod",
+                          "Name": "MoveNext():void",
+                          "CoveredStatements": 1,
+                          "TotalStatements": 1,
+                          "CoveragePercent": 100
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetMaleMembersAsync_CallsGetMaleMembersAsync_ReturnsCorrectResult():Task",
+                  "CoveredStatements": 7,
+                  "TotalStatements": 7,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 7,
+                      "TotalStatements": 7,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetMaleMembersAsync_NoMembers_ThrowsException():void",
+                  "CoveredStatements": 5,
+                  "TotalStatements": 5,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "OwnCoverage",
+                      "CoveredStatements": 4,
+                      "TotalStatements": 4,
+                      "CoveragePercent": 100
+                    },
+                    {
+                      "Kind": "AnonymousMethod",
+                      "Name": "():Task",
+                      "CoveredStatements": 1,
+                      "TotalStatements": 1,
+                      "CoveragePercent": 100,
+                      "Children": [
+                        {
+                          "Kind": "InternalCompiledMethod",
+                          "Name": "MoveNext():void",
+                          "CoveredStatements": 1,
+                          "TotalStatements": 1,
+                          "CoveragePercent": 100
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetMembersBornAfterYearAsync_NoMembers_ThrowsException():void",
+                  "CoveredStatements": 5,
+                  "TotalStatements": 5,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "OwnCoverage",
+                      "CoveredStatements": 4,
+                      "TotalStatements": 4,
+                      "CoveragePercent": 100
+                    },
+                    {
+                      "Kind": "AnonymousMethod",
+                      "Name": "():Task",
+                      "CoveredStatements": 1,
+                      "TotalStatements": 1,
+                      "CoveragePercent": 100,
+                      "Children": [
+                        {
+                          "Kind": "InternalCompiledMethod",
+                          "Name": "MoveNext():void",
+                          "CoveredStatements": 1,
+                          "TotalStatements": 1,
+                          "CoveragePercent": 100
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetMembersBornAfterYearAsync_ValidYear_ReturnsCorrectResult():Task",
+                  "CoveredStatements": 7,
+                  "TotalStatements": 7,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 7,
+                      "TotalStatements": 7,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetMembersBornBeforeYearAsync_NoMembers_ThrowsException():void",
+                  "CoveredStatements": 5,
+                  "TotalStatements": 5,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "OwnCoverage",
+                      "CoveredStatements": 4,
+                      "TotalStatements": 4,
+                      "CoveragePercent": 100
+                    },
+                    {
+                      "Kind": "AnonymousMethod",
+                      "Name": "():Task",
+                      "CoveredStatements": 1,
+                      "TotalStatements": 1,
+                      "CoveragePercent": 100,
+                      "Children": [
+                        {
+                          "Kind": "InternalCompiledMethod",
+                          "Name": "MoveNext():void",
+                          "CoveredStatements": 1,
+                          "TotalStatements": 1,
+                          "CoveragePercent": 100
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetMembersBornBeforeYearAsync_ValidYear_ReturnsCorrectResult():Task",
+                  "CoveredStatements": 7,
+                  "TotalStatements": 7,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 7,
+                      "TotalStatements": 7,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetMembersBornInYearAsync_NoMembers_ThrowsException():void",
+                  "CoveredStatements": 5,
+                  "TotalStatements": 5,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "OwnCoverage",
+                      "CoveredStatements": 4,
+                      "TotalStatements": 4,
+                      "CoveragePercent": 100
+                    },
+                    {
+                      "Kind": "AnonymousMethod",
+                      "Name": "():Task",
+                      "CoveredStatements": 1,
+                      "TotalStatements": 1,
+                      "CoveragePercent": 100,
+                      "Children": [
+                        {
+                          "Kind": "InternalCompiledMethod",
+                          "Name": "MoveNext():void",
+                          "CoveredStatements": 1,
+                          "TotalStatements": 1,
+                          "CoveragePercent": 100
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetMembersBornInYearAsync_ValidYear_ReturnsCorrectResult():Task",
+                  "CoveredStatements": 7,
+                  "TotalStatements": 7,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 7,
+                      "TotalStatements": 7,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetOldestPersonAsync_CallsGetOldestPersonAsync_ReturnsCorrectResult():Task",
+                  "CoveredStatements": 7,
+                  "TotalStatements": 7,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 7,
+                      "TotalStatements": 7,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetOldestPersonAsync_NoMember_ThrowsException():void",
+                  "CoveredStatements": 5,
+                  "TotalStatements": 5,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "OwnCoverage",
+                      "CoveredStatements": 4,
+                      "TotalStatements": 4,
+                      "CoveragePercent": 100
+                    },
+                    {
+                      "Kind": "AnonymousMethod",
+                      "Name": "():Task",
+                      "CoveredStatements": 1,
+                      "TotalStatements": 1,
+                      "CoveragePercent": 100,
+                      "Children": [
+                        {
+                          "Kind": "InternalCompiledMethod",
+                          "Name": "MoveNext():void",
+                          "CoveredStatements": 1,
+                          "TotalStatements": 1,
+                          "CoveragePercent": 100
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "PeopleService_Constructor_ShouldCreateInstance():void",
+                  "CoveredStatements": 3,
+                  "TotalStatements": 3,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "RemoveAsync_ValidId_RemovesMember():Task",
+                  "CoveredStatements": 10,
+                  "TotalStatements": 10,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 10,
+                      "TotalStatements": 10,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "RemoveAsync_WithNonexistentId_ReturnsFalse():Task",
+                  "CoveredStatements": 7,
+                  "TotalStatements": 7,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 7,
+                      "TotalStatements": 7,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Setup():void",
+                  "CoveredStatements": 4,
+                  "TotalStatements": 4,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "UpdateAsync_InvalidMember_ThrowsException():void",
+                  "CoveredStatements": 6,
+                  "TotalStatements": 6,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "OwnCoverage",
+                      "CoveredStatements": 5,
+                      "TotalStatements": 5,
+                      "CoveragePercent": 100
+                    },
+                    {
+                      "Kind": "AnonymousMethod",
+                      "Name": "():Task",
+                      "CoveredStatements": 1,
+                      "TotalStatements": 1,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "UpdateAsync_NonexistentId_ThrowsException():void",
+                  "CoveredStatements": 8,
+                  "TotalStatements": 8,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "OwnCoverage",
+                      "CoveredStatements": 7,
+                      "TotalStatements": 7,
+                      "CoveragePercent": 100
+                    },
+                    {
+                      "Kind": "AnonymousMethod",
+                      "Name": "():Task",
+                      "CoveredStatements": 1,
+                      "TotalStatements": 1,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "UpdateAsync_ValidMember_UpdatesMember():Task",
+                  "CoveredStatements": 9,
+                  "TotalStatements": 9,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 9,
+                      "TotalStatements": 9,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Kind": "Project",
+      "Name": "MVC.WebApp",
+      "CoveredStatements": 88,
+      "TotalStatements": 91,
+      "CoveragePercent": 97,
+      "Children": [
+        {
+          "Kind": "Namespace",
+          "Name": "MVC.WebApp.Controllers",
+          "CoveredStatements": 88,
+          "TotalStatements": 91,
+          "CoveragePercent": 97,
+          "Children": [
+            {
+              "Kind": "Type",
+              "Name": "PeopleController",
+              "CoveredStatements": 88,
+              "TotalStatements": 91,
+              "CoveragePercent": 97,
+              "Children": [
+                {
+                  "Kind": "Constructor",
+                  "Name": "PeopleController(IPeopleService,IFileService)",
+                  "CoveredStatements": 5,
+                  "TotalStatements": 5,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Create():IActionResult",
+                  "CoveredStatements": 3,
+                  "TotalStatements": 3,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Create(Member):Task<IActionResult>",
+                  "CoveredStatements": 8,
+                  "TotalStatements": 8,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 8,
+                      "TotalStatements": 8,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Delete(Guid):Task<ActionResult>",
+                  "CoveredStatements": 4,
+                  "TotalStatements": 4,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 4,
+                      "TotalStatements": 4,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "DeleteConfirm(Guid):Task<ActionResult>",
+                  "CoveredStatements": 6,
+                  "TotalStatements": 6,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 6,
+                      "TotalStatements": 6,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Details(Guid):Task<ActionResult>",
+                  "CoveredStatements": 4,
+                  "TotalStatements": 4,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 4,
+                      "TotalStatements": 4,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Edit(Guid):Task<IActionResult>",
+                  "CoveredStatements": 4,
+                  "TotalStatements": 4,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 4,
+                      "TotalStatements": 4,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "EditSuccess(Guid,Member):Task<IActionResult>",
+                  "CoveredStatements": 17,
+                  "TotalStatements": 17,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 17,
+                      "TotalStatements": 17,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Error():IActionResult",
+                  "CoveredStatements": 0,
+                  "TotalStatements": 3,
+                  "CoveragePercent": 0
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Export():Task<FileResult>",
+                  "CoveredStatements": 5,
+                  "TotalStatements": 5,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 5,
+                      "TotalStatements": 5,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetFullNames():Task<IActionResult>",
+                  "CoveredStatements": 4,
+                  "TotalStatements": 4,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 4,
+                      "TotalStatements": 4,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetMalePersons():Task<IActionResult>",
+                  "CoveredStatements": 4,
+                  "TotalStatements": 4,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 4,
+                      "TotalStatements": 4,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetMembersBornAfterYear(int):Task<IActionResult>",
+                  "CoveredStatements": 4,
+                  "TotalStatements": 4,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 4,
+                      "TotalStatements": 4,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetMembersBornBeforeYear(int):Task<IActionResult>",
+                  "CoveredStatements": 4,
+                  "TotalStatements": 4,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 4,
+                      "TotalStatements": 4,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetMembersBornInYear(int):Task<IActionResult>",
+                  "CoveredStatements": 4,
+                  "TotalStatements": 4,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 4,
+                      "TotalStatements": 4,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetOldestPerson():Task<IActionResult>",
+                  "CoveredStatements": 4,
+                  "TotalStatements": 4,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 4,
+                      "TotalStatements": 4,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Index(Nullable<int>):Task<ActionResult>",
+                  "CoveredStatements": 8,
+                  "TotalStatements": 8,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 8,
+                      "TotalStatements": 8,
+                      "CoveragePercent": 100,
+                      "Children": [
+                        {
+                          "Kind": "OwnCoverage",
+                          "CoveredStatements": 7,
+                          "TotalStatements": 7,
+                          "CoveragePercent": 100
+                        },
+                        {
+                          "Kind": "AnonymousMethod",
+                          "Name": "(Member):string",
+                          "CoveredStatements": 1,
+                          "TotalStatements": 1,
+                          "CoveragePercent": 100
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Kind": "Project",
+      "Name": "MVC.WebAppTests",
+      "CoveredStatements": 228,
+      "TotalStatements": 228,
+      "CoveragePercent": 100,
+      "Children": [
+        {
+          "Kind": "Namespace",
+          "Name": "MVC.WebAppTests.Controllers",
+          "CoveredStatements": 228,
+          "TotalStatements": 228,
+          "CoveragePercent": 100,
+          "Children": [
+            {
+              "Kind": "Type",
+              "Name": "PeopleControllerTest",
+              "CoveredStatements": 228,
+              "TotalStatements": 228,
+              "CoveragePercent": 100,
+              "Children": [
+                {
+                  "Kind": "Constructor",
+                  "Name": "PeopleControllerTest()",
+                  "CoveredStatements": 3,
+                  "TotalStatements": 3,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Create_InvalidModelState_ReturnsViewWithMember():Task",
+                  "CoveredStatements": 8,
+                  "TotalStatements": 8,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 8,
+                      "TotalStatements": 8,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Create_ReturnsView():void",
+                  "CoveredStatements": 4,
+                  "TotalStatements": 4,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Create_ValidMember_ReturnsRedirectToActionResultAndSetsTempData():Task",
+                  "CoveredStatements": 11,
+                  "TotalStatements": 11,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 11,
+                      "TotalStatements": 11,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Delete_ValidId_ReturnsViewResultWithMember():Task",
+                  "CoveredStatements": 10,
+                  "TotalStatements": 10,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 10,
+                      "TotalStatements": 10,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "DeleteConfirm_ValidId_RedirectsToIndexAndSetsTempData():Task",
+                  "CoveredStatements": 13,
+                  "TotalStatements": 13,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 13,
+                      "TotalStatements": 13,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Details_ValidId_ReturnsViewResultWithMember():Task",
+                  "CoveredStatements": 10,
+                  "TotalStatements": 10,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 10,
+                      "TotalStatements": 10,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Edit_InvalidId_ThrowsException():Task",
+                  "CoveredStatements": 7,
+                  "TotalStatements": 7,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "OwnCoverage",
+                      "CoveredStatements": 6,
+                      "TotalStatements": 6,
+                      "CoveragePercent": 100
+                    },
+                    {
+                      "Kind": "AnonymousMethod",
+                      "Name": "():Task",
+                      "CoveredStatements": 1,
+                      "TotalStatements": 1,
+                      "CoveragePercent": 100,
+                      "Children": [
+                        {
+                          "Kind": "InternalCompiledMethod",
+                          "Name": "MoveNext():void",
+                          "CoveredStatements": 1,
+                          "TotalStatements": 1,
+                          "CoveragePercent": 100
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Edit_ValidId_ReturnsViewResultWithMember():Task",
+                  "CoveredStatements": 10,
+                  "TotalStatements": 10,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 10,
+                      "TotalStatements": 10,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "EditSuccess_InvalidModelState_ThrowsException():void",
+                  "CoveredStatements": 7,
+                  "TotalStatements": 7,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "OwnCoverage",
+                      "CoveredStatements": 6,
+                      "TotalStatements": 6,
+                      "CoveragePercent": 100
+                    },
+                    {
+                      "Kind": "AnonymousMethod",
+                      "Name": "():Task",
+                      "CoveredStatements": 1,
+                      "TotalStatements": 1,
+                      "CoveragePercent": 100,
+                      "Children": [
+                        {
+                          "Kind": "InternalCompiledMethod",
+                          "Name": "MoveNext():void",
+                          "CoveredStatements": 1,
+                          "TotalStatements": 1,
+                          "CoveragePercent": 100
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "EditSuccess_NonexistentMember_ThrowsException():void",
+                  "CoveredStatements": 8,
+                  "TotalStatements": 8,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "OwnCoverage",
+                      "CoveredStatements": 7,
+                      "TotalStatements": 7,
+                      "CoveragePercent": 100
+                    },
+                    {
+                      "Kind": "AnonymousMethod",
+                      "Name": "():Task",
+                      "CoveredStatements": 1,
+                      "TotalStatements": 1,
+                      "CoveragePercent": 100,
+                      "Children": [
+                        {
+                          "Kind": "InternalCompiledMethod",
+                          "Name": "MoveNext():void",
+                          "CoveredStatements": 1,
+                          "TotalStatements": 1,
+                          "CoveragePercent": 100
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "EditSuccess_ValidModelStateAndExistingMember_RedirectsToIndex():Task",
+                  "CoveredStatements": 10,
+                  "TotalStatements": 10,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 10,
+                      "TotalStatements": 10,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Export_CallsExportToExcelAsyncOnService_ReturnsFileResult():Task",
+                  "CoveredStatements": 10,
+                  "TotalStatements": 10,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 10,
+                      "TotalStatements": 10,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetFullNames_CallsGetFullNameMembersAsync_ReturnsCorrectResult():Task",
+                  "CoveredStatements": 9,
+                  "TotalStatements": 9,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 9,
+                      "TotalStatements": 9,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetMalePersons_CallsGetMaleMembersAsync_ReturnsCorrectResult():Task",
+                  "CoveredStatements": 9,
+                  "TotalStatements": 9,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 9,
+                      "TotalStatements": 9,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetMembersBornAfterYear_CallsGetMembersBornAfterYearAsync_ReturnsCorrectResult():Task",
+                  "CoveredStatements": 9,
+                  "TotalStatements": 9,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 9,
+                      "TotalStatements": 9,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetMembersBornBeforeYear_CallsGetMembersBornBeforeYearAsync_ReturnsCorrectResult():Task",
+                  "CoveredStatements": 9,
+                  "TotalStatements": 9,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 9,
+                      "TotalStatements": 9,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetMembersBornInYear_CallsGetMembersBornInYearAsync_ReturnsCorrectResult():Task",
+                  "CoveredStatements": 9,
+                  "TotalStatements": 9,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 9,
+                      "TotalStatements": 9,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetOldestPerson_CallsGetOldestPersonAsync_ReturnsCorrectResult():Task",
+                  "CoveredStatements": 9,
+                  "TotalStatements": 9,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 9,
+                      "TotalStatements": 9,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Index_CallsGetAllAsync_ReturnsCorrectResult():Task",
+                  "CoveredStatements": 9,
+                  "TotalStatements": 9,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 9,
+                      "TotalStatements": 9,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Index_CallsGetAllAsyncOnPageNumber2_ReturnsCorrectResult():Task",
+                  "CoveredStatements": 13,
+                  "TotalStatements": 13,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 13,
+                      "TotalStatements": 13,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Index_EmptyList_ReturnsEmptyList():Task",
+                  "CoveredStatements": 10,
+                  "TotalStatements": 10,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 10,
+                      "TotalStatements": 10,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Index_WhenGetAllAsyncThrowsException_HandlesException():void",
+                  "CoveredStatements": 5,
+                  "TotalStatements": 5,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "OwnCoverage",
+                      "CoveredStatements": 4,
+                      "TotalStatements": 4,
+                      "CoveragePercent": 100
+                    },
+                    {
+                      "Kind": "AnonymousMethod",
+                      "Name": "():Task",
+                      "CoveredStatements": 1,
+                      "TotalStatements": 1,
+                      "CoveragePercent": 100,
+                      "Children": [
+                        {
+                          "Kind": "InternalCompiledMethod",
+                          "Name": "MoveNext():void",
+                          "CoveredStatements": 1,
+                          "TotalStatements": 1,
+                          "CoveragePercent": 100
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Index_WithNullPageNumber_CallsGetAllAsync_ReturnsCorrectResult():Task",
+                  "CoveredStatements": 9,
+                  "TotalStatements": 9,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 9,
+                      "TotalStatements": 9,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Index_WithPageNumber1_CallsGetAllAsync_ReturnsCorrectResult():Task",
+                  "CoveredStatements": 9,
+                  "TotalStatements": 9,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "InternalCompiledMethod",
+                      "Name": "MoveNext():void",
+                      "CoveredStatements": 9,
+                      "TotalStatements": 9,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Setup():void",
+                  "CoveredStatements": 5,
+                  "TotalStatements": 5,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "TearDown():void",
+                  "CoveredStatements": 3,
+                  "TotalStatements": 3,
+                  "CoveragePercent": 100
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
