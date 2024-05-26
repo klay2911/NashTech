@@ -14,3 +14,9 @@
 # Bin
 bin/
 obj/
+*/*/bin
+*/*/obj
+*/*/wwwroot
+*/.vs
+*/*/node_modules
+.vs
