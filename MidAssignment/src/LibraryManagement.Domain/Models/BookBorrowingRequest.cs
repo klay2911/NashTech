@@ -10,13 +10,10 @@ public class BookBorrowingRequest
     [Key]
     public Guid RequestId { get; set; }
     
-    [Required]
     public Guid? Requestor { get; set; }
     
-    [Required]
     public DateTime? DateRequested { get; set; }
     
-    [Required]
     public RequestStatus? Status { get; set; }
     
     public Guid? Approver { get; set; }

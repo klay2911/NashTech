@@ -4,13 +4,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace LibraryManagement.Domain.Models;
 
 [Table ("Books")]
-public class Book
+public class Book 
 {
     [Key]
     public Guid Id { get; set; }
     
     [Required]
-    [MaxLength(200)]
+    [MaxLength(300)]
     public string? Title { get; set; }
     
     [MaxLength(100)]
@@ -22,10 +22,8 @@ public class Book
     [MaxLength(500)]
     public string? Description { get; set; }
     
-    [MaxLength(150)]
     public string? CoverPath { get; set; }
     
-    [MaxLength(150)]
     public string? BookPath { get; set; }
     
     public virtual ICollection<BookCategory> BookCategories { get; set; } = new List<BookCategory>();

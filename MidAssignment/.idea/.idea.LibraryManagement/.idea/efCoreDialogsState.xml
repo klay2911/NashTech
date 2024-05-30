@@ -8,6 +8,7 @@
         <entry key="Common:f5c4d4ac-8bc0-49fb-90d4-69c5ebb6006d:dbContext" value="LibraryManagement.Infrastructure.LibraryContext" />
         <entry key="Common:noBuild" value="false" />
         <entry key="Common:outputFolder" value="Migrations" />
+        <entry key="Common:useDefaultConnection" value="true" />
       </map>
     </option>
   </component>

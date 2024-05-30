@@ -12,19 +12,20 @@ public class User
     public Guid UserId { get; set; }
     
     [Required]
-    [MaxLength(50)]
+    [MaxLength(100)]
     public string? UserName { get; set; }
     
     [Required]
     [DataType(DataType.Password)]
     public string? Password { get; set; }
     
-    [MaxLength(50)]
+    [MaxLength(30)]
     public string? FirstName { get; set; }
 
-    [MaxLength(50)]
+    [MaxLength(30)]
     public string? LastName { get; set; }
 
+    [Required]
     public GenderType? Gender { get; set; }
 
     [DataType(DataType.PhoneNumber)]
@@ -33,6 +34,7 @@ public class User
     [DataType(DataType.EmailAddress)]
     public string? Email { get; set; }
 
+    [Required]
     public Role? Role { get; set; }
     
     [DataType(DataType.Date)]
