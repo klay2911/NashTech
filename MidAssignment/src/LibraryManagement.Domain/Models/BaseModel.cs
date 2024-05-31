@@ -1,6 +1,6 @@
 namespace LibraryManagement.Domain.Models;
 
-public class Base
+public class BaseModel
 {
     public bool IsDeleted { get; set; }
     

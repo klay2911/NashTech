@@ -12,4 +12,5 @@ public interface IBaseRepository<T> where T : class
     
     void DeleteAsync(T objModel);
     
+    //Task SaveAsync();
 }

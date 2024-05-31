@@ -1,6 +1,6 @@
 namespace LibraryManagement.Infrastructure.Repositories;
 
-public class UserRepository
+public class RequestRepository
 {
     
 }

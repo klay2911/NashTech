@@ -16,11 +16,11 @@ public static class LibraryContextSeed
             var authHelpers = new AuthHelpers(configuration, context);
             var users = new List<User>
             {
-                new() { UserName = "User1", Password = authHelpers.HashPassword("Password1"), FirstName = "First1", LastName = "Last1", Email = "user1@email.com", Gender = GenderType.Male, Dob = new DateTime(1990, 1, 1), Role = Role.Administrator},
-                new() { UserName = "User2", Password = authHelpers.HashPassword("Password2"), FirstName = "First2", LastName = "Last2", Email = "user2@email.com", Gender = GenderType.Male, Dob = new DateTime(1991, 1, 1), Role = Role.Librarian},
-                new() { UserName = "User3", Password = authHelpers.HashPassword("Password3"), FirstName = "First3", LastName = "Last3", Email = "user3@email.com", Gender = GenderType.Female, Dob = new DateTime(1992, 1, 1), Role = Role.Librarian},
-                new() { UserName = "User4", Password = authHelpers.HashPassword("Password4"), FirstName = "First4", LastName = "Last4", Email = "user4@email.com", Gender = GenderType.Male, Dob = new DateTime(1993, 1, 1), Role = Role.Reader},
-                new() { UserName = "User5", Password = authHelpers.HashPassword("Password5"), FirstName = "First5", LastName = "Last5", Email = "user5@email.com", Gender = GenderType.Female, Dob = new DateTime(1994, 1, 1), Role = Role.Reader}
+                new() { Email = "user1@email.com", Password = authHelpers.HashPassword("Password1"), FirstName = "First1", LastName = "Last1", Gender = GenderType.Male, Dob = new DateTime(1990, 1, 1), Role = Role.Administrator},
+                new() { Email = "user2@email.com", Password = authHelpers.HashPassword("Password2"), FirstName = "First2", LastName = "Last2", Gender = GenderType.Male, Dob = new DateTime(1991, 1, 1), Role = Role.Librarian},
+                new() { Email = "user3@email.com", Password = authHelpers.HashPassword("Password3"), FirstName = "First3", LastName = "Last3", Gender = GenderType.Female, Dob = new DateTime(1992, 1, 1), Role = Role.Librarian},
+                new() { Email = "user4@email.com", Password = authHelpers.HashPassword("Password4"), FirstName = "First4", LastName = "Last4", Gender = GenderType.Male, Dob = new DateTime(1993, 1, 1), Role = Role.Reader},
+                new() { Email = "user5@email.com", Password = authHelpers.HashPassword("Password5"), FirstName = "First5", LastName = "Last5", Gender = GenderType.Female, Dob = new DateTime(1994, 1, 1), Role = Role.Reader}
             };
             context.Users.AddRange(users);
             context.SaveChanges();
@@ -42,11 +42,11 @@ public static class LibraryContextSeed
         {
             var categories = new List<Category>
             {
-                new Category { Name = CategoryName.Fiction },
-                new Category { Name = CategoryName.NonFiction },
-                new Category { Name = CategoryName.Science },
-                new Category { Name = CategoryName.Technology },
-                new Category { Name = CategoryName.History }
+                new() { Name = "Fiction" },
+                new() { Name = "NonFiction" },
+                new() { Name = "Science" },
+                new() { Name = "Technology" },
+                new() { Name = "History" }
             };
             context.Categories.AddRange(categories);
             context.SaveChanges();

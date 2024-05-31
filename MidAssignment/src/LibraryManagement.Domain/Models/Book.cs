@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace LibraryManagement.Domain.Models;
 
 [Table ("Books")]
-public class Book 
+public class Book : BaseModel
 {
     [Key]
     public Guid Id { get; set; }
@@ -26,7 +26,11 @@ public class Book
     
     public string? BookPath { get; set; }
     
-    public virtual ICollection<BookCategory> BookCategories { get; set; } = new List<BookCategory>();
+    public Guid CategoryId { get; set; }
+    
+    public Category? Category { get; set; }
+    
+    //public virtual ICollection<BookCategory> BookCategories { get; set; } = new List<BookCategory>();
 
     public virtual ICollection<BookBorrowingRequestDetails> BookBorrowingRequestDetails { get; set; } = new List<BookBorrowingRequestDetails>();
 }

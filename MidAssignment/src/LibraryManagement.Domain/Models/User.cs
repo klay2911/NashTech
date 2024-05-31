@@ -1,4 +1,3 @@
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using LibraryManagement.Domain.Enum;
@@ -12,8 +11,8 @@ public class User
     public Guid UserId { get; set; }
     
     [Required]
-    [MaxLength(100)]
-    public string? UserName { get; set; }
+    [DataType(DataType.EmailAddress)]
+    public string? Email { get; set; }
     
     [Required]
     [DataType(DataType.Password)]
@@ -30,9 +29,6 @@ public class User
 
     [DataType(DataType.PhoneNumber)]
     public string? PhoneNumber { get; set; }
-
-    [DataType(DataType.EmailAddress)]
-    public string? Email { get; set; }
 
     [Required]
     public Role? Role { get; set; }

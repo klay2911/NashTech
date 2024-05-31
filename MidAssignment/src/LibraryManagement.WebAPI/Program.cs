@@ -1,5 +1,7 @@
+using LibraryManagement.Application.Mapper;
 using LibraryManagement.Domain.Configs;
 using LibraryManagement.Infrastructure;
+using LibraryManagement.WebAPI.Configurations;
 using LibraryManagement.WebAPI.SeedData;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +20,12 @@ builder.Services.AddDbContext<LibraryContext>(options =>
 {
     options.UseSqlServer(connectionStrings.DefaultConnection);
 });
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddAutoMapper(typeof(BookProfile).Assembly);
+
+
+ServiceConfiguration.ConfigureServiceLifetime(builder.Services);
 
 builder.Services.AddControllers();
 

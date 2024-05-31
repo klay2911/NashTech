@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using LibraryManagement.Domain.Enum;
 
 namespace LibraryManagement.Domain.Models;
 
@@ -11,7 +10,8 @@ public class Category
     public Guid CategoryId { get; set; }
     
     [Required]
-    public CategoryName? Name { get; set; }
+    [MaxLength(50)]
+    public string? Name { get; set; }
     
-    public ICollection<BookCategory> BookCategories { get; set; } = new List<BookCategory>();
+    public ICollection<Book> Books { get; } = new List<Book>();
 }

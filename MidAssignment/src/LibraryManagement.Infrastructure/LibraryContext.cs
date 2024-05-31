@@ -11,7 +11,6 @@ public class LibraryContext: DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<Book> Books { get; set; }
     public DbSet<Category> Categories { get; set; }
-    public DbSet<BookCategory> BookCategories { get; set; }
     public DbSet<BookBorrowingRequest> BookBorrowingRequests { get; set; }
     public DbSet<BookBorrowingRequestDetails> BookBorrowingRequestDetails { get; set; }
     
@@ -20,7 +19,6 @@ public class LibraryContext: DbContext
         modelBuilder.Entity<User>(entity =>
         {
             entity.HasKey(e => e.UserId);
-            entity.Property(e => e.UserName).IsRequired().HasMaxLength(100);
             entity.Property(e => e.Password).IsRequired();
             entity.Property(e => e.FirstName).HasMaxLength(30);
             entity.Property(e => e.LastName).HasMaxLength(30);
@@ -28,7 +26,6 @@ public class LibraryContext: DbContext
             entity.Property(e => e.Gender).IsRequired();
             entity.Property(e => e.PhoneNumber).HasMaxLength(11);
             entity.Property(e => e.Role).IsRequired();
-            entity.HasIndex(e=>e.UserName).IsUnique();
             entity.HasIndex(e => e.Email).IsUnique();
         });
 
@@ -42,19 +39,16 @@ public class LibraryContext: DbContext
             entity.Property(e => e.CoverPath);
             entity.Property(e => e.BookPath);
             entity.HasIndex(e=>e.Isbn).IsUnique();
+            entity.HasOne(a => a.Category)
+                .WithMany(b => b.Books)
+                .HasForeignKey(a => a.CategoryId)
+                .IsRequired();
         });
 
         modelBuilder.Entity<Category>(entity =>
         {
             entity.HasKey(e => e.CategoryId);
             entity.Property(e => e.Name).IsRequired();
-        });
-
-        modelBuilder.Entity<BookCategory>(entity =>
-        {
-            entity.HasKey(e => e.BookCategoryId);
-            entity.HasOne(e => e.Book).WithMany(b => b.BookCategories).HasForeignKey(e => e.BookId);
-            entity.HasOne(e => e.Category).WithMany(c => c.BookCategories).HasForeignKey(e => e.CategoryId);
         });
 
         modelBuilder.Entity<BookBorrowingRequest>(entity =>

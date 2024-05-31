@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryManagement.Infrastructure.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20240530142308_ModifyModelsAndAddSeedData")]
-    partial class ModifyModelsAndAddSeedData
+    [Migration("20240531084932_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,12 +38,24 @@ namespace LibraryManagement.Infrastructure.Migrations
                     b.Property<string>("BookPath")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("CoverPath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Isbn")
                         .HasMaxLength(50)
@@ -54,7 +66,15 @@ namespace LibraryManagement.Infrastructure.Migrations
                         .HasMaxLength(300)
                         .HasColumnType("nvarchar(300)");
 
+                    b.Property<string>("UpdateBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("Isbn")
                         .IsUnique()
@@ -112,35 +132,16 @@ namespace LibraryManagement.Infrastructure.Migrations
                     b.ToTable("BookBorrowingRequestDetails");
                 });
 
-            modelBuilder.Entity("LibraryManagement.Domain.Models.BookCategory", b =>
-                {
-                    b.Property<Guid>("BookCategoryId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("BookId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CategoryId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("BookCategoryId");
-
-                    b.HasIndex("BookId");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("BookCategories");
-                });
-
             modelBuilder.Entity("LibraryManagement.Domain.Models.Category", b =>
                 {
                     b.Property<Guid>("CategoryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("CategoryId");
 
@@ -182,20 +183,23 @@ namespace LibraryManagement.Infrastructure.Migrations
                     b.Property<int>("Role")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.HasKey("UserId");
 
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.HasIndex("UserName")
-                        .IsUnique();
-
                     b.ToTable("User");
+                });
+
+            modelBuilder.Entity("LibraryManagement.Domain.Models.Book", b =>
+                {
+                    b.HasOne("LibraryManagement.Domain.Models.Category", "Category")
+                        .WithMany("Books")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("LibraryManagement.Domain.Models.BookBorrowingRequest", b =>
@@ -226,28 +230,9 @@ namespace LibraryManagement.Infrastructure.Migrations
                     b.Navigation("BookBorrowingRequest");
                 });
 
-            modelBuilder.Entity("LibraryManagement.Domain.Models.BookCategory", b =>
-                {
-                    b.HasOne("LibraryManagement.Domain.Models.Book", "Book")
-                        .WithMany("BookCategories")
-                        .HasForeignKey("BookId");
-
-                    b.HasOne("LibraryManagement.Domain.Models.Category", "Category")
-                        .WithMany("BookCategories")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
-
-                    b.Navigation("Category");
-                });
-
             modelBuilder.Entity("LibraryManagement.Domain.Models.Book", b =>
                 {
                     b.Navigation("BookBorrowingRequestDetails");
-
-                    b.Navigation("BookCategories");
                 });
 
             modelBuilder.Entity("LibraryManagement.Domain.Models.BookBorrowingRequest", b =>
@@ -257,7 +242,7 @@ namespace LibraryManagement.Infrastructure.Migrations
 
             modelBuilder.Entity("LibraryManagement.Domain.Models.Category", b =>
                 {
-                    b.Navigation("BookCategories");
+                    b.Navigation("Books");
                 });
 
             modelBuilder.Entity("LibraryManagement.Domain.Models.User", b =>

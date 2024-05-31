@@ -13,7 +13,6 @@ public class BaseRepository<TEntity> : IBaseRepository <TEntity> where TEntity :
     }
     public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
     {
-        
         return await _context.Set<TEntity>().ToListAsync();
     }
 
@@ -25,7 +24,7 @@ public class BaseRepository<TEntity> : IBaseRepository <TEntity> where TEntity :
     public virtual void AddAsync(TEntity entity)
     {
         _context.Set<TEntity>().AddAsync(entity);
-        
+        _context.SaveChangesAsync();
         // using var transaction = _context.Database.BeginTransaction();
         // try
         // {
@@ -43,7 +42,7 @@ public class BaseRepository<TEntity> : IBaseRepository <TEntity> where TEntity :
     public virtual void UpdateAsync(TEntity objModel)
     {
         _context.Entry(objModel).State = EntityState.Modified;
-
+        _context.SaveChangesAsync();
         // using var transaction = _context.Database.BeginTransaction();
         // try
         // {
@@ -61,18 +60,11 @@ public class BaseRepository<TEntity> : IBaseRepository <TEntity> where TEntity :
     public virtual void DeleteAsync(TEntity objModel)
     {
         _context.Set<TEntity>().Remove(objModel);
-
-        // using var transaction = _context.Database.BeginTransaction();
-        // try
-        // {
-        //     _context.Set<TEntity>().Remove(objModel);
-        //     _context.SaveChanges();
-        //     transaction.Commit();
-        // }
-        // catch (Exception e)
-        // {
-        //     transaction.Rollback();
-        //     throw new Exception(e.Message);
-        // }
+        _context.SaveChangesAsync();
     }
+    
+    // public virtual async Task SaveAsync()
+    // {
+    //     await _context.SaveChangesAsync();
+    // }
 }
