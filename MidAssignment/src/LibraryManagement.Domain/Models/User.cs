@@ -5,7 +5,7 @@ using LibraryManagement.Domain.Enum;
 namespace LibraryManagement.Domain.Models;
 
 [Table("User")]
-public class User
+public class User : BaseModel
 {
     [Key]
     public Guid UserId { get; set; }

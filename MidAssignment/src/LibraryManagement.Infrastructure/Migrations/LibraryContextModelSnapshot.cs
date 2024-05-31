@@ -58,16 +58,16 @@ namespace LibraryManagement.Infrastructure.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<DateTime>("ModifyAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifyBy")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(300)
                         .HasColumnType("nvarchar(300)");
-
-                    b.Property<string>("UpdateBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -89,11 +89,26 @@ namespace LibraryManagement.Infrastructure.Migrations
                     b.Property<Guid?>("Approver")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("DateRequested")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("ExpiryDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModifyAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifyBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("Requestor")
                         .HasColumnType("uniqueidentifier");
@@ -119,8 +134,23 @@ namespace LibraryManagement.Infrastructure.Migrations
                     b.Property<Guid>("BookId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<int?>("LastReadPageNumber")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("ModifyAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifyBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RequestId");
 
@@ -134,6 +164,21 @@ namespace LibraryManagement.Infrastructure.Migrations
                     b.Property<Guid>("CategoryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModifyAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifyBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -151,6 +196,12 @@ namespace LibraryManagement.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("Dob")
                         .HasColumnType("datetime2");
 
@@ -165,9 +216,18 @@ namespace LibraryManagement.Infrastructure.Migrations
                     b.Property<int>("Gender")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastName")
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
+
+                    b.Property<DateTime>("ModifyAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifyBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
                         .IsRequired()

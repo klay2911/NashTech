@@ -5,7 +5,7 @@ using LibraryManagement.Domain.Enum;
 namespace LibraryManagement.Domain.Models;
 
 [Table("BookBorrowingRequests")]
-public class BookBorrowingRequest
+public class BookBorrowingRequest : BaseModel
 {
     [Key]
     public Guid RequestId { get; set; }

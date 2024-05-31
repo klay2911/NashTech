@@ -8,7 +8,7 @@ public class BaseModel
     
     public string? CreatedBy { get; set; }
     
-    public DateTime UpdatedAt { get; set; }
+    public DateTime ModifyAt { get; set; }
     
-    public string? UpdateBy { get; set; }
+    public string? ModifyBy { get; set; }
 }

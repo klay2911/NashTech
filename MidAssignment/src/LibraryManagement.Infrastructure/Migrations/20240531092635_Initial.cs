@@ -16,7 +16,12 @@ namespace LibraryManagement.Infrastructure.Migrations
                 columns: table => new
                 {
                     CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifyAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifyBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -35,7 +40,12 @@ namespace LibraryManagement.Infrastructure.Migrations
                     Gender = table.Column<int>(type: "int", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: true),
                     Role = table.Column<int>(type: "int", nullable: false),
-                    Dob = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Dob = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifyAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifyBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -57,8 +67,8 @@ namespace LibraryManagement.Infrastructure.Migrations
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    ModifyAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifyBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -81,7 +91,12 @@ namespace LibraryManagement.Infrastructure.Migrations
                     Status = table.Column<int>(type: "int", nullable: true),
                     Approver = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     ExpiryDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifyAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifyBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -99,7 +114,12 @@ namespace LibraryManagement.Infrastructure.Migrations
                 {
                     RequestId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     BookId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    LastReadPageNumber = table.Column<int>(type: "int", nullable: true)
+                    LastReadPageNumber = table.Column<int>(type: "int", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifyAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifyBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

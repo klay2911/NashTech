@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace LibraryManagement.Domain.Models;
 
 [Table("Categories")]
-public class Category
+public class Category : BaseModel
 {
     [Key]
     public Guid CategoryId { get; set; }

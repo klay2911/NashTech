@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace LibraryManagement.Domain.Models;
 
 [Table ("BookBorrowingRequestDetails")]
-public class BookBorrowingRequestDetails
+public class BookBorrowingRequestDetails : BaseModel
 {
     [Key]
     public Guid RequestId { get; set; }
