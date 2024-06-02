@@ -4,6 +4,7 @@ using LibraryManagement.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryManagement.Infrastructure.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    partial class LibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20240601180233_RefactorRequestDetail")]
+    partial class RefactorRequestDetail
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,7 +89,7 @@ namespace LibraryManagement.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("ApproverId")
+                    b.Property<Guid?>("Approver")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
@@ -110,7 +113,7 @@ namespace LibraryManagement.Infrastructure.Migrations
                     b.Property<string>("ModifyBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("RequestorId")
+                    b.Property<Guid?>("Requestor")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int?>("Status")
@@ -121,7 +124,7 @@ namespace LibraryManagement.Infrastructure.Migrations
 
                     b.HasKey("RequestId");
 
-                    b.HasIndex("RequestorId");
+                    b.HasIndex("Requestor");
 
                     b.ToTable("BookBorrowingRequests");
                 });
@@ -269,7 +272,7 @@ namespace LibraryManagement.Infrastructure.Migrations
                 {
                     b.HasOne("LibraryManagement.Domain.Models.User", "User")
                         .WithMany("BookBorrowingRequests")
-                        .HasForeignKey("RequestorId");
+                        .HasForeignKey("Requestor");
 
                     b.Navigation("User");
                 });

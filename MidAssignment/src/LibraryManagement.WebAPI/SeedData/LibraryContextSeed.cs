@@ -1,7 +1,7 @@
 using LibraryManagement.Domain.Enum;
 using LibraryManagement.Domain.Models;
 using LibraryManagement.Infrastructure;
-using LibraryManagement.WebAPI.Helpers;
+using LibraryManagement.Infrastructure.Helper;
 
 namespace LibraryManagement.WebAPI.SeedData;
 

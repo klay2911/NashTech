@@ -52,7 +52,7 @@ public sealed class TokenService : ITokenService
             var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
-                    new Claim(ClaimTypes.Name, (user.FirstName + user.LastName)!),
+                    new Claim(ClaimTypes.Name, (user.Email ?? string.Empty)),
                     new Claim(ClaimTypes.Role, user.Role.ToString()),
                 };
             if (additionalClaims?.Any() == true)

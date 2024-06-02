@@ -1,9 +1,11 @@
+using System.Linq.Expressions;
 using AutoMapper;
 using LibraryManagement.Application.Common.Models;
 using LibraryManagement.Application.DTOs.BookDTOs;
 using LibraryManagement.Application.Interfaces.Repositories;
 using LibraryManagement.Application.Interfaces.Services;
 using LibraryManagement.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagement.Infrastructure.Services;
 
@@ -48,6 +50,39 @@ public class BookService: IBookService
         return await Task.FromResult(pagedBookResponses);
     }
     
+    public async Task<PaginatedList<BookResponse>> GetFilterAsync(FilterRequest request)
+    {
+        var query = _bookRepository.GetBooksQuery();
+
+        if (!string.IsNullOrWhiteSpace(request.SearchTerm))
+        {
+            query = query.Where(p =>
+                p.Title.Contains(request.SearchTerm) ||
+                p.Author.Contains(request.SearchTerm));
+        }
+
+        if (request.SortOrder?.ToLower() == "desc")
+        {
+            query = query.OrderByDescending(GetSortProperty(request));
+        }
+        else
+        {
+            query = query.OrderBy(GetSortProperty(request));
+        }
+        var items = await query.Skip((request.Page - 1) * request.PageSize).Take(request.PageSize).ToListAsync();
+        var bookResponses = _mapper.Map<List<BookResponse>>(items);
+        //maybe wrong
+        return PaginatedList<BookResponse>.Create(bookResponses, request.Page, request.PageSize);
+    }
+
+    private static Expression<Func<Book, object>> GetSortProperty(FilterRequest request) =>
+        request.SortColumn?.ToLower() switch
+        {
+            "title" => product => product.Title,
+            "author" => product => product.Author,
+            _ => product => product.ModifyAt
+        };
+    
     public async Task<BookResponse> GetBookByIdAsync(Guid id)
     {
         var book = await _bookRepository.GetByIdAsync(id);
@@ -58,24 +93,33 @@ public class BookService: IBookService
         return _mapper.Map<BookResponse>(book);
     }
     
-    public async Task<BookResponse> CreateBookAsync(BookRequest bookRequest)
+    public async Task<BookResponse> CreateBookAsync(BookRequest bookRequest, string name)
     {
         var book =  _mapper.Map<Book>(bookRequest);
-        await Task.Run(() =>_bookRepository.AddAsync(book));
-        
+        if(book is BaseModel baseModel)
+        {
+            baseModel.CreatedAt = DateTime.Now;
+            baseModel.CreatedBy = name;
+        }
+        await _bookRepository.AddAsync(book);
         return _mapper.Map<BookResponse>(book);
     }
 
-    public async Task<BookResponse> UpdateBookAsync(Guid id, BookRequest bookRequest)
+    public async Task<BookResponse> UpdateBookAsync(Guid id, BookRequest bookRequest, string name )
     {
         var book = await _bookRepository.GetByIdAsync(id);
-        if (book == null)
+        switch (book)
         {
-            throw new Exception("Book not found");
+            case BaseModel baseModel:
+                baseModel.ModifyAt = DateTime.Now;
+                baseModel.ModifyBy = name;
+                break;
+            case null:
+                throw new Exception("Book not found");
         }
 
         _mapper.Map(bookRequest, book);
-        await Task.Run(() =>_bookRepository.UpdateAsync(book));
+        await _bookRepository.UpdateAsync(book);
 
         return _mapper.Map<BookResponse>(book);
     }
@@ -88,6 +132,6 @@ public class BookService: IBookService
             throw new Exception("Book not found");
         }
 
-        await Task.Run(() =>_bookRepository.DeleteAsync(book));
+        await _bookRepository.DeleteAsync(book);
     }
 }

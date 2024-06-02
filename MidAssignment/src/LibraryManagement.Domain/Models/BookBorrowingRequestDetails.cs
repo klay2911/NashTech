@@ -7,6 +7,9 @@ namespace LibraryManagement.Domain.Models;
 public class BookBorrowingRequestDetails : BaseModel
 {
     [Key]
+    public Guid Id { get; set; }
+    
+    [Required]
     public Guid RequestId { get; set; }
     
     [Required]

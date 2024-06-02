@@ -9,9 +9,13 @@ public class LibraryContext: DbContext
     {
     }
     public DbSet<User> Users { get; set; }
+    
     public DbSet<Book> Books { get; set; }
+    
     public DbSet<Category> Categories { get; set; }
+    
     public DbSet<BookBorrowingRequest> BookBorrowingRequests { get; set; }
+    
     public DbSet<BookBorrowingRequestDetails> BookBorrowingRequestDetails { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -54,15 +58,16 @@ public class LibraryContext: DbContext
         modelBuilder.Entity<BookBorrowingRequest>(entity =>
         {
             entity.HasKey(e => e.RequestId);
-            entity.Property(e => e.Requestor);
+            entity.Property(e => e.RequestorId);
             entity.Property(e => e.DateRequested);
             entity.Property(e => e.Status);
-            entity.HasOne(e => e.User).WithMany(u => u.BookBorrowingRequests).HasForeignKey(e => e.Requestor);
+            entity.HasOne(e => e.User).WithMany(u => u.BookBorrowingRequests).HasForeignKey(e => e.RequestorId);
         });
 
         modelBuilder.Entity<BookBorrowingRequestDetails>(entity =>
         {
-            entity.HasKey(e => e.RequestId);
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.RequestId).IsRequired();
             entity.Property(e => e.BookId).IsRequired();
             entity.HasOne(e => e.Book)
                 .WithMany(b => b.BookBorrowingRequestDetails)

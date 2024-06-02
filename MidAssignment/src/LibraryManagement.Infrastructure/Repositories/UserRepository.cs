@@ -6,10 +6,8 @@ namespace LibraryManagement.Infrastructure.Repositories;
 
 public class UserRepository : BaseRepository<User>, IUserRepository
 {
-    private readonly LibraryContext _context;
     public UserRepository(LibraryContext context) : base(context)
     {
-        _context = context;
     }
 
     public async Task<User> FindUserByEmailAsync(string email)
@@ -18,7 +16,7 @@ public class UserRepository : BaseRepository<User>, IUserRepository
         {
             return null;
         }
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+        var user = await Context.Users.FirstOrDefaultAsync(u => u.Email == email);
         if (user == null)
         {
             throw new Exception("User not found");

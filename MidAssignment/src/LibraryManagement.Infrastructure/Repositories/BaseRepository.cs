@@ -5,44 +5,31 @@ namespace LibraryManagement.Infrastructure.Repositories;
 
 public class BaseRepository<TEntity> : IBaseRepository <TEntity> where TEntity : class
 {
-    private readonly LibraryContext _context;
+    protected readonly LibraryContext Context;
 
     protected BaseRepository(LibraryContext context)
     {
-        _context = context;
+        Context = context;
     }
     public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
     {
-        return await _context.Set<TEntity>().ToListAsync();
+        return await Context.Set<TEntity>().ToListAsync();
     }
 
     public virtual async Task<TEntity> GetByIdAsync(Guid id)
     {
-        return (await _context.Set<TEntity>().FindAsync(id))!;
+        return (await Context.Set<TEntity>().FindAsync(id))!;
+    }
+    public virtual async Task AddAsync(TEntity entity)
+    {
+        await Context.Set<TEntity>().AddAsync(entity);
+        await Context.SaveChangesAsync();
     }
 
-    public virtual void AddAsync(TEntity entity)
+    public virtual async Task UpdateAsync(TEntity objModel)
     {
-        _context.Set<TEntity>().AddAsync(entity);
-        _context.SaveChangesAsync();
-        // using var transaction = _context.Database.BeginTransaction();
-        // try
-        // {
-        //     _context.Set<TEntity>().Add(entity);
-        //     _context.SaveChanges();
-        //     transaction.Commit();
-        // }
-        // catch (Exception e)
-        // {
-        //     transaction.Rollback();
-        //     throw new Exception(e.Message);
-        // }
-    }
-
-    public virtual void UpdateAsync(TEntity objModel)
-    {
-        _context.Entry(objModel).State = EntityState.Modified;
-        _context.SaveChangesAsync();
+        Context.Entry(objModel).State = EntityState.Modified;
+        await Context.SaveChangesAsync();
         // using var transaction = _context.Database.BeginTransaction();
         // try
         // {
@@ -57,14 +44,14 @@ public class BaseRepository<TEntity> : IBaseRepository <TEntity> where TEntity :
         // }
     }
 
-    public virtual void DeleteAsync(TEntity objModel)
+    public virtual async Task DeleteAsync(TEntity objModel)
     {
-        _context.Set<TEntity>().Remove(objModel);
-        _context.SaveChangesAsync();
+        Context.Set<TEntity>().Remove(objModel);
+        await Context.SaveChangesAsync();
     }
     
-    // public virtual async Task SaveAsync()
-    // {
-    //     await _context.SaveChangesAsync();
-    // }
+    public virtual async Task SaveAsync()
+    {
+        await Context.SaveChangesAsync();
+    }
 }

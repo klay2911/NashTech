@@ -10,18 +10,17 @@ public class BookBorrowingRequest : BaseModel
     [Key]
     public Guid RequestId { get; set; }
     
-    public Guid? Requestor { get; set; }
+    public Guid? RequestorId { get; set; }
     
     public DateTime? DateRequested { get; set; }
     
     public RequestStatus? Status { get; set; }
     
-    public Guid? Approver { get; set; }
+    public Guid? ApproverId { get; set; }
     
     [DataType(DataType.DateTime)]
     public DateTime? ExpiryDate { get; set; }
     
-    [ForeignKey("UserId")]
     public User? User { get; set; }
     
     public ICollection<BookBorrowingRequestDetails> BookBorrowingRequestDetails { get; set; } = new List<BookBorrowingRequestDetails>();

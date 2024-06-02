@@ -6,11 +6,11 @@ public interface IBaseRepository<T> where T : class
     
     Task<T> GetByIdAsync(Guid id);
     
-    void AddAsync(T entity);
+    Task AddAsync(T entity);
     
-    void UpdateAsync(T objModel);
+    Task UpdateAsync(T objModel);
     
-    void DeleteAsync(T objModel);
+    Task DeleteAsync(T objModel);
     
-    //Task SaveAsync();
+    Task SaveAsync();
 }
