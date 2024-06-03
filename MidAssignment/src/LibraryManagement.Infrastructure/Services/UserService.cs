@@ -3,7 +3,6 @@ using LibraryManagement.Application.Interfaces.Helpers;
 using LibraryManagement.Application.Interfaces.Repositories;
 using LibraryManagement.Application.Interfaces.Services;
 using LibraryManagement.Domain.Models;
-using LibraryManagement.Infrastructure.Helper;
 
 namespace LibraryManagement.Infrastructure.Services;
 
@@ -19,7 +18,12 @@ public class UserService : IUserService
         _tokenService = tokenService;
         _authHelpers = authHelper;
     }
-
+    
+    public async Task<User> GetByIdAsync(Guid id)
+    {
+        return await _userRepository.GetByIdAsync(id);
+    }
+    
     public async Task<LoginResponse> LoginAsync(LoginRequest dto)
     {
         var getUser = await _userRepository.FindUserByEmailAsync(dto.Email);

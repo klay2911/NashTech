@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-
 namespace LibraryManagement.Application.DTOs.BookDTOs;
 
 public class BookRequest
@@ -20,6 +19,7 @@ public class BookRequest
     public string? CoverPath { get; set; }
 
     public string? BookPath { get; set; }
-
+    
     public Guid? CategoryId { get; set; }
+    
 }

@@ -19,6 +19,8 @@ public static class ServiceConfiguration
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<ITokenService, TokenService>();
-        services.AddScoped<IAuthHelper, AuthHelpers>();    
+        services.AddScoped<IAuthHelper, AuthHelpers>();
+        services.AddScoped<IBookBorrowingRequestRepository, BookBorrowingRequestRepository>();
+        services.AddScoped<IBookBorrowingRequestService, BookBorrowingRequestService>();
     }
 }

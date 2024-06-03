@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionStrings = new ConnectionStrings();
-
+//var connectionStrings = new ConnectionStrings();
+var connectionStrings = new AppSettings();
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -24,23 +24,52 @@ builder.Services.AddDbContext<LibraryContext>(options =>
 });
 
 //AutoMapper
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddAutoMapper(typeof(BookProfile).Assembly);
+builder.Services.AddAutoMapper(typeof(CategoryProfile).Assembly);
+builder.Services.AddAutoMapper(typeof(RequestProfile).Assembly);
+
 
 //Add JWT Authentication
-builder.Services.AddAuthentication(option =>
-    {
-        option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    })
-    .AddJwtBearer(options =>
-    {
-        options.RequireHttpsMetadata = false; 
-        options.SaveToken = true; 
-        options.TokenValidationParameters = TokenService.GetTokenValidationParameters(builder.Configuration);
-    });
+//builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 
-//Add Authentication in Swagger
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddCookie(options =>
+{
+    options.Cookie.Name = "YourAppCookieName";
+    options.Cookie.HttpOnly = true;
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+    options.LoginPath = "/Account/Login";
+})
+.AddJwtBearer(options =>
+ {
+     options.RequireHttpsMetadata = false; 
+     options.SaveToken = true; 
+     options.TokenValidationParameters = TokenService.GetTokenValidationParameters(builder.Configuration);
+ });
+
+// builder.Services.AddAuthentication(option =>
+//     {
+//         option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+//         option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+//     })
+//     .AddJwtBearer(options =>
+//     {
+//         options.RequireHttpsMetadata = false; 
+//         options.SaveToken = true; 
+//         options.TokenValidationParameters = TokenService.GetTokenValidationParameters(builder.Configuration);
+//     });
+
+//Add Authorization
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Administrator", policy => policy.RequireRole("Administrator"));
+    options.AddPolicy("Librarian", policy => policy.RequireRole("Librarian"));
+    options.AddPolicy("Reader", policy => policy.RequireRole("Reader"));
+});
 builder.Services.AddSwaggerGen(opt =>
 {
     var securitySchema = new OpenApiSecurityScheme
@@ -65,13 +94,23 @@ builder.Services.AddSwaggerGen(opt =>
 
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(builder =>
+    options.AddPolicy("AllowOrigin", builder =>
     {
-        builder.WithOrigins("*")
-            .AllowAnyHeader()
-            .AllowAnyMethod();
+        builder.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
     });
 });
+
+// builder.Services.AddCors(options =>
+// {
+//     options.AddDefaultPolicy(builder =>
+//     {
+//         builder.WithOrigins("*")
+//             .AllowAnyHeader()
+//             .AllowAnyMethod();
+//     });
+// });
 //Add services lifetime
 ServiceConfiguration.ConfigureServiceLifetime(builder.Services);
 
@@ -93,9 +132,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthentication();
+//app.UseMiddleware<JwtMiddleware>();
+//app.UseCors();
 
-app.UseCors();
+app.UseAuthentication();
 
 app.UseAuthorization();
 

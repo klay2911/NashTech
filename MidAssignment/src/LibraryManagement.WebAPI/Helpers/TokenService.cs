@@ -26,11 +26,11 @@ public sealed class TokenService : ITokenService
             IssuerSigningKey = GetSecurityKey(configuration)
         };
 
-        public string GenerateJWT(IEnumerable<Claim>? additionalClaims = null)
+        public string GenerateJwt(IEnumerable<Claim>? additionalClaims = null)
         {
             var securityKey = GetSecurityKey(_configuration);
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-            var expireInMinutes = Convert.ToInt32(_configuration["Jwt:ExpireIMinutes"] ?? "10000");
+            var expireInMinutes = Convert.ToInt32(_configuration["Jwt:ExpireMinutes"] ?? "10000");
 
             var claims = new List<Claim> {
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
@@ -58,7 +58,7 @@ public sealed class TokenService : ITokenService
             if (additionalClaims?.Any() == true)
                 claims.AddRange(additionalClaims!);
 
-            return GenerateJWT(claims);
+            return GenerateJwt(claims);
         }
 
         private static SymmetricSecurityKey GetSecurityKey(IConfiguration _configuration) =>

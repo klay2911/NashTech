@@ -1,4 +1,4 @@
-using LibraryManagement.Application.DTOs.Requests;
+using LibraryManagement.Application.DTOs.CategoryDTOs;
 using LibraryManagement.Application.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,16 +29,16 @@ public class CategoryController : ControllerBase
     }
     
     [HttpPost]
-    public async Task<IActionResult> CreateBookAsync([FromForm] CategoryRequest categoryRequest)
+    public async Task<IActionResult> CreateBookAsync([FromBody] CategoryRequest categoryRequest)
     {
         var category = await _categoryService.CreateCategoryAsync(categoryRequest);
         return CreatedAtAction(nameof(GetBookById), new { id = category.CategoryId }, category);
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateBookAsync(Guid id, [FromForm] CategoryRequest bookRequest, string name)
+    public async Task<IActionResult> UpdateBookAsync(Guid id, [FromBody] CategoryRequest categoryRequest)
     {
-        var bookResponse = await _categoryService.UpdateCategoryAsync(id, bookRequest);
+        var bookResponse = await _categoryService.UpdateCategoryAsync(id, categoryRequest);
         return Ok(bookResponse);
     }
 

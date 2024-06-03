@@ -1,6 +1,5 @@
 using LibraryManagement.Application.Common.Models;
-using LibraryManagement.Application.DTOs.Requests;
-using LibraryManagement.Application.DTOs.Responses;
+using LibraryManagement.Application.DTOs.CategoryDTOs;
 
 namespace LibraryManagement.Application.Interfaces.Services;
 

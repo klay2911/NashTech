@@ -1,8 +1,7 @@
 using AutoMapper;
 using LibraryManagement.Application.Common.Models;
 using LibraryManagement.Application.DTOs.BookDTOs;
-using LibraryManagement.Application.DTOs.Requests;
-using LibraryManagement.Application.DTOs.Responses;
+using LibraryManagement.Application.DTOs.CategoryDTOs;
 using LibraryManagement.Application.Interfaces.Repositories;
 using LibraryManagement.Application.Interfaces.Services;
 using LibraryManagement.Domain.Models;

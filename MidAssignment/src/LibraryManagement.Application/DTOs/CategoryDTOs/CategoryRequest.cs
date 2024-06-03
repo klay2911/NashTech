@@ -1,6 +1,4 @@
-using LibraryManagement.Domain.Enum;
-
-namespace LibraryManagement.Application.DTOs.Requests;
+namespace LibraryManagement.Application.DTOs.CategoryDTOs;
 
 public class CategoryRequest
 {

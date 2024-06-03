@@ -19,9 +19,12 @@ public class BorrowingRequestController : ControllerBase
         _borrowingRequestService = borrowingRequestService;
     }
     
+    [Authorize(Roles = nameof(Role.Reader))]
     [HttpPost]
     public async Task<IActionResult> RequestBorrowAsync(List<Guid> bookIds)
     {
+        // var UserId = new Guid();
+        // var Email = "vu@gmail.com";
         var result = await _borrowingRequestService.RequestBorrowAsync(UserId, Email, bookIds);
         return Ok(result);
     }
@@ -44,6 +47,8 @@ public class BorrowingRequestController : ControllerBase
     [Authorize(Roles = nameof(Role.Librarian))]
     public async Task<IActionResult> UpdateRequestStatus(Guid requestId, RequestStatus status)
     {
+        var UserId = new Guid();
+        var Email = "vu@gmail.com";
         var res = await _borrowingRequestService.ManageBorrowingRequest(UserId, Email, requestId, status);
         return Ok(res);
     }

@@ -1,10 +1,14 @@
 using AutoMapper;
-using LibraryManagement.Application.DTOs.Requests;
-using LibraryManagement.Application.DTOs.Responses;
+using LibraryManagement.Application.DTOs.CategoryDTOs;
 using LibraryManagement.Domain.Models;
 
 namespace LibraryManagement.Application.Mapper;
 
-public class CategoryProfile : BaseProfile<Category, CategoryResponse, CategoryRequest>
+public class CategoryProfile : Profile
 {
+    public CategoryProfile()
+    {
+        CreateMap<Category, CategoryResponse>();
+        CreateMap<CategoryRequest, Category>();
+    }
 }

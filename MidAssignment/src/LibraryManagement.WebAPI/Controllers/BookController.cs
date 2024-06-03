@@ -24,7 +24,7 @@ public class BookController : ControllerBase
     }
     
     [HttpPost("filter")]
-    public async Task<IActionResult> GetFilterAsync([FromForm]FilterRequest request)
+    public async Task<IActionResult> GetFilterAsync([FromBody] FilterRequest request)
     {
         var res = await _bookService.GetFilterAsync(request);
         return Ok(res);
@@ -37,18 +37,18 @@ public class BookController : ControllerBase
         return Ok(book);
     }
     
+    // Check if the cover file has a valid extension
+    // var validCoverExtensions = new[] {".jpg", ".png"};
+    // var coverExtension = Path.GetExtension(coverFile.FileName).ToLowerInvariant();
+    //
+    // if (string.IsNullOrEmpty(coverExtension) || !validCoverExtensions.Contains(coverExtension))
+    // {
+    //     return BadRequest("Invalid cover file extension. Only .jpg and .png files are allowed.");
+    // }
     [HttpPost]
-    public async Task<IActionResult> CreateBookAsync([FromForm] BookRequest bookRequest, IFormFile pdfFile, IFormFile coverFile, string name)
+    public async Task<IActionResult> CreateBookAsync([FromForm] BookRequest bookRequest, IFormFile pdfFile, IFormFile coverFile)
     {
-        // Check if the cover file has a valid extension
-        // var validCoverExtensions = new[] {".jpg", ".png"};
-        // var coverExtension = Path.GetExtension(coverFile.FileName).ToLowerInvariant();
-        //
-        // if (string.IsNullOrEmpty(coverExtension) || !validCoverExtensions.Contains(coverExtension))
-        // {
-        //     return BadRequest("Invalid cover file extension. Only .jpg and .png files are allowed.");
-        // }
-        
+        var name = "La Vu";
         var directoryPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "pdfs");
         var coverDirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "covers");
         if (!Directory.Exists(directoryPath))
@@ -79,35 +79,36 @@ public class BookController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateBookAsync(Guid id, [FromForm] BookRequest bookRequest, string name)
+    public async Task<IActionResult> UpdateBookAsync(Guid id, [FromForm] BookRequest bookRequest,IFormFile pdfFile)
     {
-        // var oldBook = await _bookService.GetBookByIdAsync(id);
-        //
-        // if (pdfFile is { Length: > 0 })
-        // {
-        //     if (!string.IsNullOrEmpty(oldBook.BookPath))
-        //     {
-        //         var oldPdfPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", oldBook.BookPath.TrimStart('/'));
-        //         if (System.IO.File.Exists(oldPdfPath))
-        //         {
-        //             System.IO.File.Delete(oldPdfPath);
-        //         }
-        //     }
-        //
-        //     var directoryPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "pdfs");
-        //     if (!Directory.Exists(directoryPath))
-        //     {
-        //         Directory.CreateDirectory(directoryPath);
-        //     }
-        //
-        //     var filePath = Path.Combine(directoryPath, pdfFile.FileName);
-        //     await using (var stream = new FileStream(filePath, FileMode.Create))
-        //     {
-        //         await pdfFile.CopyToAsync(stream);
-        //     }
-        //
-        //     bookRequest.BookPath = $"/pdfs/{pdfFile.FileName}";
-        // }
+        var name = "La Vu";
+        var oldBook = await _bookService.GetBookByIdAsync(id);
+        
+        if (pdfFile is { Length: > 0 })
+        {
+            if (!string.IsNullOrEmpty(oldBook.BookPath))
+            {
+                var oldPdfPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", oldBook.BookPath.TrimStart('/'));
+                if (System.IO.File.Exists(oldPdfPath))
+                {
+                    System.IO.File.Delete(oldPdfPath);
+                }
+            }
+        
+            var directoryPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "pdfs");
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+        
+            var filePath = Path.Combine(directoryPath, pdfFile.FileName);
+            await using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await pdfFile.CopyToAsync(stream);
+            }
+        
+            bookRequest.BookPath = $"/pdfs/{pdfFile.FileName}";
+        }
         var bookResponse = await _bookService.UpdateBookAsync(id, bookRequest, name);
         return Ok(bookResponse);
     }
@@ -115,15 +116,15 @@ public class BookController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteBookAsync(Guid id)
     {
-        // var book = await _bookService.GetBookByIdAsync(id);
-        // if (!string.IsNullOrEmpty(book.BookPath))
-        // {
-        //     var pdfPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", book.BookPath.TrimStart('/'));
-        //     if (System.IO.File.Exists(pdfPath))
-        //     {
-        //         System.IO.File.Delete(pdfPath);
-        //     }
-        // }
+        var book = await _bookService.GetBookByIdAsync(id);
+        if (!string.IsNullOrEmpty(book.BookPath))
+        {
+            var pdfPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", book.BookPath.TrimStart('/'));
+            if (System.IO.File.Exists(pdfPath))
+            {
+                System.IO.File.Delete(pdfPath);
+            }
+        }
         // if (!string.IsNullOrEmpty(book.CoverPath))
         // {
         //     var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", book.CoverPath.TrimStart('/'));

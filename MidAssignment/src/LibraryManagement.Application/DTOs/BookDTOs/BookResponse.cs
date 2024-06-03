@@ -1,3 +1,5 @@
+using LibraryManagement.Application.DTOs.CategoryDTOs;
+
 namespace LibraryManagement.Application.DTOs.BookDTOs;
 
 public class BookResponse
@@ -17,4 +19,5 @@ public class BookResponse
     public string? BookPath { get; set; }
     
     public Guid? CategoryId { get; set; }
+    public CategoryResponse? Category { get; set; }
 }

@@ -37,13 +37,18 @@ public class BookService: IBookService
     public async Task<PaginatedList<BookResponse>> GetAllBooksAsync(int pageNumber, int pageSize, string searchTerm = "")
     {
         var books = await _bookRepository.GetAllAsync();
-
         if (!string.IsNullOrEmpty(searchTerm))
         {
             books = books.Where(b => b.Title.Contains(searchTerm) || b.Author.Contains(searchTerm));
         }
 
-        var bookResponses = books.Select(book => _mapper.Map<BookResponse>(book));
+        // var bookResponses = books.Select(book =>
+        // {
+        //     var bookResponse = _mapper.Map<BookResponse>(book);
+        //     bookResponse.CategoryResponse = _mapper.Map<CategoryResponse>(book.Category);
+        //     return _mapper.Map<BookResponse>(book);
+        // });
+        var bookResponses = _mapper.Map<IEnumerable<BookResponse>>(books);
 
         var pagedBookResponses = PaginatedList<BookResponse>.Create(bookResponses, pageNumber, pageSize);
 

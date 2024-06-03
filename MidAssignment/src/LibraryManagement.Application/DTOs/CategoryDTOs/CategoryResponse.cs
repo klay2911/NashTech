@@ -1,6 +1,4 @@
-using LibraryManagement.Domain.Enum;
-
-namespace LibraryManagement.Application.DTOs.Responses;
+namespace LibraryManagement.Application.DTOs.CategoryDTOs;
 
 public class CategoryResponse
 {
