@@ -1,4 +1,3 @@
-using LibraryManagement.Application.Base;
 using LibraryManagement.Application.Common.Models;
 using LibraryManagement.Domain.Models;
 

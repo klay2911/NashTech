@@ -9,10 +9,45 @@ public class BookBorrowingRequestRepository : BaseRepository<BookBorrowingReques
     public BookBorrowingRequestRepository(LibraryContext context) : base(context)
     {
     }
-    public async Task<List<BookBorrowingRequest>> GetRequestsByUserAndMonthAsync(Guid userId, int month)
+    public override async Task<BookBorrowingRequest> GetByIdAsync(Guid requestId)
     {
         return await Context.BookBorrowingRequests
-            .Where(r => r.DateRequested != null && r.RequestorId == userId && r.DateRequested.Value.Month == month)
+            .Include(r => r.BookBorrowingRequestDetails)
+            .Where( book => !book.IsDeleted)
+            .FirstOrDefaultAsync(r => r.RequestId == requestId);
+    }
+    public async Task<List<BookBorrowingRequest>> GetRequestsByUserAndMonthAsync(Guid readerId, int month)
+    {
+        return await Context.BookBorrowingRequests
+            .Where(r => r.DateRequested != null && r.RequestorId == readerId && r.DateRequested.Value.Month == month)
             .ToListAsync();
     }
+
+    public async Task<IEnumerable<BookBorrowingRequest>> GetAllWithUserAsync()
+    {
+        var requests = await Context.Set<BookBorrowingRequest>()
+            .Include(r => r.User)
+            .Include(r => r.BookBorrowingRequestDetails)
+            .Where( book => !book.IsDeleted)
+            .ToListAsync();
+        
+        return requests;
+    }
+
+    
+    public async Task<IEnumerable<BookBorrowingRequest>> GetAllRequestsByUserAsync(Guid userId)
+    {
+        return await Context.BookBorrowingRequests
+            .Include(r => r.BookBorrowingRequestDetails)
+            .ThenInclude(d => d.Book)
+            .Where(r => r.RequestorId == userId)
+            .ToListAsync();
+    }
+    // public async Task<BookBorrowingRequest> GetAllRequestsByUserAsync(Guid userId)
+    // {
+    //     return await Context.BookBorrowingRequests
+    //         .Include(r => r.BookBorrowingRequestDetails)
+    //         .ThenInclude(d => d.Book)
+    //         .FirstOrDefaultAsync(r => r.RequestorId == userId) ?? throw new InvalidOperationException();
+    // }
 }

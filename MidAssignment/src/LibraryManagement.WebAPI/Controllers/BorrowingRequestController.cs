@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManagement.WebAPI.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/request")]
 [ApiController]
 [Authorize]
 public class BorrowingRequestController : ControllerBase
@@ -19,9 +19,9 @@ public class BorrowingRequestController : ControllerBase
         _borrowingRequestService = borrowingRequestService;
     }
     
-    [Authorize(Roles = nameof(Role.Reader))]
     [HttpPost]
-    public async Task<IActionResult> RequestBorrowAsync(List<Guid> bookIds)
+    [Authorize(Roles = nameof(Role.Reader))]
+    public async Task<IActionResult> CreateBorrowRequestAsync(List<Guid> bookIds)
     {
         // var UserId = new Guid();
         // var Email = "vu@gmail.com";
@@ -30,25 +30,35 @@ public class BorrowingRequestController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetWaitingRequests(int pageNumber, int pageSize, string searchTerm = "")
+    [Authorize(Roles = nameof(Role.Librarian))]
+    public async Task<IActionResult> GetBorrowRequestsAsync(int pageNumber, int pageSize, string searchTerm = "")
     {
         var result = await _borrowingRequestService.GetWaitingRequests(pageNumber, pageSize, searchTerm);
         return Ok(result);
     }
     
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetRequestByIdAsync(Guid id)
+    [Authorize(Roles = nameof(Role.Librarian))]
+    public async Task<IActionResult> GetBorrowRequestByIdAsync(Guid id)
     {
         var result = await _borrowingRequestService.GetRequestByIdAsync(id);
         return Ok(result);
     }
     
-    [HttpPut("status")]
-    [Authorize(Roles = nameof(Role.Librarian))]
-    public async Task<IActionResult> UpdateRequestStatus(Guid requestId, RequestStatus status)
+    [HttpGet("user/{userId}")]
+    [Authorize(Roles = nameof(Role.Reader))]
+    public async Task<IActionResult> GetUserBorrowedBooksAsync(Guid userId, int pageNumber, int pageSize, string searchTerm = "")
     {
-        var UserId = new Guid();
-        var Email = "vu@gmail.com";
+        var result = await _borrowingRequestService.GetUserBorrowedBooks(userId, pageNumber, pageSize, searchTerm);
+        return Ok(result);
+    }
+    
+    [HttpPut("{requestId}")]
+    [Authorize(Roles = nameof(Role.Librarian))]
+    public async Task<IActionResult> UpdateBorrowRequestStatusAsync(Guid requestId, RequestStatus status)
+    {
+        // var UserId = new Guid();
+        // var Email = "vu@gmail.com";
         var res = await _borrowingRequestService.ManageBorrowingRequest(UserId, Email, requestId, status);
         return Ok(res);
     }

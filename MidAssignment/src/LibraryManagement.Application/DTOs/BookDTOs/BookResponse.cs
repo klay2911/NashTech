@@ -1,3 +1,4 @@
+using LibraryManagement.Application.DTOs.BorrowingRequestDTOs;
 using LibraryManagement.Application.DTOs.CategoryDTOs;
 
 namespace LibraryManagement.Application.DTOs.BookDTOs;
@@ -19,5 +20,8 @@ public class BookResponse
     public string? BookPath { get; set; }
     
     public Guid? CategoryId { get; set; }
+    
     public CategoryResponse? Category { get; set; }
+    
+    public BorrowingRequestResponse? Request { get; set; }
 }

@@ -1,13 +1,15 @@
 import React from 'react'
-import Navbar  from './Navbar'
-import {AppRoutes} from '../route/AppRoutes'
-//call API logout
-//clear localstorage
-//set isAuthenticated false
-//navigate to login
-//const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
+import {AppRoutes, ReaderRoutes} from '../route'
+import { Navbar, ReaderNavbar } from './';
+import{ useAuthContext }  from '../context/AuthContext';
+
+
+
 
 const Layout = () => {
+    const { user } = useAuthContext();
+    const userRole = user?.Role;
+
     return (
         <div className="w-full flex flex-col justify-between items-center min-h-screen bg-white"
         style ={{
@@ -16,8 +18,10 @@ const Layout = () => {
         backgroundAttachment:'fixed',
         backgroundRepeat:'space'}}
         >
-            <Navbar/>
-            <AppRoutes/>
+            {/* <Navbar />
+            <AppRoutes /> */}
+            {userRole === 'Reader' ? <ReaderNavbar /> : <Navbar />}
+            {userRole === 'Reader' ? <ReaderRoutes /> : <AppRoutes />}
             <footer className="w-full h-20 bg-[#F3F4F6] flex justify-center items-center text-[#333333]">
                 <p>© 2024 - All rights reserved</p>
             </footer>
@@ -26,3 +30,10 @@ const Layout = () => {
 };
 
 export default Layout;
+
+
+//call API logout
+//clear localstorage
+//set isAuthenticated false
+//navigate to login
+//const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));

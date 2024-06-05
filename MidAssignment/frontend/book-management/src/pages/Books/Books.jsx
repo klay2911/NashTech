@@ -63,16 +63,6 @@ const Books = () => {
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div className="flex justify-end pb-4">
-            <form onSubmit={handleSubmit}>
-                <input 
-                type="number" 
-                min="1"
-                value={inputValue} 
-                onChange={handlePageSizeChange} 
-                className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
-                />
-                <button type="submit" style={{ display: 'none' }} />
-            </form>
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             <Link to={`/book/create`}>Add new</Link>
             </button>
@@ -141,25 +131,40 @@ const Books = () => {
         </div>
     </div>
     <div className="flex">
-        <div className="w-1/2 p-2">
-            <button 
-            onClick={handlePrevious} 
-            disabled={!hasPreviousPage}
-            className={`w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${!hasPreviousPage ? 'opacity-50 cursor-not-allowed' : ''}`}
-            >
-            Previous
-            </button>
-        </div>
-        <div className="w-1/2 p-2">
-            <button 
-            onClick={handleNext} 
-            disabled={!hasNextPage}
-            className={`w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${!hasNextPage ? 'opacity-50 cursor-not-allowed' : ''}`}
-            >
-            Next
-            </button>
-        </div>
+      <div className="w-1/4 p-2">
+          <button 
+          onClick={handlePrevious} 
+          disabled={!hasPreviousPage}
+          className={`w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${!hasPreviousPage ? 'opacity-50 cursor-not-allowed' : ''}`}
+          >
+          Previous
+          </button>
+      </div>
+      <div className="w-1/2 p-2 flex justify-center items-center">
+          {/* <span>Page {currentPage}</span> */}
+      </div>
+      <div className="w-1/4 p-2">
+          <button 
+          onClick={handleNext} 
+          disabled={!hasNextPage}
+          className={`w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${!hasNextPage ? 'opacity-50 cursor-not-allowed' : ''}`}
+          >
+          Next
+          </button>
+      </div>
     </div>
+    <div style={{ position: 'fixed', right: -50, bottom: 80 }}>
+            <form onSubmit={handleSubmit}>
+                <input 
+                    type="number" 
+                    min="1"
+                    value={inputValue} 
+                    onChange={handlePageSizeChange} 
+                    className="w-1/2 px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-[#F3F4F6]-700 dark:text-[#333333] dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
+                />
+                <button type="submit" style={{ display: 'none' }} />
+            </form>
+      </div>
     </div>
   );
 }

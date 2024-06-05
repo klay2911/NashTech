@@ -1,7 +1,7 @@
 function Home() {
     return (
-      <div>HomePage</div>
-    )
+      <div>Welcome </div>    
+      )
   }
-  
+  // {user.LastName}
 export default Home;

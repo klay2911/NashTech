@@ -1,8 +1,8 @@
 using LibraryManagement.Application.Mapper;
 using LibraryManagement.Domain.Configs;
 using LibraryManagement.Infrastructure;
+using LibraryManagement.Infrastructure.Services;
 using LibraryManagement.WebAPI.Configurations;
-using LibraryManagement.WebAPI.Helpers;
 using LibraryManagement.WebAPI.SeedData;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +27,8 @@ builder.Services.AddDbContext<LibraryContext>(options =>
 builder.Services.AddAutoMapper(typeof(BookProfile).Assembly);
 builder.Services.AddAutoMapper(typeof(CategoryProfile).Assembly);
 builder.Services.AddAutoMapper(typeof(RequestProfile).Assembly);
+builder.Services.AddAutoMapper(typeof(UserProfile).Assembly);
+
 
 
 //Add JWT Authentication
@@ -92,25 +94,25 @@ builder.Services.AddSwaggerGen(opt =>
     });
 });
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowOrigin", builder =>
-    {
-        builder.AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader();
-    });
-});
-
 // builder.Services.AddCors(options =>
 // {
-//     options.AddDefaultPolicy(builder =>
+//     options.AddPolicy("AllowOrigin", builder =>
 //     {
-//         builder.WithOrigins("*")
-//             .AllowAnyHeader()
-//             .AllowAnyMethod();
+//         builder.AllowAnyOrigin()
+//             .AllowAnyMethod()
+//             .AllowAnyHeader();
 //     });
 // });
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins("*")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 //Add services lifetime
 ServiceConfiguration.ConfigureServiceLifetime(builder.Services);
 
@@ -132,8 +134,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseStaticFiles();
+
 //app.UseMiddleware<JwtMiddleware>();
-//app.UseCors();
+app.UseCors();
 
 app.UseAuthentication();
 

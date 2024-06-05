@@ -14,13 +14,12 @@ public class BookService: IBookService
     private readonly IBookRepository _bookRepository;
     private readonly IMapper _mapper;
 
-
     public BookService(IBookRepository bookRepository, IMapper mapper)
     {
         _bookRepository = bookRepository;
         _mapper = mapper;
     }
-
+    
     // public async Task<PaginatedList<BookResponse>> GetAllBooksAsync(int pageNumber, int pageSize, string searchTerm = "")
     // {
     //     var books = await _bookRepository.GetAllAsync(); 
@@ -39,15 +38,9 @@ public class BookService: IBookService
         var books = await _bookRepository.GetAllAsync();
         if (!string.IsNullOrEmpty(searchTerm))
         {
-            books = books.Where(b => b.Title.Contains(searchTerm) || b.Author.Contains(searchTerm));
+            books = books.Where(b => b.Title.Contains(searchTerm) || b.Author.Contains(searchTerm) || b.Category.Name.Contains(searchTerm));
         }
-
-        // var bookResponses = books.Select(book =>
-        // {
-        //     var bookResponse = _mapper.Map<BookResponse>(book);
-        //     bookResponse.CategoryResponse = _mapper.Map<CategoryResponse>(book.Category);
-        //     return _mapper.Map<BookResponse>(book);
-        // });
+        
         var bookResponses = _mapper.Map<IEnumerable<BookResponse>>(books);
 
         var pagedBookResponses = PaginatedList<BookResponse>.Create(bookResponses, pageNumber, pageSize);
@@ -63,7 +56,8 @@ public class BookService: IBookService
         {
             query = query.Where(p =>
                 p.Title.Contains(request.SearchTerm) ||
-                p.Author.Contains(request.SearchTerm));
+                p.Author.Contains(request.SearchTerm) || 
+                p.Category.Name.Contains(request.SearchTerm));
         }
 
         if (request.SortOrder?.ToLower() == "desc")
@@ -85,6 +79,7 @@ public class BookService: IBookService
         {
             "title" => product => product.Title,
             "author" => product => product.Author,
+            "category" => product => product.Category.Name,
             _ => product => product.ModifyAt
         };
     

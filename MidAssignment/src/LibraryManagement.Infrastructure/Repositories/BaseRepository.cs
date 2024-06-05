@@ -1,4 +1,4 @@
-using LibraryManagement.Application.Base;
+using LibraryManagement.Application.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagement.Infrastructure.Repositories;

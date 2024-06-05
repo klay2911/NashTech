@@ -1,7 +1,9 @@
+using System.Security.Claims;
 using LibraryManagement.Application.Common.Models;
 using LibraryManagement.Application.DTOs.BookDTOs;
 using LibraryManagement.Application.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace LibraryManagement.WebAPI.Controllers;
 
@@ -10,7 +12,9 @@ namespace LibraryManagement.WebAPI.Controllers;
 public class BookController : ControllerBase
 {
     private readonly IBookService _bookService;
-
+    private Guid UserId => Guid.Parse(User.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value);
+    private string Email => Convert.ToString(User.Claims.First(c => c.Type == ClaimTypes.Name).Value);
+    
     public BookController(IBookService bookService)
     {
         _bookService = bookService;
@@ -24,7 +28,7 @@ public class BookController : ControllerBase
     }
     
     [HttpPost("filter")]
-    public async Task<IActionResult> GetFilterAsync([FromBody] FilterRequest request)
+    public async Task<IActionResult> FilterBooksAsync([FromBody] FilterRequest request)
     {
         var res = await _bookService.GetFilterAsync(request);
         return Ok(res);
@@ -37,18 +41,10 @@ public class BookController : ControllerBase
         return Ok(book);
     }
     
-    // Check if the cover file has a valid extension
-    // var validCoverExtensions = new[] {".jpg", ".png"};
-    // var coverExtension = Path.GetExtension(coverFile.FileName).ToLowerInvariant();
-    //
-    // if (string.IsNullOrEmpty(coverExtension) || !validCoverExtensions.Contains(coverExtension))
-    // {
-    //     return BadRequest("Invalid cover file extension. Only .jpg and .png files are allowed.");
-    // }
     [HttpPost]
     public async Task<IActionResult> CreateBookAsync([FromForm] BookRequest bookRequest, IFormFile pdfFile, IFormFile coverFile)
     {
-        var name = "La Vu";
+        //var name = "La Vu";
         var directoryPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "pdfs");
         var coverDirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "covers");
         if (!Directory.Exists(directoryPath))
@@ -74,14 +70,14 @@ public class BookController : ControllerBase
         }
         bookRequest.CoverPath = $"/covers/{coverFile.FileName}";
 
-        var bookResponse = await _bookService.CreateBookAsync(bookRequest, name);
+        var bookResponse = await _bookService.CreateBookAsync(bookRequest, Email);
         return Ok(bookResponse);
     }
 
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateBookAsync(Guid id, [FromForm] BookRequest bookRequest,IFormFile pdfFile)
     {
-        var name = "La Vu";
+        //var name = "La Vu";
         var oldBook = await _bookService.GetBookByIdAsync(id);
         
         if (pdfFile is { Length: > 0 })
@@ -109,7 +105,8 @@ public class BookController : ControllerBase
         
             bookRequest.BookPath = $"/pdfs/{pdfFile.FileName}";
         }
-        var bookResponse = await _bookService.UpdateBookAsync(id, bookRequest, name);
+
+        var bookResponse = await _bookService.UpdateBookAsync(id, bookRequest, Email);
         return Ok(bookResponse);
     }
 

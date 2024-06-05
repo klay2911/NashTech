@@ -16,6 +16,6 @@ public class BookRepository : BaseRepository<Book>, IBookRepository
 
     public override async Task<IEnumerable<Book>> GetAllAsync()
     {
-        return await Context.Set<Book>().Include(x => x.Category).ToListAsync();
+        return await Context.Set<Book>().Include(x => x.Category).Where( book => !book.IsDeleted).ToListAsync();
     }
 }

@@ -1,4 +1,4 @@
-using LibraryManagement.Application.DTOs.BookDTOs;
+using LibraryManagement.Application.DTOs.UserDTOs;
 using LibraryManagement.Domain.Enum;
 
 namespace LibraryManagement.Application.DTOs.BorrowingRequestDTOs;
@@ -14,7 +14,7 @@ public class BorrowingRequestResponse
     public RequestStatus? Status { get; set; }
 
     //public Guid? ApproverId { get; set; }
-    
-    public List<BookResponse> Books { get; set; } = new();
+    public UserResponse? User { get; set; }
+    public List<Guid> BookIds { get; set; } = new();
 
 }

@@ -13,7 +13,7 @@ public static class LibraryContextSeed
 
         if (!context.Users.Any())
         {
-            var authHelpers = new AuthHelpers(configuration, context);
+            var authHelpers = new AuthHelpers();
             var users = new List<User>
             {
                 new() { Email = "user1@email.com", Password = authHelpers.HashPassword("Password1"), FirstName = "First1", LastName = "Last1", Gender = GenderType.Male, Dob = new DateTime(1990, 1, 1), Role = Role.Administrator,  CreatedAt = DateTime.Now, ModifyAt = DateTime.Now},

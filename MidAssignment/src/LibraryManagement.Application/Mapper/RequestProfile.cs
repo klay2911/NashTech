@@ -8,6 +8,8 @@ public class RequestProfile : Profile
 {
     public RequestProfile()
     {
-        CreateMap<BookBorrowingRequest, BorrowingRequestResponse>();
+        CreateMap<BookBorrowingRequest, BorrowingRequestResponse>()
+            .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.User))
+            .ForMember(dest => dest.BookIds, opt => opt.MapFrom(src => src.BookBorrowingRequestDetails.Select(detail => detail.BookId)));
     }
 }
