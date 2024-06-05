@@ -83,50 +83,7 @@ public class BookBorrowingService : IBookBorrowingRequestService
 
         return new PaginatedList<BookResponse>(pagedBooks, totalCount, pageNumber, pageSize);
     }
-    // public async Task<IPagedList<BookViewModel>> GetUserBorrowedBooks(int userId, int pageNumber, int pageSize, string searchTerm)
-    // {
-    //     var borrowingRequests = await _unitOfWork.BookBorrowingRequestRepository.GetRequestsByUser(userId);
-    //
-    //     var borrowedBooks = new List<BookViewModel>();
-    //
-    //     foreach (var request in borrowingRequests)
-    //     {
-    //         foreach (var detail in request.BookBorrowingRequestDetails)
-    //         {
-    //             var book = await _unitOfWork.BookRepository.GetByIdAsync(detail.BookId);
-    //             var bookViewModel = new BookViewModel
-    //             {
-    //                 BookId = book.BookId,
-    //                 Title = book.Title,
-    //                 Author = book.Author,
-    //                 ISBN = book.ISBN,
-    //                 CategoryId = book.CategoryId,
-    //                 Status = request.Status,
-    //                 ExpiryDate = request.ExpiryDate,
-    //                 PdfFilePath = book.PdfFilePath,
-    //                 LastReadPageNumber = detail.LastReadPageNumber
-    //             };
-    //             if (request.Status == "Approved")
-    //             {
-    //                 request.ExpiryDate = DateTime.Now.AddDays(10);
-    //                 _unitOfWork.BookBorrowingRequestRepository.Update(request);
-    //                 await _unitOfWork.SaveAsync();
-    //             }
-    //             borrowedBooks.Add(bookViewModel);
-    //         }
-    //     }
-    //     borrowedBooks = borrowedBooks.OrderByDescending(b => b.ExpiryDate).ToList();
-    //     if (!string.IsNullOrEmpty(searchTerm))
-    //     {
-    //         borrowedBooks = borrowedBooks.Where(b => b.Title.Contains(searchTerm)).ToList();
-    //     }
-    //
-    //     int totalCount = borrowedBooks.Count();
-    //
-    //     var pagedBooks = borrowedBooks.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
-    //
-    //     return new StaticPagedList<BookViewModel>(pagedBooks, pageNumber, pageSize, totalCount);
-    // }
+    
     public async Task<string> RequestBorrowAsync(Guid readerId, string email, List<Guid> bookIds)
     {
         if (bookIds == null || !bookIds.Any())
@@ -180,7 +137,6 @@ public class BookBorrowingService : IBookBorrowingRequestService
         
         if (status == RequestStatus.Approved)
         {
-            //request.ApproverId = librarianId;
             request.ExpiryDate = DateTime.Now.AddDays(14);
         }
 

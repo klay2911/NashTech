@@ -20,19 +20,6 @@ public class BookService: IBookService
         _mapper = mapper;
     }
     
-    // public async Task<PaginatedList<BookResponse>> GetAllBooksAsync(int pageNumber, int pageSize, string searchTerm = "")
-    // {
-    //     var books = await _bookRepository.GetAllAsync(); 
-    //
-    //     if (!string.IsNullOrEmpty(searchTerm))
-    //     {
-    //         books = books.Where(b => b.Title.Contains(searchTerm) || b.Author.Contains(searchTerm));
-    //     }
-    //
-    //     var bookResponses = books.Select(book => _mapper.Map<BookResponse>(book));
-    //
-    //     return await PaginatedList<BookResponse>.CreateAsync(bookResponses.AsQueryable(), pageNumber, pageSize);
-    // }
     public async Task<PaginatedList<BookResponse>> GetAllBooksAsync(int pageNumber, int pageSize, string searchTerm = "")
     {
         var books = await _bookRepository.GetAllAsync();
@@ -47,42 +34,7 @@ public class BookService: IBookService
 
         return await Task.FromResult(pagedBookResponses);
     }
-    
-    public async Task<PaginatedList<BookResponse>> GetFilterAsync(FilterRequest request)
-    {
-        var query = _bookRepository.GetBooksQuery();
 
-        if (!string.IsNullOrWhiteSpace(request.SearchTerm))
-        {
-            query = query.Where(p =>
-                p.Title.Contains(request.SearchTerm) ||
-                p.Author.Contains(request.SearchTerm) || 
-                p.Category.Name.Contains(request.SearchTerm));
-        }
-
-        if (request.SortOrder?.ToLower() == "desc")
-        {
-            query = query.OrderByDescending(GetSortProperty(request));
-        }
-        else
-        {
-            query = query.OrderBy(GetSortProperty(request));
-        }
-        var items = await query.Skip((request.Page - 1) * request.PageSize).Take(request.PageSize).ToListAsync();
-        var bookResponses = _mapper.Map<List<BookResponse>>(items);
-        //maybe wrong
-        return PaginatedList<BookResponse>.Create(bookResponses, request.Page, request.PageSize);
-    }
-
-    private static Expression<Func<Book, object>> GetSortProperty(FilterRequest request) =>
-        request.SortColumn?.ToLower() switch
-        {
-            "title" => product => product.Title,
-            "author" => product => product.Author,
-            "category" => product => product.Category.Name,
-            _ => product => product.ModifyAt
-        };
-    
     public async Task<BookResponse> GetBookByIdAsync(Guid id)
     {
         var book = await _bookRepository.GetByIdAsync(id);
@@ -124,14 +76,52 @@ public class BookService: IBookService
         return _mapper.Map<BookResponse>(book);
     }
 
-    public async Task DeleteBookAsync(Guid id)
+    public async Task DeleteBookAsync(Guid id, string name )
     {
         var book = await _bookRepository.GetByIdAsync(id);
         if (book == null)
         {
             throw new Exception("Book not found");
         }
-
-        await _bookRepository.DeleteAsync(book);
+        
+        book.ModifyAt = DateTime.Now;
+        book.ModifyBy = name;
+        book.IsDeleted = true;
+        await _bookRepository.UpdateAsync(book);
     }
+    
+    public async Task<PaginatedList<BookResponse>> GetFilterAsync(FilterRequest request)
+    {
+        var query = _bookRepository.GetBooksQuery();
+
+        if (!string.IsNullOrWhiteSpace(request.SearchTerm))
+        {
+            query = query.Where(p =>
+                p.Title.Contains(request.SearchTerm) ||
+                p.Author.Contains(request.SearchTerm) || 
+                p.Category.Name.Contains(request.SearchTerm));
+        }
+
+        if (request.SortOrder?.ToLower() == "desc")
+        {
+            query = query.OrderByDescending(GetSortProperty(request));
+        }
+        else
+        {
+            query = query.OrderBy(GetSortProperty(request));
+        }
+        var items = await query.Skip((request.Page - 1) * request.PageSize).Take(request.PageSize).ToListAsync();
+        var bookResponses = _mapper.Map<List<BookResponse>>(items);
+        //maybe wrong
+        return PaginatedList<BookResponse>.Create(bookResponses, request.Page, request.PageSize);
+    }
+
+    private static Expression<Func<Book, object>> GetSortProperty(FilterRequest request) =>
+        request.SortColumn?.ToLower() switch
+        {
+            "title" => product => product.Title,
+            "author" => product => product.Author,
+            "category" => product => product.Category.Name,
+            _ => product => product.ModifyAt
+        };
 }

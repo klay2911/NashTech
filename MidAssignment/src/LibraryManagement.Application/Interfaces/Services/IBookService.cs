@@ -15,5 +15,5 @@ public interface IBookService
     
     Task<BookResponse> UpdateBookAsync(Guid id, BookRequest bookRequest, string name);
     
-    Task DeleteBookAsync(Guid id);
+    Task DeleteBookAsync(Guid id, string name );
 }

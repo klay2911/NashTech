@@ -43,20 +43,30 @@ public class CategoryService : ICategoryService
         return _mapper.Map<CategoryResponse>(category);
     }
 
-    public async Task<CategoryResponse> CreateCategoryAsync(CategoryRequest categoryRequest)
+    public async Task<CategoryResponse> CreateCategoryAsync(CategoryRequest categoryRequest, string name)
     {
         var category =  _mapper.Map<Category>(categoryRequest);
+        if(category is BaseModel baseModel)
+        {
+            baseModel.CreatedAt = DateTime.Now;
+            baseModel.CreatedBy = name;
+        }
         await  _categoryRepository.AddAsync(category);
 
         return _mapper.Map<CategoryResponse>(category);
     }
 
-    public async Task<CategoryResponse> UpdateCategoryAsync(Guid id, CategoryRequest categoryRequest)
+    public async Task<CategoryResponse> UpdateCategoryAsync(Guid id, CategoryRequest categoryRequest, string name)
     {
         var category = await _categoryRepository.GetByIdAsync(id);
-        if (category == null)
+        switch (category)
         {
-            throw new Exception("Category not found");
+            case BaseModel baseModel:
+                baseModel.ModifyAt = DateTime.Now;
+                baseModel.ModifyBy = name;
+                break;
+            case null:
+                throw new Exception("Book not found");
         }
 
         _mapper.Map(categoryRequest, category);
@@ -65,7 +75,7 @@ public class CategoryService : ICategoryService
         return _mapper.Map<CategoryResponse>(category);
     }
 
-    public async Task DeleteCategoryAsync(Guid id)
+    public async Task DeleteCategoryAsync(Guid id, string name)
     {
         var category = await _categoryRepository.GetByIdAsync(id);
         if (category == null)
@@ -73,6 +83,9 @@ public class CategoryService : ICategoryService
             throw new Exception("Category not found");
         }
 
-        await _categoryRepository.DeleteAsync(category);
+        category.ModifyAt = DateTime.Now;
+        category.ModifyBy = name;
+        category.IsDeleted = true;
+        await _categoryRepository.UpdateAsync(category);
     }
 }

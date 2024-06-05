@@ -21,6 +21,7 @@ public class BookBorrowingRequest : BaseModel
     [DataType(DataType.DateTime)]
     public DateTime? ExpiryDate { get; set; }
     
+    [ForeignKey("RequestorId")]
     public User? User { get; set; }
     
     public ICollection<BookBorrowingRequestDetails> BookBorrowingRequestDetails { get; set; } = new List<BookBorrowingRequestDetails>();

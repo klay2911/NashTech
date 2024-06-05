@@ -75,9 +75,8 @@ public class BookController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateBookAsync(Guid id, [FromForm] BookRequest bookRequest,IFormFile pdfFile)
+    public async Task<IActionResult> UpdateBookAsync(Guid id, [FromForm] BookRequest bookRequest,IFormFile pdfFile, IFormFile coverFile)
     {
-        //var name = "La Vu";
         var oldBook = await _bookService.GetBookByIdAsync(id);
         
         if (pdfFile is { Length: > 0 })
@@ -105,6 +104,39 @@ public class BookController : ControllerBase
         
             bookRequest.BookPath = $"/pdfs/{pdfFile.FileName}";
         }
+        else
+        {
+            bookRequest.BookPath = oldBook.BookPath;
+        }
+        if (coverFile is { Length: > 0 })
+        {
+            if (!string.IsNullOrEmpty(oldBook.CoverPath))
+            {
+                var oldCoverPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", oldBook.CoverPath.TrimStart('/'));
+                if (System.IO.File.Exists(oldCoverPath))
+                {
+                    System.IO.File.Delete(oldCoverPath);
+                }
+            }
+
+            var coverDirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "covers");
+            if (!Directory.Exists(coverDirectoryPath))
+            {
+                Directory.CreateDirectory(coverDirectoryPath);
+            }
+
+            var coverFilePath = Path.Combine(coverDirectoryPath, coverFile.FileName);
+            await using (var stream = new FileStream(coverFilePath, FileMode.Create))
+            {
+                await coverFile.CopyToAsync(stream);
+            }
+
+            bookRequest.CoverPath = $"/covers/{coverFile.FileName}";
+        }
+        else
+        {
+            bookRequest.CoverPath = oldBook.CoverPath;
+        }
 
         var bookResponse = await _bookService.UpdateBookAsync(id, bookRequest, Email);
         return Ok(bookResponse);
@@ -130,7 +162,7 @@ public class BookController : ControllerBase
         //         System.IO.File.Delete(imagePath);
         //     }
         // }
-        await _bookService.DeleteBookAsync(id);
+        await _bookService.DeleteBookAsync(id, Email);
         return NoContent();
     }
 }

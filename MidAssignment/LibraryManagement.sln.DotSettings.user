@@ -2,5 +2,11 @@
 	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;&#xD;
   &lt;Assembly Path="C:\Users\Acer\.nuget\packages\microsoft.identitymodel.tokens\7.6.0\lib\net8.0\Microsoft.IdentityModel.Tokens.dll" /&gt;&#xD;
 &lt;/AssemblyExplorer&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=22ac9bab_002D89de_002D4a40_002Dbf3f_002Da2cc2fe92278/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Test1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::53743CC4-04A4-4DDF-9B00-F852A904BB0D::net8.0::LibraryManagement.WebAPI_Tests.Controllers.BookControllerTest.Test1&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::0AB0E0FA-7E57-4C5F-8896-CC4DBEF7A128::net8.0::LibraryManagement.Infrastructure_Tests.Tests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Approver/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Requestor/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
