@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>F:\NashTech\MidAssignment\src\LibraryManagement.WebAPI\Controllers\BorrowingRequestController.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Security.Claims;
+using LibraryManagement.Application.Interfaces.Services;
+using LibraryManagement.Domain.Enum;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+namespace LibraryManagement.WebAPI.Controllers;
+
+[Route(&quot;api/request&quot;)]
+[ApiController]
+[Authorize]
+public class BorrowingRequestController : ControllerBase
+{
+    private readonly IBookBorrowingRequestService _borrowingRequestService;
+    private Guid UserId =&gt; Guid.Parse(User.Claims.First(c =&gt; c.Type == ClaimTypes.NameIdentifier).Value);
+    private string Email =&gt; Convert.ToString(User.Claims.First(c =&gt; c.Type == ClaimTypes.Name).Value);
+    public BorrowingRequestController(IBookBorrowingRequestService borrowingRequestService)
+    {
+        _borrowingRequestService = borrowingRequestService;
+    }
+    
+    [HttpPost]
+    [Authorize(Roles = nameof(Role.Reader))]
+    public async Task&lt;IActionResult&gt; CreateBorrowRequestAsync(List&lt;Guid&gt; bookIds)
+    {
+        var result = await _borrowingRequestService.RequestBorrowAsync(UserId, Email, bookIds);
+        return Ok(result);
+    }
+
+    [HttpGet]
+    [Authorize(Roles = nameof(Role.Librarian))]
+    public async Task&lt;IActionResult&gt; GetBorrowRequestsAsync(int pageNumber, int pageSize, string searchTerm = &quot;&quot;)
+    {
+        var result = await _borrowingRequestService.GetWaitingRequests(pageNumber, pageSize, searchTerm);
+        return Ok(result);
+    }
+    
+    [HttpGet(&quot;{id}&quot;)]
+    [Authorize(Roles = nameof(Role.Librarian))]
+    public async Task&lt;IActionResult&gt; GetBorrowRequestByIdAsync(Guid id)
+    {
+        var result = await _borrowingRequestService.GetRequestByIdAsync(id);
+        return Ok(result);
+    }
+    
+    [HttpGet(&quot;user/{userId}&quot;)]
+    [Authorize(Roles = nameof(Role.Reader))]
+    public async Task&lt;IActionResult&gt; GetUserBorrowedBooksAsync(Guid userId, int pageNumber, int pageSize, string searchTerm = &quot;&quot;)
+    {
+        var result = await _borrowingRequestService.GetUserBorrowedBooks(userId, pageNumber, pageSize, searchTerm);
+        return Ok(result);
+    }
+    
+    [HttpPut(&quot;{requestId}&quot;)]
+    [Authorize(Roles = nameof(Role.Librarian))]
+    public async Task&lt;IActionResult&gt; UpdateBorrowRequestStatusAsync(Guid requestId, RequestStatus status)
+    {
+        var res = await _borrowingRequestService.ManageBorrowingRequest(UserId, Email, requestId, status);
+        return Ok(res);
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[15,28,15,62,1],[15,62,15,97,1],[15,97,15,105,1],[16,29,16,69,1],[16,69,16,94,1],[16,94,16,102,1],[17,5,17,92,1],[18,5,18,6,1],[19,9,19,60,1],[20,5,20,6,1],[25,5,25,6,1],[26,9,26,96,1],[27,9,27,27,1],[28,5,28,6,1],[33,5,33,6,0],[34,9,34,106,0],[35,9,35,27,0],[36,5,36,6,0],[41,5,41,6,1],[42,9,42,77,1],[43,9,43,27,1],[44,5,44,6,1],[49,5,49,6,0],[50,9,50,116,0],[51,9,51,27,0],[52,5,52,6,0],[57,5,57,6,1],[58,9,58,107,1],[59,9,59,24,1],[60,5,60,6,1]]);
+    </script>
+  </body>
+</html>

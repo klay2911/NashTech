@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>F:\NashTech\MidAssignment\src\LibraryManagement.WebAPI\Controllers\AccountController.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using LibraryManagement.Application.DTOs.AuthDTOs;
+using LibraryManagement.Application.Interfaces.Services;
+using Microsoft.AspNetCore.Mvc;
+
+namespace LibraryManagement.WebAPI.Controllers;
+
+[Route(&quot;api/user&quot;)]
+[ApiController]
+public class AccountController : ControllerBase
+{
+    private readonly IUserService _userService;
+
+    public AccountController(IUserService userService)
+    {
+        _userService = userService;
+    }
+    [HttpPost(&quot;Login&quot;)]
+    public async Task&lt;ActionResult&lt;LoginResponse&gt;&gt; LoginAsync(LoginRequest dto)
+    {
+        var result = await _userService.LoginAsync(dto);
+        return Ok(result);
+    }
+    [HttpPost(&quot;register&quot;)]
+    public async Task&lt;ActionResult&lt;LoginResponse&gt;&gt; RegisterAsync(RegisterRequest dto)
+    {
+        var result = await _userService.RegisterAsync(dto);
+        return Ok(result);
+    }
+    
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[13,5,13,55,1],[14,5,14,6,1],[15,9,15,36,1],[16,5,16,6,1],[19,5,19,6,1],[20,9,20,57,1],[21,9,21,27,1],[22,5,22,6,1],[25,5,25,6,1],[26,9,26,60,1],[27,9,27,27,1],[28,5,28,6,1]]);
+    </script>
+  </body>
+</html>

@@ -21,3 +21,5 @@ obj/
 */*/node_modules
 .vs
 wwwroot
+.idea
+

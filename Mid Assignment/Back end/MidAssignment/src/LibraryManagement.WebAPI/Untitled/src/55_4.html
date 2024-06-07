@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>F:\NashTech\MidAssignment\src\LibraryManagement.Infrastructure\Services\BookBorrowingService.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using AutoMapper;
+using LibraryManagement.Application.Common.Models;
+using LibraryManagement.Application.DTOs.BookDTOs;
+using LibraryManagement.Application.DTOs.BorrowingRequestDTOs;
+using LibraryManagement.Application.Interfaces.Repositories;
+using LibraryManagement.Application.Interfaces.Services;
+using LibraryManagement.Domain.Enum;
+using LibraryManagement.Domain.Models;
+
+namespace LibraryManagement.Infrastructure.Services;
+
+public class BookBorrowingService : IBookBorrowingRequestService
+{
+    private readonly IBookBorrowingRequestRepository _requestRepository;
+    private readonly IBookRepository _bookRepository;
+    private readonly IBookBorrowingRequestDetailsRepository _detailsRepository;
+    private readonly IMapper _mapper;
+
+    public BookBorrowingService(IBookBorrowingRequestRepository requestRepository, IBookRepository bookRepository,IBookBorrowingRequestDetailsRepository detailsRepository, IMapper mapper)
+    {
+        _requestRepository = requestRepository;
+        _bookRepository = bookRepository;
+        _detailsRepository = detailsRepository;
+        _mapper = mapper;
+    }
+
+    public async Task&lt;PaginatedList&lt;BorrowingRequestResponse&gt;&gt; GetWaitingRequests(int pageNumber, int pageSize, string searchTerm = &quot;&quot;)
+    {
+        var requests = await _requestRepository.GetAllWithUserAsync();
+        
+        if (!string.IsNullOrEmpty(searchTerm))
+        {
+            requests = requests.Where(r =&gt; r.User.FirstName.Contains(searchTerm) || r.User.LastName.Contains(searchTerm) || r.Status.ToString().Contains(searchTerm));
+        }
+
+        var paginatedRequests =  PaginatedList&lt;BookBorrowingRequest&gt;.Create(requests, pageNumber, pageSize);
+
+        var mappedRequests = paginatedRequests.Items.Select(r =&gt; _mapper.Map&lt;BorrowingRequestResponse&gt;(r)).ToList();
+
+        return new PaginatedList&lt;BorrowingRequestResponse&gt;(mappedRequests, paginatedRequests.TotalCount, pageNumber, pageSize);
+    }
+
+    public async Task&lt;BorrowingRequestResponse&gt; GetRequestByIdAsync(Guid requestId)
+    {
+        var request = await _requestRepository.GetByIdAsync(requestId);
+
+        if (request == null)
+        {
+            return null;
+        }
+
+        var response = _mapper.Map&lt;BorrowingRequestResponse&gt;(request);
+        
+        response.BookIds = request.BookBorrowingRequestDetails.Select(detail =&gt; detail.BookId).ToList();
+        return response;
+    }
+    
+    public async Task&lt;PaginatedList&lt;BookResponse&gt;&gt; GetUserBorrowedBooks(Guid userId, int pageNumber, int pageSize, string searchTerm = &quot;&quot;)
+    {
+        var borrowingRequests = await _requestRepository.GetAllRequestsByUserAsync(userId);
+
+        var borrowedBooks = new List&lt;BookResponse&gt;();
+
+        foreach (var request in borrowingRequests)
+        {
+            foreach (var detail in request.BookBorrowingRequestDetails)
+            {
+                var book = await _bookRepository.GetByIdAsync(detail.BookId);
+                var bookResponse = _mapper.Map&lt;BookResponse&gt;(book);
+                borrowedBooks.Add(bookResponse);
+            }
+        }
+
+        if (!string.IsNullOrEmpty(searchTerm))
+        {
+            borrowedBooks = borrowedBooks.Where(b =&gt; b.Title.Contains(searchTerm)).ToList();
+        }
+
+        var totalCount = borrowedBooks.Count;
+
+        var pagedBooks = borrowedBooks.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+
+        return new PaginatedList&lt;BookResponse&gt;(pagedBooks, totalCount, pageNumber, pageSize);
+    }
+    
+    public async Task&lt;string&gt; RequestBorrowAsync(Guid readerId, string email, List&lt;Guid&gt; bookIds)
+    {
+        if (bookIds == null || !bookIds.Any())
+        {
+            return &quot;No books selected for borrowing.&quot;;
+        }
+        if (bookIds.Count &gt; 5)
+        {
+            return &quot;You can borrow maximum 5 books in 1 request&quot;;
+        }
+        var month = DateTime.Now.Month;
+
+        var userRequestsThisMonth = await _requestRepository.GetRequestsByUserAndMonthAsync(
+            readerId,
+            month
+        );
+
+        if (userRequestsThisMonth.Count &gt;= 3)
+        {
+            return &quot;Limit of 3 borrowing requests per month exceeded.&quot;;
+        }
+        
+        foreach (var bookId in bookIds)
+        {
+            var isBookCurrentlyRequested = await _detailsRepository.IsBookCurrentlyRequested(bookId, readerId);
+            if (isBookCurrentlyRequested != null)
+            {
+                var book = await _bookRepository.GetByIdAsync(bookId);
+                if (book != null)
+                {
+                    return &quot;You have already requested for &quot; + book.Title + &quot; book. Please try again later.&quot;;
+                }
+            }
+
+            return null;
+        }
+
+        var newRequest = new BookBorrowingRequest
+        {
+            RequestorId = readerId,
+            DateRequested = DateTime.Now,
+            Status = RequestStatus.Waiting,
+            CreatedBy = email,
+            CreatedAt = DateTime.Now,
+            BookBorrowingRequestDetails = bookIds
+                .Select(bookId =&gt; new BookBorrowingRequestDetails { BookId = bookId, })
+                .ToList()
+        };
+        
+        await _requestRepository.AddAsync(newRequest);
+        return $&quot;Request for {bookIds.Count} books has been submitted successfully.&quot;;
+    }
+
+    public async Task&lt;bool&gt; ManageBorrowingRequest(Guid librarianId, string email, Guid requestId, RequestStatus status)
+    {
+        var request = await _requestRepository.GetByIdAsync(requestId);
+        if (request == null)
+        {
+            return false;
+        }
+
+        request.Status = status;
+        request.ApproverId = librarianId;
+        request.ModifyBy = email;
+        request.ModifyAt = DateTime.Now;
+        
+        if (status == RequestStatus.Approved)
+        {
+            request.ExpiryDate = DateTime.Now.AddDays(14);
+        }
+
+        await _requestRepository.UpdateAsync(request);
+        return true;
+    }
+
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[19,5,19,188,0],[20,5,20,6,0],[21,9,21,48,0],[22,9,22,42,0],[23,9,23,48,0],[24,9,24,26,0],[25,5,25,6,0],[28,5,28,6,0],[29,9,29,71,0],[31,9,31,47,0],[32,9,32,10,0],[33,13,33,44,0],[33,44,33,165,0],[33,165,33,167,0],[34,9,34,10,0],[36,9,36,109,0],[38,9,38,66,0],[38,66,38,106,0],[38,106,38,117,0],[40,9,40,128,0],[41,5,41,6,0],[44,5,44,6,0],[45,9,45,72,0],[47,9,47,29,0],[48,9,48,10,0],[49,13,49,25,0],[52,9,52,71,0],[54,9,54,81,0],[54,81,54,94,0],[54,94,54,105,0],[55,9,55,25,0],[56,5,56,6,0],[59,5,59,6,0],[60,9,60,92,0],[62,9,62,54,0],[64,9,64,16,0],[64,18,64,29,0],[64,30,64,32,0],[64,33,64,50,0],[65,9,65,10,0],[66,13,66,20,0],[66,22,66,32,0],[66,33,66,35,0],[66,36,66,71,0],[67,13,67,14,0],[68,17,68,78,0],[69,17,69,68,0],[70,17,70,49,0],[71,13,71,14,0],[72,9,72,10,0],[74,9,74,47,0],[75,9,75,10,0],[76,13,76,54,0],[76,54,76,82,0],[76,82,76,93,0],[77,9,77,10,0],[79,9,79,46,0],[81,9,81,98,0],[83,9,83,94,0],[84,5,84,6,0],[87,5,87,6,0],[88,9,88,47,0],[89,9,89,10,0],[90,13,90,55,0],[92,9,92,31,0],[93,9,93,10,0],[94,13,94,66,0],[96,9,96,40,0],[98,9,101,11,0],[103,9,103,46,0],[104,9,104,10,0],[105,13,105,72,0],[108,9,108,16,0],[108,18,108,28,0],[108,29,108,31,0],[108,32,108,39,0],[109,9,109,10,0],[110,13,110,112,0],[111,13,111,50,0],[112,13,112,14,0],[113,17,113,71,0],[114,17,114,34,0],[115,17,115,18,0],[116,21,116,110,0],[118,13,118,14,0],[120,13,120,25,0],[123,9,131,35,0],[131,35,131,87,0],[131,87,133,11,0],[135,9,135,55,0],[136,9,136,86,0],[137,5,137,6,0],[140,5,140,6,0],[141,9,141,72,0],[142,9,142,29,0],[143,9,143,10,0],[144,13,144,26,0],[147,9,147,33,0],[148,9,148,42,0],[149,9,149,34,0],[150,9,150,41,0],[152,9,152,46,0],[153,9,153,10,0],[154,13,154,59,0],[155,9,155,10,0],[157,9,157,55,0],[158,9,158,21,0],[159,5,159,6,0]]);
+    </script>
+  </body>
+</html>

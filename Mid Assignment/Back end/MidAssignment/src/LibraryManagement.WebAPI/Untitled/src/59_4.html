@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>F:\NashTech\MidAssignment\src\LibraryManagement.Infrastructure\Services\UserService.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using LibraryManagement.Application.DTOs.AuthDTOs;
+using LibraryManagement.Application.Interfaces.Helpers;
+using LibraryManagement.Application.Interfaces.Repositories;
+using LibraryManagement.Application.Interfaces.Services;
+using LibraryManagement.Domain.Models;
+
+namespace LibraryManagement.Infrastructure.Services;
+
+public class UserService : IUserService
+{
+    private readonly IUserRepository _userRepository;
+    private readonly ITokenService _tokenService;
+    private readonly IAuthHelper _authHelpers;
+
+    public UserService(IUserRepository userRepository, ITokenService tokenService, IAuthHelper authHelper)
+    {
+        _userRepository = userRepository;
+        _tokenService = tokenService;
+        _authHelpers = authHelper;
+    }
+    
+    public async Task&lt;User&gt; GetByIdAsync(Guid id)
+    {
+        return await _userRepository.GetByIdAsync(id);
+    }
+    
+    public async Task&lt;LoginResponse&gt; LoginAsync(LoginRequest dto)
+    {
+        var getUser = await _userRepository.FindUserByEmailAsync(dto.Email);
+        if (getUser == null)
+            return new LoginResponse(false, &quot;User not found&quot;);
+
+        var checkPassword = _authHelpers.VerifyPassword(dto.Password, getUser.Password);
+        if (checkPassword)
+        {
+            return new LoginResponse(true, &quot;Login success&quot;, _tokenService.GenerateJWT(getUser));
+        }
+        return new LoginResponse(false, &quot;Invalid credentials&quot;);
+    }
+
+    public async Task&lt;RegisterResponse&gt; RegisterAsync(RegisterRequest dto)
+    {
+        var getUser = await _userRepository.FindUserByEmailAsync(dto.Email);
+        if (getUser != null)
+            return new RegisterResponse(false, &quot;User already exist&quot;);
+
+        _userRepository.AddAsync(new User
+        {
+            FirstName = dto.FirstName,
+            Email = dto.Email,
+            Password = _authHelpers.HashPassword(dto.Password),
+            Role = Domain.Enum.Role.Reader,
+            CreatedAt = DateTime.UtcNow,
+            ModifyAt = DateTime.UtcNow,
+            CreatedBy = &quot;VuLa&quot;,
+            ModifyBy = &quot;VuLa&quot;,
+        });
+        await _userRepository.SaveAsync();
+        return new RegisterResponse(true, &quot;Register success&quot;);
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[15,5,15,107,1],[16,5,16,6,1],[17,9,17,42,1],[18,9,18,38,1],[19,9,19,35,1],[20,5,20,6,1],[23,5,23,6,1],[24,9,24,55,1],[25,5,25,6,1],[28,5,28,6,0],[29,9,29,77,0],[30,9,30,29,0],[31,13,31,63,0],[33,9,33,89,0],[34,9,34,27,0],[35,9,35,10,0],[36,13,36,97,0],[38,9,38,64,0],[39,5,39,6,0],[42,5,42,6,1],[43,9,43,77,1],[44,9,44,29,1],[45,13,45,70,0],[47,9,57,12,1],[58,9,58,43,1],[59,9,59,63,1],[60,5,60,6,1]]);
+    </script>
+  </body>
+</html>

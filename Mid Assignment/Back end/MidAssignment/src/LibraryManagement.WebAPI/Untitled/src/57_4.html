@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>F:\NashTech\MidAssignment\src\LibraryManagement.Infrastructure\Services\CategoryService.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using AutoMapper;
+using LibraryManagement.Application.Common.Models;
+using LibraryManagement.Application.DTOs.CategoryDTOs;
+using LibraryManagement.Application.Interfaces.Repositories;
+using LibraryManagement.Application.Interfaces.Services;
+using LibraryManagement.Domain.Models;
+
+namespace LibraryManagement.Infrastructure.Services;
+
+public class CategoryService : ICategoryService
+{
+    private readonly ICategoryRepository _categoryRepository;
+    private readonly IMapper _mapper;
+    public CategoryService(ICategoryRepository categoryRepository, IMapper mapper)
+    {
+        _categoryRepository = categoryRepository;
+        _mapper = mapper;
+    }
+    public async Task&lt;PaginatedList&lt;CategoryResponse&gt;&gt; GetAllCategoriesAsync(int pageNumber, int pageSize, string searchTerm = &quot;&quot;)
+    {
+        var categories = await _categoryRepository.GetAllAsync();
+
+        if (!string.IsNullOrEmpty(searchTerm))
+        {
+            categories = categories.Where(c =&gt; c.Name.Contains(searchTerm));
+        }
+
+        var categoryResponses = categories.Select(category =&gt; _mapper.Map&lt;CategoryResponse&gt;(category));
+
+        var pagedCategoryResponses = PaginatedList&lt;CategoryResponse&gt;.Create(categoryResponses, pageNumber, pageSize);
+
+        return await Task.FromResult(pagedCategoryResponses);
+    }
+
+    public async Task&lt;CategoryResponse&gt; GetCategoryByIdAsync(Guid id)
+    {
+        var category = await _categoryRepository.GetByIdAsync(id);
+        if (category == null)
+        {
+            throw new Exception(&quot;Category not found&quot;);
+        }
+        return _mapper.Map&lt;CategoryResponse&gt;(category);
+    }
+
+    public async Task&lt;CategoryResponse&gt; CreateCategoryAsync(CategoryRequest categoryRequest, string name)
+    {
+        var category =  _mapper.Map&lt;Category&gt;(categoryRequest);
+        if(category is BaseModel baseModel)
+        {
+            baseModel.CreatedAt = DateTime.Now;
+            baseModel.CreatedBy = name;
+        }
+        await  _categoryRepository.AddAsync(category);
+
+        return _mapper.Map&lt;CategoryResponse&gt;(category);
+    }
+
+    public async Task&lt;CategoryResponse&gt; UpdateCategoryAsync(Guid id, CategoryRequest categoryRequest, string name)
+    {
+        var category = await _categoryRepository.GetByIdAsync(id);
+        switch (category)
+        {
+            case BaseModel baseModel:
+                baseModel.ModifyAt = DateTime.Now;
+                baseModel.ModifyBy = name;
+                break;
+            case null:
+                throw new Exception(&quot;Book not found&quot;);
+        }
+
+        _mapper.Map(categoryRequest, category);
+        await  _categoryRepository.UpdateAsync(category);
+
+        return _mapper.Map&lt;CategoryResponse&gt;(category);
+    }
+
+    public async Task DeleteCategoryAsync(Guid id, string name)
+    {
+        var category = await _categoryRepository.GetByIdAsync(id);
+        if (category == null)
+        {
+            throw new Exception(&quot;Category not found&quot;);
+        }
+
+        category.ModifyAt = DateTime.Now;
+        category.ModifyBy = name;
+        category.IsDeleted = true;
+        await _categoryRepository.UpdateAsync(category);
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[14,5,14,83,0],[15,5,15,6,0],[16,9,16,50,0],[17,9,17,26,0],[18,5,18,6,0],[20,5,20,6,0],[21,9,21,66,0],[23,9,23,47,0],[24,9,24,10,0],[25,13,25,48,0],[25,48,25,75,0],[25,75,25,77,0],[26,9,26,10,0],[28,9,28,63,0],[28,63,28,102,0],[28,102,28,104,0],[30,9,30,118,0],[32,9,32,62,0],[33,5,33,6,0],[36,5,36,6,0],[37,9,37,67,0],[38,9,38,30,0],[39,9,39,10,0],[40,13,40,55,0],[42,9,42,56,0],[43,5,43,6,0],[46,5,46,6,0],[47,9,47,64,0],[48,9,48,44,0],[49,9,49,10,0],[50,13,50,48,0],[51,13,51,40,0],[52,9,52,10,0],[53,9,53,55,0],[55,9,55,56,0],[56,5,56,6,0],[59,5,59,6,0],[60,9,60,67,0],[61,9,61,26,0],[64,17,64,51,0],[65,17,65,43,0],[66,17,66,23,0],[68,17,68,55,0],[71,9,71,48,0],[72,9,72,58,0],[74,9,74,56,0],[75,5,75,6,0],[78,5,78,6,0],[79,9,79,67,0],[80,9,80,30,0],[81,9,81,10,0],[82,13,82,55,0],[85,9,85,42,0],[86,9,86,34,0],[87,9,87,35,0],[88,9,88,57,0],[89,5,89,6,0]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SolutionRoot CoveredStatements="296" TotalStatements="578" CoveragePercent="51" ReportType="Xml" DotCoverVersion="2023.1.2">
+  <Project Name="LibraryManagement.Infrastructure" CoveredStatements="16" TotalStatements="239" CoveragePercent="7">
+    <Namespace Name="LibraryManagement.Infrastructure.Services" CoveredStatements="16" TotalStatements="239" CoveragePercent="7">
+      <Type Name="BookBorrowingService" CoveredStatements="0" TotalStatements="103" CoveragePercent="0">
+        <Constructor Name="BookBorrowingService(IBookBorrowingRequestRepository,IBookRepository,IBookBorrowingRequestDetailsRepository,IMapper)" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="GetRequestByIdAsync(Guid):Task&lt;BorrowingRequestResponse&gt;" CoveredStatements="0" TotalStatements="10" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="10" CoveragePercent="0">
+            <OwnCoverage CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+            <AnonymousMethod Name="(BookBorrowingRequestDetails):Guid" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </InternalCompiledMethod>
+        </Method>
+        <Method Name="GetUserBorrowedBooks(Guid,int,int,string):Task&lt;PaginatedList&lt;BookResponse&gt;&gt;" CoveredStatements="0" TotalStatements="27" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="27" CoveragePercent="0">
+            <OwnCoverage CoveredStatements="0" TotalStatements="26" CoveragePercent="0" />
+            <AnonymousMethod Name="(BookResponse):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </InternalCompiledMethod>
+        </Method>
+        <Method Name="GetWaitingRequests(int,int,string):Task&lt;PaginatedList&lt;BorrowingRequestResponse&gt;&gt;" CoveredStatements="0" TotalStatements="12" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="12" CoveragePercent="0">
+            <OwnCoverage CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+            <AnonymousMethod Name="(BookBorrowingRequest):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <AnonymousMethod Name="(BookBorrowingRequest):BorrowingRequestResponse" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </InternalCompiledMethod>
+        </Method>
+        <Method Name="ManageBorrowingRequest(Guid,string,Guid,RequestStatus):Task&lt;bool&gt;" CoveredStatements="0" TotalStatements="16" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="16" CoveragePercent="0" />
+        </Method>
+        <Method Name="RequestBorrowAsync(Guid,string,List&lt;Guid&gt;):Task&lt;string&gt;" CoveredStatements="0" TotalStatements="31" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="31" CoveragePercent="0">
+            <OwnCoverage CoveredStatements="0" TotalStatements="30" CoveragePercent="0" />
+            <AnonymousMethod Name="(Guid):BookBorrowingRequestDetails" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </InternalCompiledMethod>
+        </Method>
+      </Type>
+      <Type Name="BookService" CoveredStatements="0" TotalStatements="54" CoveragePercent="0">
+        <Constructor Name="BookService(IBookRepository,IMapper)" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="CreateBookAsync(BookRequest,string):Task&lt;BookResponse&gt;" CoveredStatements="0" TotalStatements="10" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+        </Method>
+        <Method Name="DeleteBookAsync(Guid,string):Task" CoveredStatements="0" TotalStatements="10" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetAllBooksAsync(int,int,string):Task&lt;PaginatedList&lt;BookResponse&gt;&gt;" CoveredStatements="0" TotalStatements="11" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="11" CoveragePercent="0">
+            <OwnCoverage CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+            <AnonymousMethod Name="(Book):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </InternalCompiledMethod>
+        </Method>
+        <Method Name="GetBookByIdAsync(Guid):Task&lt;BookResponse&gt;" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        </Method>
+        <Method Name="UpdateBookAsync(Guid,BookRequest,string):Task&lt;BookResponse&gt;" CoveredStatements="0" TotalStatements="11" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+        </Method>
+      </Type>
+      <Type Name="CategoryService" CoveredStatements="0" TotalStatements="55" CoveragePercent="0">
+        <Constructor Name="CategoryService(ICategoryRepository,IMapper)" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="CreateCategoryAsync(CategoryRequest,string):Task&lt;CategoryResponse&gt;" CoveredStatements="0" TotalStatements="10" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+        </Method>
+        <Method Name="DeleteCategoryAsync(Guid,string):Task" CoveredStatements="0" TotalStatements="10" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetAllCategoriesAsync(int,int,string):Task&lt;PaginatedList&lt;CategoryResponse&gt;&gt;" CoveredStatements="0" TotalStatements="12" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="12" CoveragePercent="0">
+            <OwnCoverage CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+            <AnonymousMethod Name="(Category):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <AnonymousMethod Name="(Category):CategoryResponse" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </InternalCompiledMethod>
+        </Method>
+        <Method Name="GetCategoryByIdAsync(Guid):Task&lt;CategoryResponse&gt;" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        </Method>
+        <Method Name="UpdateCategoryAsync(Guid,CategoryRequest,string):Task&lt;CategoryResponse&gt;" CoveredStatements="0" TotalStatements="11" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+        </Method>
+      </Type>
+      <Type Name="UserService" CoveredStatements="16" TotalStatements="27" CoveragePercent="59">
+        <Constructor Name="UserService(IUserRepository,ITokenService,IAuthHelper)" CoveredStatements="6" TotalStatements="6" CoveragePercent="100" />
+        <Method Name="GetByIdAsync(Guid):Task&lt;User&gt;" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" />
+        </Method>
+        <Method Name="LoginAsync(LoginRequest):Task&lt;LoginResponse&gt;" CoveredStatements="0" TotalStatements="10" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+        </Method>
+        <Method Name="RegisterAsync(RegisterRequest):Task&lt;RegisterResponse&gt;" CoveredStatements="7" TotalStatements="8" CoveragePercent="88">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="7" TotalStatements="8" CoveragePercent="88" />
+        </Method>
+      </Type>
+    </Namespace>
+  </Project>
+  <Project Name="LibraryManagement.WebAPI" CoveredStatements="118" TotalStatements="177" CoveragePercent="67">
+    <Namespace Name="LibraryManagement.WebAPI.Controllers" CoveredStatements="118" TotalStatements="177" CoveragePercent="67">
+      <Type Name="AccountController" CoveredStatements="12" TotalStatements="12" CoveragePercent="100">
+        <Constructor Name="AccountController(IUserService)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+        <Method Name="LoginAsync(LoginRequest):Task&lt;ActionResult&lt;LoginResponse&gt;&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+        </Method>
+        <Method Name="RegisterAsync(RegisterRequest):Task&lt;ActionResult&lt;LoginResponse&gt;&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+        </Method>
+      </Type>
+      <Type Name="BookController" CoveredStatements="60" TotalStatements="111" CoveragePercent="54">
+        <Constructor Name="BookController(IBookService)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+        <Property Name="Email:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+          <PropertyGetter CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <OwnCoverage CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <AnonymousMethod Name="(Claim):bool" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </PropertyGetter>
+        </Property>
+        <Method Name="CreateBookAsync(BookRequest,IFormFile,IFormFile):Task&lt;IActionResult&gt;" CoveredStatements="20" TotalStatements="26" CoveragePercent="77">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="20" TotalStatements="26" CoveragePercent="77" />
+        </Method>
+        <Method Name="DeleteBookAsync(Guid):Task&lt;IActionResult&gt;" CoveredStatements="10" TotalStatements="13" CoveragePercent="77">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="10" TotalStatements="13" CoveragePercent="77" />
+        </Method>
+        <Method Name="GetAllBooksAsync(int,int,string):Task&lt;IActionResult&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+        </Method>
+        <Method Name="GetBookById(Guid):Task&lt;IActionResult&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+        </Method>
+        <Method Name="UpdateBookAsync(Guid,BookRequest,IFormFile,IFormFile):Task&lt;IActionResult&gt;" CoveredStatements="16" TotalStatements="58" CoveragePercent="28">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="16" TotalStatements="58" CoveragePercent="28" />
+        </Method>
+      </Type>
+      <Type Name="BorrowingRequestController" CoveredStatements="20" TotalStatements="28" CoveragePercent="71">
+        <Constructor Name="BorrowingRequestController(IBookBorrowingRequestService)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+        <Property Name="Email:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+          <PropertyGetter CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <OwnCoverage CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <AnonymousMethod Name="(Claim):bool" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </PropertyGetter>
+        </Property>
+        <Property Name="UserId:Guid" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+          <PropertyGetter CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <OwnCoverage CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <AnonymousMethod Name="(Claim):bool" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </PropertyGetter>
+        </Property>
+        <Method Name="CreateBorrowRequestAsync(List&lt;Guid&gt;):Task&lt;IActionResult&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+        </Method>
+        <Method Name="GetBorrowRequestByIdAsync(Guid):Task&lt;IActionResult&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+        </Method>
+        <Method Name="GetBorrowRequestsAsync(int,int,string):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetUserBorrowedBooksAsync(Guid,int,int,string):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        </Method>
+        <Method Name="UpdateBorrowRequestStatusAsync(Guid,RequestStatus):Task&lt;IActionResult&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+        </Method>
+      </Type>
+      <Type Name="CategoryController" CoveredStatements="26" TotalStatements="26" CoveragePercent="100">
+        <Constructor Name="CategoryController(ICategoryService)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+        <Property Name="Email:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+          <PropertyGetter CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <OwnCoverage CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <AnonymousMethod Name="(Claim):bool" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </PropertyGetter>
+        </Property>
+        <Method Name="CreateBookAsync(CategoryRequest):Task&lt;IActionResult&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+        </Method>
+        <Method Name="DeleteBookAsync(Guid):Task&lt;IActionResult&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+        </Method>
+        <Method Name="GetAllCategoryAsync(int,int,string):Task&lt;IActionResult&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+        </Method>
+        <Method Name="GetBookById(Guid):Task&lt;IActionResult&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+        </Method>
+        <Method Name="UpdateBookAsync(Guid,CategoryRequest):Task&lt;IActionResult&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+        </Method>
+      </Type>
+    </Namespace>
+  </Project>
+  <Project Name="LibraryManagement.WebAPI Tests" CoveredStatements="162" TotalStatements="162" CoveragePercent="100">
+    <Namespace Name="LibraryManagement.WebAPI_Tests.Controllers" CoveredStatements="162" TotalStatements="162" CoveragePercent="100">
+      <Type Name="AccountControllerTests" CoveredStatements="16" TotalStatements="16" CoveragePercent="100">
+        <Method Name="LoginAsync_ValidRequest_ReturnsOkResult():Task" CoveredStatements="6" TotalStatements="6" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="6" TotalStatements="6" CoveragePercent="100" />
+        </Method>
+        <Method Name="RegisterAsync_ValidRequest_ReturnsOkResult():Task" CoveredStatements="6" TotalStatements="6" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="6" TotalStatements="6" CoveragePercent="100" />
+        </Method>
+        <Method Name="SetUp():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+      </Type>
+      <Type Name="BookControllerTests" CoveredStatements="75" TotalStatements="75" CoveragePercent="100">
+        <Method Name="CreateBookAsync_ValidRequest_ReturnsCreatedAtActionResult():Task" CoveredStatements="14" TotalStatements="14" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="14" TotalStatements="14" CoveragePercent="100" />
+        </Method>
+        <Method Name="DeleteBookAsync_BookExists_ReturnsNoContentResult():Task" CoveredStatements="11" TotalStatements="11" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="11" TotalStatements="11" CoveragePercent="100" />
+        </Method>
+        <Method Name="GetAllBooksAsync_ReturnsOkResult():Task" CoveredStatements="9" TotalStatements="9" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="9" TotalStatements="9" CoveragePercent="100" />
+        </Method>
+        <Method Name="GetBookByIdAsync_BookExists_ReturnsOkResult():Task" CoveredStatements="6" TotalStatements="6" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="6" TotalStatements="6" CoveragePercent="100" />
+        </Method>
+        <Method Name="Setup():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+        <Method Name="UpdateBookAsync_BookExists_ReturnsOkResult():Task" CoveredStatements="16" TotalStatements="16" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="16" TotalStatements="16" CoveragePercent="100" />
+        </Method>
+        <Method Name="UpdateBookAsync_BookNotExists_ReturnsNotFound():Task" CoveredStatements="15" TotalStatements="15" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="15" TotalStatements="15" CoveragePercent="100" />
+        </Method>
+      </Type>
+      <Type Name="BorrowingRequestControllerTests" CoveredStatements="28" TotalStatements="28" CoveragePercent="100">
+        <Method Name="CreateBorrowRequestAsync_ValidRequest_ReturnsOkResult():Task" CoveredStatements="8" TotalStatements="8" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="8" TotalStatements="8" CoveragePercent="100" />
+        </Method>
+        <Method Name="GetBorrowRequestByIdAsync_ValidRequest_ReturnsOkResult():Task" CoveredStatements="6" TotalStatements="6" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="6" TotalStatements="6" CoveragePercent="100" />
+        </Method>
+        <Method Name="SetUp():void" CoveredStatements="6" TotalStatements="6" CoveragePercent="100" />
+        <Method Name="UpdateBorrowRequestStatusAsync_ValidRequest_ReturnsOkResult():Task" CoveredStatements="8" TotalStatements="8" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="8" TotalStatements="8" CoveragePercent="100" />
+        </Method>
+      </Type>
+      <Type Name="CategoryControllerTests" CoveredStatements="43" TotalStatements="43" CoveragePercent="100">
+        <Method Name="CreateBookAsync_ValidRequest_ReturnsCreatedAtActionResult():Task" CoveredStatements="10" TotalStatements="10" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="10" TotalStatements="10" CoveragePercent="100" />
+        </Method>
+        <Method Name="DeleteBookAsync_CategoryExists_ReturnsNoContentResult():Task" CoveredStatements="8" TotalStatements="8" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="8" TotalStatements="8" CoveragePercent="100" />
+        </Method>
+        <Method Name="GetAllCategoryAsync_CategoriesExist_ReturnsOkResult():Task" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+        </Method>
+        <Method Name="GetBookById_CategoryExists_ReturnsOkResult():Task" CoveredStatements="6" TotalStatements="6" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="6" TotalStatements="6" CoveragePercent="100" />
+        </Method>
+        <Method Name="Setup():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+        <Method Name="UpdateBookAsync_CategoryExists_ReturnsOkResult():Task" CoveredStatements="11" TotalStatements="11" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="11" TotalStatements="11" CoveragePercent="100" />
+        </Method>
+      </Type>
+    </Namespace>
+  </Project>
+</SolutionRoot>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>F:\NashTech\MidAssignment\src\LibraryManagement.WebAPI\Controllers\CategoryController.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Security.Claims;
+using LibraryManagement.Application.DTOs.CategoryDTOs;
+using LibraryManagement.Application.Interfaces.Services;
+using Microsoft.AspNetCore.Mvc;
+
+namespace LibraryManagement.WebAPI.Controllers;
+
+[Route(&quot;api/category&quot;)]
+[ApiController]
+public class CategoryController : ControllerBase
+{
+    private readonly ICategoryService _categoryService;
+    private string Email =&gt; Convert.ToString(User.Claims.First(c =&gt; c.Type == ClaimTypes.Name).Value);
+
+    public CategoryController(ICategoryService categoryService)
+    {
+        _categoryService = categoryService;
+    }
+    [HttpGet]
+    public async Task&lt;IActionResult&gt; GetAllCategoryAsync(int pageNumber, int pageSize, string searchTerm = &quot;&quot;)
+    {
+        var books = await _categoryService.GetAllCategoriesAsync(pageNumber, pageSize, searchTerm);
+        return Ok(books);
+    }
+    
+
+    [HttpGet(&quot;{id}&quot;)]
+    public async Task&lt;IActionResult&gt; GetBookById(Guid id)
+    {
+        var book = await _categoryService.GetCategoryByIdAsync(id);
+        return Ok(book);
+    }
+    
+    [HttpPost]
+    public async Task&lt;IActionResult&gt; CreateBookAsync([FromBody] CategoryRequest categoryRequest)
+    {
+        var category = await _categoryService.CreateCategoryAsync(categoryRequest, Email);
+        return CreatedAtAction(nameof(GetBookById), new { id = category.CategoryId }, category);
+    }
+
+    [HttpPut(&quot;{id}&quot;)]
+    public async Task&lt;IActionResult&gt; UpdateBookAsync(Guid id, [FromBody] CategoryRequest categoryRequest)
+    {
+        var bookResponse = await _categoryService.UpdateCategoryAsync(id, categoryRequest, Email);
+        return Ok(bookResponse);
+    }
+
+    [HttpDelete(&quot;{id}&quot;)]
+    public async Task&lt;IActionResult&gt; DeleteBookAsync(Guid id)
+    {
+        await _categoryService.DeleteCategoryAsync(id, Email);
+        return NoContent();
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[13,29,13,69,1],[13,69,13,94,1],[13,94,13,102,1],[15,5,15,64,1],[16,5,16,6,1],[17,9,17,44,1],[18,5,18,6,1],[21,5,21,6,1],[22,9,22,100,1],[23,9,23,26,1],[24,5,24,6,1],[29,5,29,6,1],[30,9,30,68,1],[31,9,31,25,1],[32,5,32,6,1],[36,5,36,6,1],[37,9,37,91,1],[38,9,38,97,1],[39,5,39,6,1],[43,5,43,6,1],[44,9,44,99,1],[45,9,45,33,1],[46,5,46,6,1],[50,5,50,6,1],[51,9,51,63,1],[52,9,52,28,1],[53,5,53,6,1]]);
+    </script>
+  </body>
+</html>

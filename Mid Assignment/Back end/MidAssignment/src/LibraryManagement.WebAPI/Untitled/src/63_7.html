@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>F:\NashTech\MidAssignment\tests\LibraryManagement.WebAPI Tests\Controllers\AccountControllerTests.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using LibraryManagement.Application.DTOs.AuthDTOs;
+using LibraryManagement.Application.Interfaces.Services;
+using LibraryManagement.WebAPI.Controllers;
+using Microsoft.AspNetCore.Mvc;
+using Moq;
+
+namespace LibraryManagement.WebAPI_Tests.Controllers;
+
+[TestFixture]
+public class AccountControllerTests
+{
+    private Mock&lt;IUserService&gt; _mockUserService;
+    private AccountController _controller;
+
+    [SetUp]
+    public void SetUp()
+    {
+        _mockUserService = new Mock&lt;IUserService&gt;();
+        _controller = new AccountController(_mockUserService.Object);
+    }
+
+    [Test]
+    public async Task LoginAsync_ValidRequest_ReturnsOkResult()
+    {
+        // Arrange
+        var loginRequest = new LoginRequest
+        {
+            Email = &quot;test@example.com&quot;,
+            Password = &quot;Test@123&quot;
+        };
+
+        _mockUserService
+            .Setup(service =&gt; service.LoginAsync(It.IsAny&lt;LoginRequest&gt;()))
+            .ReturnsAsync(new LoginResponse(true,&quot;loginSuccess&quot;, &quot;token&quot;));
+
+        // Act
+        var result = await _controller.LoginAsync(loginRequest);
+
+        // Assert
+        Assert.IsInstanceOf&lt;OkObjectResult&gt;(result.Result);
+    }
+
+    [Test]
+    public async Task RegisterAsync_ValidRequest_ReturnsOkResult()
+    {
+        // Arrange
+        var registerRequest = new RegisterRequest
+        {
+            Email = &quot;test@example.com&quot;,
+            Password = &quot;Test@123&quot;,
+            ConfirmPassword = &quot;Test@123&quot;,
+            FirstName = &quot;Test&quot;,
+            LastName = &quot;User&quot;
+        };
+
+        _mockUserService
+            .Setup(service =&gt; service.RegisterAsync(It.IsAny&lt;RegisterRequest&gt;()))
+            .ReturnsAsync(new RegisterResponse(true, &quot;registerSuccess&quot;));
+
+        // Act
+        var result = await _controller.RegisterAsync(registerRequest);
+
+        // Assert
+        Assert.IsInstanceOf&lt;OkObjectResult&gt;(result.Result);
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[17,5,17,6,1],[18,9,18,53,1],[19,9,19,70,1],[20,5,20,6,1],[24,5,24,6,1],[26,9,30,11,1],[32,9,34,76,1],[37,9,37,65,1],[40,9,40,60,1],[41,5,41,6,1],[45,5,45,6,1],[47,9,54,11,1],[56,9,58,74,1],[61,9,61,71,1],[64,9,64,60,1],[65,5,65,6,1]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>F:\NashTech\MidAssignment\tests\LibraryManagement.WebAPI Tests\Controllers\BookControllerTests.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Security.Claims;
+using LibraryManagement.Application.Common.Models;
+using LibraryManagement.Application.DTOs.BookDTOs;
+using LibraryManagement.Application.Interfaces.Services;
+using LibraryManagement.WebAPI.Controllers;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Moq;
+
+namespace LibraryManagement.WebAPI_Tests.Controllers;
+
+[TestFixture]
+public class BookControllerTests
+{
+    private Mock&lt;IBookService&gt; _mockBookService;
+    private BookController _controller;
+
+    [SetUp]
+    public void Setup()
+    {
+        _mockBookService = new Mock&lt;IBookService&gt;();
+        _controller = new BookController(_mockBookService.Object);
+    }
+
+    [Test]
+    public async Task GetAllBooksAsync_ReturnsOkResult()
+    {
+        // Arrange
+        var pageNumber = 1;
+        var pageSize = 10;
+        var searchTerm = &quot;test&quot;;
+        var bookList = new List&lt;BookResponse&gt;(); // Create a list of BookResponse
+        _mockBookService.Setup(service =&gt; service.GetAllBooksAsync(pageNumber, pageSize, searchTerm))
+            .ReturnsAsync(new PaginatedList&lt;BookResponse&gt;(bookList, bookList.Count, pageNumber, pageSize)); 
+
+        // Act
+        var result = await _controller.GetAllBooksAsync(pageNumber, pageSize, searchTerm);
+
+        // Assert
+        Assert.IsInstanceOf&lt;OkObjectResult&gt;(result);
+    }
+
+    [Test]
+    public async Task GetBookByIdAsync_BookExists_ReturnsOkResult()
+    {
+        // Arrange
+        var id = Guid.NewGuid();
+        _mockBookService.Setup(service =&gt; service.GetBookByIdAsync(id))
+            .ReturnsAsync(new BookResponse());
+
+        // Act
+        var result = await _controller.GetBookById(id);
+
+        // Assert
+        Assert.IsInstanceOf&lt;OkObjectResult&gt;(result);
+    }
+
+    [Test]
+    public async Task CreateBookAsync_ValidRequest_ReturnsCreatedAtActionResult()
+    {
+        // Arrange
+        var bookRequest = new BookRequest();
+        _mockBookService.Setup(service =&gt; service.CreateBookAsync(bookRequest, It.IsAny&lt;string&gt;()))
+            .ReturnsAsync(new BookResponse());
+
+        var mockPdfFile = new Mock&lt;IFormFile&gt;();
+        mockPdfFile.Setup(file =&gt; file.FileName).Returns(&quot;test.pdf&quot;);
+
+        var mockCoverFile = new Mock&lt;IFormFile&gt;();
+        mockCoverFile.Setup(file =&gt; file.FileName).Returns(&quot;test.png&quot;);
+
+        // Mock User
+        var claims = new List&lt;Claim&gt;
+        {
+            new Claim(ClaimTypes.Name, &quot;test@example.com&quot;)
+        };
+        var identity = new ClaimsIdentity(claims, &quot;TestAuthType&quot;);
+        var principal = new ClaimsPrincipal(identity);
+        _controller.ControllerContext = new ControllerContext
+        {
+            HttpContext = new DefaultHttpContext { User = principal }
+        };
+
+        // Act
+        var result = await _controller.CreateBookAsync(bookRequest, mockPdfFile.Object, mockCoverFile.Object);
+
+        // Assert
+        Assert.IsInstanceOf&lt;CreatedAtActionResult&gt;(result);
+    }
+
+    [Test]
+    public async Task UpdateBookAsync_BookExists_ReturnsOkResult()
+    {
+        // Arrange
+        var id = Guid.NewGuid();
+        var bookRequest = new BookRequest();
+
+        // Setup _mockBookService to return a valid BookResponse for GetBookByIdAsync
+        _mockBookService.Setup(service =&gt; service.GetBookByIdAsync(id))
+            .ReturnsAsync(new BookResponse { Id = id, BookPath = &quot;old/path&quot;, CoverPath = &quot;old/cover/path&quot; });
+
+        _mockBookService.Setup(service =&gt; service.UpdateBookAsync(id, bookRequest, It.IsAny&lt;string&gt;()))
+            .ReturnsAsync(new BookResponse());
+    
+        var mockPdfFile = new Mock&lt;IFormFile&gt;();
+        mockPdfFile.Setup(file =&gt; file.FileName).Returns(&quot;test.pdf&quot;);
+
+        var mockCoverFile = new Mock&lt;IFormFile&gt;();
+        mockCoverFile.Setup(file =&gt; file.FileName).Returns(&quot;test.png&quot;);
+        var claims = new List&lt;Claim&gt;
+        {
+            new Claim(ClaimTypes.Name, &quot;test@example.com&quot;)
+        };
+        var identity = new ClaimsIdentity(claims, &quot;TestAuthType&quot;);
+        var principal = new ClaimsPrincipal(identity);
+        _controller.ControllerContext = new ControllerContext
+        {
+            HttpContext = new DefaultHttpContext { User = principal }
+        };
+    
+        // Act
+        var result = await _controller.UpdateBookAsync(id, bookRequest, mockPdfFile.Object, mockCoverFile.Object);
+
+        // Assert
+        Assert.IsInstanceOf&lt;OkObjectResult&gt;(result);
+    }
+    
+    [Test]
+    public async Task UpdateBookAsync_BookNotExists_ReturnsNotFound()
+    {
+        // Arrange
+        var id = Guid.NewGuid();
+        var bookRequest = new BookRequest();
+        _mockBookService.Setup(service =&gt; service.UpdateBookAsync(id, bookRequest, It.IsAny&lt;string&gt;()))
+            .ReturnsAsync(new BookResponse());
+        
+        var mockPdfFile = new Mock&lt;IFormFile&gt;();
+        mockPdfFile.Setup(file =&gt; file.FileName).Returns(&quot;test.pdf&quot;);
+
+        var mockCoverFile = new Mock&lt;IFormFile&gt;();
+        mockCoverFile.Setup(file =&gt; file.FileName).Returns(&quot;test.png&quot;);
+        var claims = new List&lt;Claim&gt;
+        {
+            new Claim(ClaimTypes.Name, &quot;test@example.com&quot;)
+        };
+        var identity = new ClaimsIdentity(claims, &quot;TestAuthType&quot;);
+        var principal = new ClaimsPrincipal(identity);
+        _controller.ControllerContext = new ControllerContext
+        {
+            HttpContext = new DefaultHttpContext { User = principal }
+        };
+        
+        // Act
+        var result = await _controller.UpdateBookAsync(id, bookRequest, mockPdfFile.Object, mockCoverFile.Object);
+
+        // Assert
+        Assert.IsInstanceOf&lt;NotFoundResult&gt;(result);
+    }
+
+    [Test]
+    public async Task DeleteBookAsync_BookExists_ReturnsNoContentResult()
+    {
+        // Arrange
+        var id = Guid.NewGuid();
+
+        // Setup _mockBookService to return a valid BookResponse for GetBookByIdAsync
+        _mockBookService.Setup(service =&gt; service.GetBookByIdAsync(id))
+            .ReturnsAsync(new BookResponse { Id = id, BookPath = &quot;old/path&quot;, CoverPath = &quot;old/cover/path&quot; });
+
+        _mockBookService.Setup(service =&gt; service.DeleteBookAsync(id, It.IsAny&lt;string&gt;()))
+            .Returns(Task.CompletedTask);
+
+        var claims = new List&lt;Claim&gt;
+        {
+            new Claim(ClaimTypes.Name, &quot;test@example.com&quot;)
+        };
+        var identity = new ClaimsIdentity(claims, &quot;TestAuthType&quot;);
+        var principal = new ClaimsPrincipal(identity);
+        _controller.ControllerContext = new ControllerContext
+        {
+            HttpContext = new DefaultHttpContext { User = principal }
+        };
+
+        // Act
+        var result = await _controller.DeleteBookAsync(id);
+
+        // Assert
+        Assert.IsInstanceOf&lt;NoContentResult&gt;(result);
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[20,5,20,6,1],[21,9,21,53,1],[22,9,22,67,1],[23,5,23,6,1],[27,5,27,6,1],[29,9,29,28,1],[30,9,30,27,1],[31,9,31,33,1],[32,9,32,49,1],[33,9,34,108,1],[37,9,37,91,1],[40,9,40,53,1],[41,5,41,6,1],[45,5,45,6,1],[47,9,47,33,1],[48,9,49,47,1],[52,9,52,56,1],[55,9,55,53,1],[56,5,56,6,1],[60,5,60,6,1],[62,9,62,45,1],[63,9,64,47,1],[66,9,66,49,1],[67,9,67,70,1],[69,9,69,51,1],[70,9,70,72,1],[73,9,76,11,1],[77,9,77,67,1],[78,9,78,55,1],[79,9,82,11,1],[85,9,85,111,1],[88,9,88,60,1],[89,5,89,6,1],[93,5,93,6,1],[95,9,95,33,1],[96,9,96,45,1],[99,9,100,110,1],[102,9,103,47,1],[105,9,105,49,1],[106,9,106,70,1],[108,9,108,51,1],[109,9,109,72,1],[110,9,113,11,1],[114,9,114,67,1],[115,9,115,55,1],[116,9,119,11,1],[122,9,122,115,1],[125,9,125,53,1],[126,5,126,6,1],[130,5,130,6,1],[132,9,132,33,1],[133,9,133,45,1],[134,9,135,47,1],[137,9,137,49,1],[138,9,138,70,1],[140,9,140,51,1],[141,9,141,72,1],[142,9,145,11,1],[146,9,146,67,1],[147,9,147,55,1],[148,9,151,11,1],[154,9,154,115,1],[157,9,157,53,1],[158,5,158,6,1],[162,5,162,6,1],[164,9,164,33,1],[167,9,168,110,1],[170,9,171,42,1],[173,9,176,11,1],[177,9,177,67,1],[178,9,178,55,1],[179,9,182,11,1],[185,9,185,60,1],[188,9,188,54,1],[189,5,189,6,1]]);
+    </script>
+  </body>
+</html>

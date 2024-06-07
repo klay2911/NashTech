@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>F:\NashTech\MidAssignment\src\LibraryManagement.WebAPI\Controllers\BookController.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Security.Claims;
+using LibraryManagement.Application.DTOs.BookDTOs;
+using LibraryManagement.Application.Interfaces.Services;
+using Microsoft.AspNetCore.Mvc;
+using LibraryManagement.Domain.Enum;
+using Microsoft.AspNetCore.Authorization;
+
+namespace LibraryManagement.WebAPI.Controllers;
+
+[Route(&quot;api/[controller]&quot;)]
+[ApiController]
+[Authorize]
+public class BookController : ControllerBase
+{
+    private readonly IBookService _bookService;
+    private string Email =&gt; Convert.ToString(User.Claims.FirstOrDefault(c =&gt; c.Type == ClaimTypes.Name).Value);
+    
+    public BookController(IBookService bookService)
+    {
+        _bookService = bookService;
+    }
+    
+    [HttpGet]
+    [Authorize(Roles = nameof(Role.Librarian) + &quot;,&quot; + nameof(Role.Reader))]
+    public async Task&lt;IActionResult&gt; GetAllBooksAsync(int pageNumber, int pageSize, string searchTerm = &quot;&quot;)
+    {
+        var books = await _bookService.GetAllBooksAsync(pageNumber, pageSize, searchTerm);
+        return Ok(books);
+    }
+
+    [HttpGet(&quot;{id}&quot;)]
+    public async Task&lt;IActionResult&gt; GetBookById(Guid id)
+    {
+        var book = await _bookService.GetBookByIdAsync(id);
+        return Ok(book);
+    }
+    
+    [HttpPost]
+    [Route(&quot;GetBookByIdAsync&quot;)]
+    [Authorize(Roles = nameof(Role.Librarian))]
+    public async Task&lt;IActionResult&gt; CreateBookAsync([FromForm] BookRequest bookRequest, IFormFile pdfFile, IFormFile coverFile)
+    {
+        var directoryPath = Path.Combine(Directory.GetCurrentDirectory(), &quot;wwwroot&quot;, &quot;pdfs&quot;);
+        var coverDirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), &quot;wwwroot&quot;, &quot;covers&quot;);
+        if (!Directory.Exists(directoryPath))
+        {
+            Directory.CreateDirectory(directoryPath);
+        }
+        if (!Directory.Exists(coverDirectoryPath))
+        {
+            Directory.CreateDirectory(coverDirectoryPath);
+        }
+        
+        var filePath = Path.Combine(directoryPath, pdfFile.FileName);
+        await using (var stream = new FileStream(filePath, FileMode.Create))
+        {
+            await pdfFile.CopyToAsync(stream);
+        }
+        bookRequest.BookPath = $&quot;/pdfs/{pdfFile.FileName}&quot;;
+        
+        var coverFilePath = Path.Combine(coverDirectoryPath, coverFile.FileName);
+        await using (var stream = new FileStream(coverFilePath, FileMode.Create))
+        {
+            await coverFile.CopyToAsync(stream);
+        }
+        bookRequest.CoverPath = $&quot;/covers/{coverFile.FileName}&quot;;
+
+        var bookResponse = await _bookService.CreateBookAsync(bookRequest, Email);
+        return CreatedAtAction(nameof(GetBookById), new { id = bookResponse.Id }, bookResponse);;
+    }
+
+    [HttpPut(&quot;{id}&quot;)]
+    public async Task&lt;IActionResult&gt; UpdateBookAsync(Guid id, [FromForm] BookRequest bookRequest,IFormFile pdfFile, IFormFile coverFile)
+    {
+        var oldBook = await _bookService.GetBookByIdAsync(id);
+        if (oldBook == null)
+        {
+            return NotFound();
+        }
+        if (pdfFile is { Length: &gt; 0 })
+        {
+            if (!string.IsNullOrEmpty(oldBook.BookPath))
+            {
+                var oldPdfPath = Path.Combine(Directory.GetCurrentDirectory(), &quot;wwwroot&quot;, oldBook.BookPath.TrimStart(&#39;/&#39;));
+                if (System.IO.File.Exists(oldPdfPath))
+                {
+                    System.IO.File.Delete(oldPdfPath);
+                }
+            }
+        
+            var directoryPath = Path.Combine(Directory.GetCurrentDirectory(), &quot;wwwroot&quot;, &quot;pdfs&quot;);
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+        
+            var filePath = Path.Combine(directoryPath, pdfFile.FileName);
+            await using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await pdfFile.CopyToAsync(stream);
+            }
+        
+            bookRequest.BookPath = $&quot;/pdfs/{pdfFile.FileName}&quot;;
+        }
+        else
+        {
+            bookRequest.BookPath = oldBook.BookPath;
+        }
+        if (coverFile is { Length: &gt; 0 })
+        {
+            if (!string.IsNullOrEmpty(oldBook.CoverPath))
+            {
+                var oldCoverPath = Path.Combine(Directory.GetCurrentDirectory(), &quot;wwwroot&quot;, oldBook.CoverPath.TrimStart(&#39;/&#39;));
+                if (System.IO.File.Exists(oldCoverPath))
+                {
+                    System.IO.File.Delete(oldCoverPath);
+                }
+            }
+
+            var coverDirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), &quot;wwwroot&quot;, &quot;covers&quot;);
+            if (!Directory.Exists(coverDirectoryPath))
+            {
+                Directory.CreateDirectory(coverDirectoryPath);
+            }
+
+            var coverFilePath = Path.Combine(coverDirectoryPath, coverFile.FileName);
+            await using (var stream = new FileStream(coverFilePath, FileMode.Create))
+            {
+                await coverFile.CopyToAsync(stream);
+            }
+
+            bookRequest.CoverPath = $&quot;/covers/{coverFile.FileName}&quot;;
+        }
+        else
+        {
+            bookRequest.CoverPath = oldBook.CoverPath;
+        }
+
+        var bookResponse = await _bookService.UpdateBookAsync(id, bookRequest, Email);
+        return Ok(bookResponse);
+    }
+
+    [HttpDelete(&quot;{id}&quot;)]
+    public async Task&lt;IActionResult&gt; DeleteBookAsync(Guid id)
+    {
+        var book = await _bookService.GetBookByIdAsync(id);
+        if (!string.IsNullOrEmpty(book.BookPath))
+        {
+            var pdfPath = Path.Combine(Directory.GetCurrentDirectory(), &quot;wwwroot&quot;, book.BookPath.TrimStart(&#39;/&#39;));
+            if (System.IO.File.Exists(pdfPath))
+            {
+                System.IO.File.Delete(pdfPath);
+            }
+        }
+        // if (!string.IsNullOrEmpty(book.CoverPath))
+        // {
+        //     var imagePath = Path.Combine(Directory.GetCurrentDirectory(), &quot;wwwroot&quot;, book.CoverPath.TrimStart(&#39;/&#39;));
+        //     if (System.IO.File.Exists(imagePath))
+        //     {
+        //         System.IO.File.Delete(imagePath);
+        //     }
+        // }
+        await _bookService.DeleteBookAsync(id, Email);
+        return NoContent();
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[16,29,16,78,1],[16,78,16,103,1],[16,103,16,111,1],[18,5,18,52,1],[19,5,19,6,1],[20,9,20,36,1],[21,5,21,6,1],[26,5,26,6,1],[27,9,27,91,1],[28,9,28,26,1],[29,5,29,6,1],[33,5,33,6,1],[34,9,34,60,1],[35,9,35,25,1],[36,5,36,6,1],[42,5,42,6,1],[43,9,43,94,1],[44,9,44,101,1],[45,9,45,46,1],[46,9,46,10,0],[47,13,47,54,0],[48,9,48,10,0],[49,9,49,51,1],[50,9,50,10,0],[51,13,51,59,0],[52,9,52,10,0],[54,9,54,70,1],[55,22,55,76,1],[56,9,56,10,1],[57,13,57,47,1],[58,9,58,10,1],[59,9,59,60,1],[61,9,61,82,1],[62,22,62,81,1],[63,9,63,10,1],[64,13,64,49,1],[65,9,65,10,1],[66,9,66,65,1],[68,9,68,83,1],[69,9,69,97,1],[70,5,70,6,1],[74,5,74,6,1],[75,9,75,63,1],[76,9,76,29,1],[77,9,77,10,1],[78,13,78,31,1],[80,9,80,40,1],[81,9,81,10,0],[82,13,82,57,0],[83,13,83,14,0],[84,17,84,124,0],[85,17,85,55,0],[86,17,86,18,0],[87,21,87,55,0],[88,17,88,18,0],[89,13,89,14,0],[91,13,91,98,0],[92,13,92,50,0],[93,13,93,14,0],[94,17,94,58,0],[95,13,95,14,0],[97,13,97,74,0],[98,26,98,80,0],[99,13,99,14,0],[100,17,100,51,0],[101,13,101,14,0],[103,13,103,64,0],[104,9,104,10,0],[106,9,106,10,1],[107,13,107,53,1],[108,9,108,10,1],[109,9,109,42,1],[110,9,110,10,0],[111,13,111,58,0],[112,13,112,14,0],[113,17,113,127,0],[114,17,114,57,0],[115,17,115,18,0],[116,21,116,57,0],[117,17,117,18,0],[118,13,118,14,0],[120,13,120,105,0],[121,13,121,55,0],[122,13,122,14,0],[123,17,123,63,0],[124,13,124,14,0],[126,13,126,86,0],[127,26,127,85,0],[128,13,128,14,0],[129,17,129,53,0],[130,13,130,14,0],[132,13,132,69,0],[133,9,133,10,0],[135,9,135,10,1],[136,13,136,55,1],[137,9,137,10,1],[139,9,139,87,1],[140,9,140,33,1],[141,5,141,6,1],[145,5,145,6,1],[146,9,146,60,1],[147,9,147,50,1],[148,9,148,10,1],[149,13,149,114,1],[150,13,150,48,1],[151,13,151,14,0],[152,17,152,48,0],[153,13,153,14,0],[154,9,154,10,1],[163,9,163,55,1],[164,9,164,28,1],[165,5,165,6,1]]);
+    </script>
+  </body>
+</html>
